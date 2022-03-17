@@ -1,0 +1,154 @@
+---
+title: "Introduction to R - part 3"
+subtitle: "🧉"
+author: "Tiago Nardi"
+institute: "University of Pavia"
+output:
+  xaringan::moon_reader:
+    css: [extra.css, xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+  #style_mono_accent(
+  style_duo(
+  primary_color = "#f2DB86",
+  #base_color = "#B2284B",
+  secondary_color = "#32577F",
+
+)
+library(gt)
+
+# style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
+
+```
+```{r ,include=FALSE}
+db <- read.csv("patric_redux.csv",header = T,na.strings ="")
+```
+class: inverse, middle, center
+# Plot design
+---
+# Histograms
+A histogram is a representation of the distribution of numerical data
+
+The entire range of values is divided into intervals and then the function counts how many values fall into each interval
+---
+# Histograms
+.pull-left[
+Histogram plot with default values
+```{r hist1, fig.show = 'hide'}
+db <- read.csv("patric_redux.csv")
+hist(db$GC.Content)
+```
+]
+.pull-right[
+```{r ref.label='hist1',echo = FALSE, dev.args = list(bg = "transparent")}
+```
+]
+---
+# Histograms
+
+``` {r , eval= FALSE}
+hist(dataframe_name$column,
+     breaks = "value", col = "colour_name",
+     border = "colour_name", main = "Title", 
+     xlab = "x_name", ylab = "y_name")
+```
+breaks: a single number giving the number of cells for the histogram
+
+col: a colour to be used to fill the bars
+
+border: the color of the border around the bars. The default is to use the standard foreground color
+
+main, xlab, ylab: these arguments give labels to title and axis
+---
+class: inverse
+# Exercise
+.pull-left[
+``` {r , eval= FALSE}
+hist(dataframe_name$column,
+     breaks = "value",
+     col = "colour_name",
+     border = "colour_name", 
+     main = "Title", 
+     xlab = "x_name", 
+     ylab = "y_name")
+```
+#### Try to get a histogram using the patric_redux.csv, draw the genome length, use appropriate labels and use a colour
+]
+.pull-right[
+![](img/cowboy-bebop-cowboy.gif)]
+---
+```{r hist2, echo = FALSE, dev.args = list(bg = "transparent")}
+hist(db$Genome.Length, breaks = 20, main = "Genome Length Distribution",
+     col = "#32577F",border="black",xlab="Length")
+```
+
+```{r, eval = FALSE}
+hist(db$Genome.Length, breaks = 20, main = "Genome Length Distribution",
+     col = "#32577F",border="black",xlab="Length")
+```
+---
+## Saving graphs
+To save a graph
+```{r, eval=FALSE}
+pdf("Graph_name.pdf")
+graph_command # any graph, including hist()
+dev.off()
+```
+
+This will save whatever you draw (*graph_command*) in your __present working directory__
+
+You can also use the *export* function in the __Plot tab__
+---
+## Barplot
+A barplot shows the relationship between categorical variables. Each variable is
+represented as a bar. The size of the bar represents its numeric value
+In R, barplot() function computes a barplot of the given grouped values
+barplot(table, col = "colour_name", beside = TRUE, cex.names = number, las = 2, main
+= "Title", xlab = "x_name", ylab = "y_name")
+table: contingency table of the counts at each combination of factor levels
+col: a colour to be used to fill the bars
+beside = TRUE: the values in each column are juxtaposed rather than stacked
+las = 2: make all labels perpendicular to axis
+main, xlab, ylab: these arguments give names to title and axisBarplot
+For barplots, we can also specify a legend:
+legend (x, legend, fill = "colour_name", col = "colour_name", bg = "colour_name", pch
+= number)
+x: co-ordinates to be used to position the legend
+legend: the text of the legend
+fill: colors to use for filling the boxes beside the legend text
+col: colors of lines and points beside the legend text
+bg: the background color for the legend box
+pch:the plotting symbols appearing in the legendBarplot
+Example:
+t <- table(db$Sex,db$Isolation.Site)
+barplot(t,las=2, main = "Sex-Body",col = c("black","red"))
+legend("topright", c("Female", "Red"), col = c("black","red"), pch = 19)Scatter plot
+A scatter plot shows the relationship between two numerical variables. The data are
+displayed as a collection of points, each having the value of one variable determining the
+position on the horizontal axis and the value of the other variable determining the
+position on the vertical axis
+In R, we can use the generic function plot()
+plot(x,y, col = "colour_name",main = "Title", xlab = "x_name", ylab = "y_name")
+x,y: the two numerical variables
+col: a colour to be used to fill the bars
+main, xlab, ylab: these arguments give names to title and axisScatter plot
+Example:
+table(db$Quality)
+db$Quality <- as.factor(db$Quality)
+str(db$Quality)
+plot(db$Genome.Length,db$Contigs,xlab = "Length",ylab = "Contigs",
+main="Length-Contigs",col=c("red","black","green")[db$Quality]))

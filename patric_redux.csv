@@ -1,46 +1,45 @@
-Genome Name,Contigs,Genome Length,GC Content,PATRIC CDS
-Yersinia pestis biovar Orientalis str. AS200901539,250,4572127,47.5,4398
-Yersinia pestis biovar Orientalis str. AS200902147,277,4592682,47.5,4485
-Yersinia pestis biovar Orientalis str. AS200901434,237,4572981,47.5,4378
-Yersinia pestis biovar Orientalis str. AS200901509,263,4605070,47.5,4378
-Yersinia pestis 2501,201,4593919,47.5,4507
-Yersinia pestis 24H,140,4492822,47.6,4620
-Yersinia pestis EBD10-058,581,4542680,47.4,4364
-Yersinia kristensenii strain M73,56,4753210,47.226715,4570
-Yersinia kristensenii strain M47,56,4743892,47.27142,4555
-Yersinia kristensenii strain HR100,67,4761749,47.409576,4605
-Yersinia kristensenii strain M70,81,4889404,47.099667,4806
-Yersinia enterocolitica strain FDAARGOS_227,2,5073657,47.47,4958
-Yersinia enterocolitica strain FORC_002,1,101782,42.59,124
-Yersinia enterocolitica strain NCTC10460,2,4767810,46.915104,4590
-Yersinia enterocolitica strain NCTC10462,45,3840239,46.804977,3731
-Yersinia enterocolitica strain LC18E NCDC B Int 3,56,4676549,47.143032,4496
-Yersinia enterocolitica strain LC18E NCDC B Int 9-14,28,4675119,47.144703,4468
-Yersinia enterocolitica strain M34,156,4982633,47.065258,4941
-Yersinia enterocolitica strain HR88,74,4745632,47.010895,4597
-Yersinia enterocolitica strain M29A27,135,5059344,47.097965,5078
-Yersinia enterocolitica strain PS23,60,4639377,47.088005,4479
-Yersinia enterocolitica strain FORC_002,2,4837317,47.04,4580
-Yersinia enterocolitica strain ERL072344,119,4458462,46.92,4383
-Yersinia enterocolitica strain IP01119,177,4643207,46.72,4794
-Yersinia enterocolitica strain IP20322,93,4510028,46.98,4407
-Yersinia enterocolitica strain IP05342,169,4722666,46.77,4935
-Yersinia enterocolitica strain IP06077,159,4594630,46.79,4743
-Yersinia enterocolitica strain IP00178,183,4609560,46.84,4807
-Yersinia pestis strain 1116-D,388,4470393,47.56,9392
-Yersinia pestis strain 173,316,4569957,47.53,4644
-Yersinia pestis strain 261,249,4579841,47.528397,4639
-Yersinia pestis strain 139,4816,3963071,48.332645,8419
-Yersinia pestis strain 1313,235,4598307,47.537018,5203
-Yersinia pestis strain 1906,301,4573713,47.529743,4772
-Yersinia pestis strain 2751-55,278,4582594,47.53343,5130
-Yersinia pestis strain 262,249,4532410,47.462852,4681
-Yersinia pestis strain 1240,321,4582524,47.530334,4688
-Yersinia pestis strain 2513,227,4537723,47.45978,4684
-Yersinia pestis strain 2514,212,4629574,47.50026,4766
-Yersinia pestis strain 111,210,4582792,47.53611,4626
-Yersinia pestis strain 14D, Miniasm v. 0.3 (r179),,1,4601513
-Yersinia pestis PY-19,535,4510880,47.5,4275
-Yersinia pestis PY-76,462,4498987,47.5,4267
-Yersinia pestis PY-102,537,4672350,47.5,4473
-Yersinia pestis PY-103,933,4591865,47.8,4327
+Genome Name,Contigs,Genome Length,GC Content,PATRIC CDS,Isolation_location
+Yersinia pestis biovar Orientalis str. AS200901539,250,4572127,47.5,4398,Isengard
+Yersinia pestis biovar Orientalis str. AS200902147,277,4592682,47.5,4485,The Shire
+Yersinia pestis biovar Orientalis str. AS200901434,237,4572981,47.5,4378,Rohan
+Yersinia pestis biovar Orientalis str. AS200901509,263,4605070,47.5,4378,Mordor
+Yersinia pestis 2501,201,4593919,47.5,4507,The Shire
+Yersinia pestis 24H,140,4492822,47.6,4620,The Shire
+Yersinia pestis EBD10-058,581,4542680,47.4,4364,Barad-dur
+Yersinia kristensenii strain M73,56,4753210,47.226715,4570,Mordor
+Yersinia kristensenii strain M47,56,4743892,47.27142,4555,Rohan
+Yersinia kristensenii strain HR100,67,4761749,47.409576,4605,Rohan
+Yersinia kristensenii strain M70,81,4889404,47.099667,4806,Lothlorien
+Yersinia enterocolitica strain FDAARGOS_227,2,5073657,47.47,4958,Rohan
+Yersinia enterocolitica strain FORC_002,1,3924069,42.59,4124,Gondor
+Yersinia enterocolitica strain NCTC10460,2,4767810,46.915104,4590,Gondor
+Yersinia enterocolitica strain NCTC10462,45,3840239,46.804977,3731,The Shire
+Yersinia enterocolitica strain LC18E NCDC B Int 3,56,4676549,47.143032,4496,Gondor
+Yersinia enterocolitica strain LC18E NCDC B Int 9-14,28,4675119,47.144703,4468,Gondor
+Yersinia enterocolitica strain M34,156,4982633,47.065258,4941,The Shire
+Yersinia enterocolitica strain HR88,74,4745632,47.010895,4597,Harad
+Yersinia enterocolitica strain M29A27,135,5059344,47.097965,5078,Rohan
+Yersinia enterocolitica strain PS23,60,4639377,47.088005,4479,Barad-dur
+Yersinia enterocolitica strain FORC_003,2,4837317,47.04,4580,Barad-dur
+Yersinia enterocolitica strain ERL072344,119,4458462,46.92,4383,Harad
+Yersinia enterocolitica strain IP01119,177,4643207,46.72,4794,Gondor
+Yersinia enterocolitica strain IP20322,93,4510028,46.98,4407,The Shire
+Yersinia enterocolitica strain IP05342,169,4722666,46.77,4935,Lothlorien
+Yersinia enterocolitica strain IP06077,159,4594630,46.79,4743,Lothlorien
+Yersinia enterocolitica strain IP00178,183,4609560,46.84,4807,The Shire
+Yersinia pestis strain 1116-D,388,4470393,47.56,9392,Rivendell
+Yersinia pestis strain 173,316,4569957,47.53,4644,The Shire
+Yersinia pestis strain 261,249,4579841,47.528397,4639,Isengard
+Yersinia pestis strain 139,4816,3963071,48.332645,8419,Lothlorien
+Yersinia pestis strain 1313,235,4598307,47.537018,5203,Lothlorien
+Yersinia pestis strain 1906,301,4573713,47.529743,4772,The Shire
+Yersinia pestis strain 2751-55,278,4582594,47.53343,5130,The Shire
+Yersinia pestis strain 262,249,4532410,47.462852,4681,Mirkwood
+Yersinia pestis strain 1240,321,4582524,47.530334,4688,Gondor
+Yersinia pestis strain 2513,227,4537723,47.45978,4684,The Shire
+Yersinia pestis strain 2514,212,4629574,47.50026,4766,Lothlorien
+Yersinia pestis strain 111,210,4582792,47.53611,4626,Mordor
+Yersinia pestis PY-19,535,4510880,47.5,4275,The Shire
+Yersinia pestis PY-76,462,4498987,47.5,4267,Rivendell
+Yersinia pestis PY-102,537,4672350,47.5,4473,The Shire
+Yersinia pestis PY-103,933,4591865,47.8,4327,Harad

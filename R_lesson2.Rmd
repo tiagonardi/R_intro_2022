@@ -1,0 +1,376 @@
+---
+title: "Introduction to R - part 2"
+subtitle: "🧉"
+author: "Tiago Nardi"
+institute: "University of Pavia"
+output:
+  xaringan::moon_reader:
+    css: [extra.css, xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+  #style_mono_accent(
+  style_duo(
+  primary_color = "#f2DB86",
+  #base_color = "#B2284B",
+  secondary_color = "#32577F",
+
+)
+library(gt)
+
+# style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
+
+```
+# TO DO: TABELLA CON NA E CATEGORIE
+---
+## Vectors
+
+Let’s first create a vector:
+```{r, include=TRUE}
+x <- c(2, 5, 8, 1, 2)
+```
+You can access elements inside a vector using their index position, using the square brackets *[ ]*
+
+```{r, include=TRUE}
+x[2] # show the second element
+```
+To select multiple elements use the concatenate function
+```{r, include=TRUE}
+x[c(1,2)] # show the first and second element
+```
+---
+## Vectors
+You can select a slice of the vector using the colon *:*
+```{r, include=TRUE}
+x[3:5] # show all elements from a starting index (3) to an ending index (5) (slicing)
+```
+You can combine both methods
+```{r, include=TRUE}
+x[c(1,3:5)]
+```
+You can get all the elements barring the elements with a minus before it *-*
+```{r, include=TRUE}
+x[-2]
+```
+---
+## Vectors
+You can select elements in the vector using logical conditions
+```{r, include=TRUE}
+x[x > 2] # show all elements greater than 2
+```
+To access the vector you have to specify the values *inside* the brackets
+
+Otherwise you apply the logical operation to all elements in the vector
+```{r}
+x > 2
+```
+---
+## Vectors
+As you can assign values to an __object__
+
+You can assign values inside a vector
+
+```{r, include=TRUE}
+x[3]
+x[3] <- 11 # replace the third element with the number 11
+x[3]
+```
+
+---
+## Rows and columns
+```{r, include = TRUE}
+db <- read.csv("patric_redux.csv", header = T)
+db1 <- db # let's make a copy of the data frame
+head(db)
+```
+---
+## Rows and columns
+
+To change the name use the *colnames()* functions
+
+To get a column use the column number like a vector index
+``` {r}
+colnames(db1) # It shows column names
+colnames(db1)[3] <- "bp" # change the third column name
+colnames(db1)
+colnames(db1)[3] # Get only the third column
+```
+
+---
+## Rows and columns
+How to set row names:
+``` {r}
+rownames(db1) # It shows row names
+rownames(db1) <- db1$Genome.Name # We set as rownames all values from column
+```
+
+---
+## Rows and columns
+
+``` {r}
+head(db)
+```
+---
+## Rows and columns
+``` {r}
+head(db1)
+```
+---
+## Cleaning up
+To remove a column assign a __NULL__ value to it
+``` {r}
+db1$contigs <- NULL # delete the column
+```
+
+If you want to remove an __object__ from R use
+``` {r eval=FALSE}
+rm(x)
+```
+It will free your memory from that specified __object__
+
+The __object__ will disappear from the __environment tab__
+---
+## Accessing the data frame 
+Extract columns and rows from a data frame (almost) like you access a __vector__
+
+You can use the position indexes inside square brackets
+
+First value is the row, the second the column
+
+You can use position or names if you already set up row/column names
+``` {r, eval= FALSE}
+dataframe_name[1, 1]
+dataframe_name["row_name", "column_name"]
+```
+If don't specify one of the two values you get all elements (All rows/All columns)
+``` {r, eval= FALSE}
+dataframe_name[,1] # all rows, first column
+dataframe_name[1,] # first row, all column
+```
+
+
+---
+``` {r, eval= FALSE}
+dataframe_name["row_name", "column_name"]
+dataframe_name[row_index, column_index]
+dataframe_name[ , "column_name"]
+dataframe_name[ , column_index]
+dataframe_name["row_name", ]
+dataframe_name[row_index,]
+dataframe_name[ , c("column_1_name", "column_2_name")]
+dataframe_name[ , c(first_column_index, second_column_index)]
+dataframe_name[c("row_1_name", "row_2_name"), ]
+dataframe_name[c(first_row_index, second_row_index), ]
+dataframe_name[ , c(first_column_index : last_column_index)]
+dataframe_name[c(first_row_index : last_row_index),]
+```
+You can mix and match different ways to access the data
+db[1,4] # First rown and 4th column
+db[1,"Contigs"] #First row and column "Contigs"
+db[35:78,] # From row 35 to 78 and all columns
+db[,c(4,5)] #All rows and the 4th and 5th column
+
+
+---
+class: inverse, middle
+.pull-left[
+## Remember the typeof() function?
+]
+.pull-right[![](img/ein2.gif)]
+---
+## Object type
+With the various form of extraction you get similar results but differerent data types
+``` {r, eval= FALSE}
+dataframe_name[column_index]
+dataframe_name[[column_index]] 
+dataframe_name[, column_index] # Pay attention to the comma
+dataframe_name$column_index
+dataframe_name$column_index[row_index]
+```
+Assign these values to a new __object__
+
+Look at how it appears in the environment
+
+
+---
+## Not Available
+In R, missing values are represented by the symbol NA (not available)
+To test for missing values
+``` {r}
+y <- c(1,2,3,NA)
+is.na (y) #find which value is missing
+```
+To remove missing values from a data frame:
+``` {r, eval= FALSE}
+db2 <- db1[complete.cases(db1), ] # we remove all those rows having NA values
+```
+---
+## Data frame functions
+*Table* produces a table of counts. It creates tabular results of categorical variables
+``` {r, eval= FALSE}
+table(db1$Isolation.Site) 
+```
+*gsub* takes an input value and replace it with another one
+``` {r, eval= FALSE}
+db2$Isolation.Site<-gsub("Respiratory","Lungs",db2$Isolation.Site) # the word “Respiratory” is replaced with “Lungs”
+```
+*unique* identify and eliminate duplicated values in an object. The object can be a vector or
+a data frame. On data frames the function removes duplicated rows
+``` {r, eval= FALSE}
+country <- db2$Isolation.Country
+unique_country <- unique(country)
+```
+---
+## Functions on data frames
+How to check if a value is present in a column or vector:
+``` {r, eval= FALSE}
+value %in% vector
+value %in% dataframe_name$column_name
+```
+To extract the first location that has the value of interest:
+``` {r, eval= FALSE}
+match("value", dataframe_name$column_name)
+match("Italy", db2$Isolation.Country)
+```
+---
+## Binding
+To combine two columns into a new one:
+``` {r, eval= FALSE}
+paste(dataframe_name$column_name_1, dataframe_name$column_name_2, sep=” “)
+db2$Genome<-paste(db2$Genome_ID,db2$Genome_Name,sep=" ") # create a new column pasting the other two
+```
+*cbind* and *rbind* are functions which can combine together several vectors of the same
+length
+
+*cbind* combines vectors as columns
+*rbind* combines them as rows
+``` {r, eval= FALSE}
+new_c <- rep("Illumina",1044) # create a vector composed of 1044 values. Not asked for the exam
+db2 <- cbind (db2,new_c) # new_c is a new a column of the data frame
+```
+``` {r, eval= FALSE}
+new_r <- db2[1,] # new vector containing the first row of data frame
+new_r[1,1] <- "1280_14681_2" # change the first value of the vector
+db2 <- rbind(db2,new_r) #new_r now is a new row of the data frame
+db2 <- db2 [-c(1045),] # remove the row “new_r”
+```
+---
+# Functions
+Sort a data frame in R (by default, sorting is ASCENDING)
+``` {r, eval= FALSE}
+dataframe_name <- dataframe_name[order(dataframe_name$column), ]
+db2<- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
+```
+``` {r, eval= FALSE}
+length(dataframe_name$column_name)
+length(db2$Genome_ID) #1044
+```
+*max* returns the maximum value of a numeric vector or column
+*min* returns the minimum value of a numeric vector or column
+*range* it outputs the smallest and largest values of the numeric vector or column
+``` {r, eval= FALSE}
+max(db2$Contigs) #100
+min(db2$Contigs) #2
+range(db2$Contigs)
+```
+---
+## Subsetting
+T extract rows or columns on the basis of a pattern:
+``` {r eval=FALSE}
+subset(dataframe_name, dataframe_name$column_name logical_condition)
+```
+
+``` {r eval=TRUE}
+db <- read.csv("patric_redux.csv",header = T,na.strings ="")
+gondor <- subset(db,db$Isolation_location=="Gondor" & db$Contigs<100) # logical selection
+red_table <- subset(db,select = c(1, 3, 4, 5)) # selection of columns
+```
+---
+## Subsetting
+``` {r eval=TRUE}
+gondor
+```
+---
+# Logical operators
+```{r, include=FALSE}
+df_log <- data.frame(Operator=c(">",">=","<","<=","==","!=", "&","|","!"),
+                Description=c("Greater than",
+                              "Greater than or equal tp",
+                              "Lesser than",
+                              "Lesser than or equal to",
+                              "Equal to",
+                              "Not equal to",
+                              "AND",
+                              "OR",
+                              "NOT")
+)
+gt_tbl <- gt(df_log)
+```
+```{r, echo = FALSE, include= TRUE, results='asis'}
+gt_tbl
+```
+---
+## Dropping levels
+When subsetting data frames there may be some levels (for factors) that are unused
+
+Remove them because they may alter downstream analyses
+``` {r eval=FALSE}
+table(data_frame$column)
+```
+If you get a factor with a value of 0 you should  drop the levels
+``` {r eval=FALSE}
+dataframe_name <- droplevels (dataframe_name)
+```
+---
+class: inverse, middle
+## Good things come in small packages
+---
+## Install and load libraries
+R, by default, only comes with a restricted number of functions
+
+To extend the functionalities we can install external packages 
+
+To install a package in R:
+
+install.packages("library_name")
+
+after you have installed you can load it with
+library(library_name)
+Example:
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+# There's a time and place for everything
+# but do not run this code now
+install.packages(“ggplot2”)
+library(ggplot2)
+```
+---
+# Dplyr
+dplyr is a package for data manipulation, providing a consistent set of functions that help
+you solve the most common data manipulation challenges
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+install.packages (“dplyr”)
+library (dplyr)
+```
+In order to combine two data frames, at least one column must be present in both data
+frames and have the same header
+colnames(db2) #
+colnames(res) #
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+full <- full_join(res,db2,by="Genome_ID")
+semi <- semi_join(res,db2,by="Genome_ID")
+left <- left_join(res,db2,by="Genome_ID")
+right <- right_join(res,db2,by="Genome_ID")
+```
