@@ -1,0 +1,258 @@
+---
+title: "Introduction to R - part 3"
+subtitle: "🧉"
+author: "Tiago Nardi"
+institute: "University of Pavia"
+output:
+  xaringan::moon_reader:
+    css: [extra.css, xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(gt)
+library(DiagrammeR)
+  #style_mono_accent(
+  style_duo(
+  primary_color = "#f2DB86",
+  #base_color = "#B2284B",
+  secondary_color = "#32577F",
+
+)
+
+# style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
+
+```
+class: inverse, middle, center
+# Plot design
+---
+## Statistical analysis - the basics
+Statistical analysis is the science of collecting, exploring and presenting large amounts of data to discover underlying patterns and trends
+
+Statistical analysis can be broken down into five discrete steps, as follows:
+
+1. Describe the nature of the data to be analyzed
+2. Explore the relation of the data to the underlying population
+3. Create a model to summarize understanding of how the data relates to the underlying
+population
+4. Prove (or disprove) the validity of the model
+5. Employ predective analyses to run scenarios that will help guide future actions
+
+---
+## Statistical analysis - the basics
+Variable: characteristic detected on each statistical unit, which can take different values in the different statistical units
+
+Observation: value assumed by a variable in a given statistical unit
+```{r, eval=TRUE, echo=FALSE}
+grViz(diagram = "digraph flowchart {
+  node [fontname = arial, shape = box, color=Steelblue]
+  tab1 [label = '@@1']
+  tab2 [label = '@@2']
+  tab3 [label = '@@3']
+  tab4 [label = '@@4']
+  tab5 [label = '@@5']
+  tab6 [label = '@@6']
+  tab7 [label = '@@7']
+  
+  tab1 -> tab2;
+  tab1 -> tab3;
+  tab2 -> tab4;
+  tab2 -> tab5;
+  tab3 -> tab6;
+  tab3 -> tab7
+}
+  
+  [1]: 'Variables'
+  [2]: 'Quantitative Variables'    
+  [3]: 'Qualitative variables'
+  [4]: 'Discrete'
+  [5]: 'Continuous'
+  [6]: 'Nominal'
+  [7]: 'Ordinal'
+  ")
+```
+---
+## Variables classification
+### Quantitative variables
+  expressed by numbers
+- Discrete: can only be particular values within a certain interval (often derived from counts). They are natural numbers
+  - Number of colonies per plate
+  - Number of chromosomes of a species
+- Continuous: can be any value within a given range (they come from measurements). They
+are real numbers
+  - Weight
+  - Height
+
+---
+## Variables classification
+### Qualitative variables
+- #### Nominal: are characterized by different modes that can not be ordered:
+  - Sex: male / female
+  - Survival: alive / dead
+  - Blood groups: A, B, AB, 0
+- #### Ordinal: are characterized by different modes that can be ordered:
+  - Obesity levels: overweight, obesity I, obesity II, obesity III
+  - Intensity of reaction to an antigen: zero, medium, high
+  - Educational qualification: compulsory school, bachelor, master, PhD
+---
+```{r, eval=TRUE, echo=FALSE}
+grViz(diagram = "digraph flowchart {
+  node [fontname = arial, shape = box, color=Steelblue]
+  tab1 [label = '@@1']
+  tab2 [label = '@@2', color=Red]
+  tab3 [label = '@@3']
+  tab4 [label = '@@4']
+  tab5 [label = '@@5']
+  tab6 [label = '@@6']
+  tab7 [label = '@@7']
+  
+  tab1 -> tab2;
+  tab2 -> tab3;
+  tab3 -> tab4;
+  tab4 -> tab5;
+  tab3 -> tab6;
+  tab6 -> tab7
+}
+  
+  [1]: 'Quantitative Variables'
+  [2]: 'Check if the variable has a normal distribution'    
+  [3]: 'Shapiro-Wilk Normality Test'
+  [4]: 'p-value < 0.05'
+  [5]: 'Wilcoxon Test'
+  [6]: 'p-value >= 0.05'
+  [7]: 'Student’s t Test'
+  ")
+```
+---
+## Statistical analysis - the basics
+How to test if the difference between the MEAN VALUE of quantitative variables is statistically significant BETWEEN the two groups
+Quantitative variable
+Check if the variable has a normal distribution
+Shapiro-Wilk Normality Test
+p-value < 0.05p-value >= 0.05
+Wilcoxon TestStudent’s t Test
+---
+## Statistical analysis - the basics
+What is a normal distribution?
+
+The normal distribution is a continuous probability distribution that is symmetrical on both sides of the mean, so the right side of the center is a mirror image of the left side
+
+The area under the normal distribution curve represents probability and the total area under the curve sums to one.
+
+Most of the continuous data values in a normal distribution tend to cluster around the
+mean, and the further a value is from the mean, the less likely it is to occur
+
+---
+## Statistical analysis - the basics
+How to test for normal distribution:
+shapiro.test(numeric_vector)
+• The null hypothesis for this test is that the data are normally distributed
+• The alternative hypothesis for this test is that the data are not normally distributed
+
+For this test, the p-value is the probability that the null hypothesis is true. If the p-value
+is less than 0.05, then the null hypothesis is rejected (because the probability is < 5%)
+p-value calculated < 0.05
+p-value calculated >= 0.05
+the variable does not have a Normal distribution
+the variable has a Normal distribution
+---
+## Statistical analysis - the basics
+How to test if two or more mean values are statistically different:
+wilcox.test(first_numeric_vector, second_numeric_vector)
+• The null hypothesis for this test is that the two mean values are not statistically
+different
+• The alternative hypothesis for this test is that the two mean values are statistically
+different
+For this test, the p-value is the probability that the null hypothesis is true. If the p-value
+is less than 0.05, then the null hypothesis is rejected (because the probability is < 5%)
+p-value calculated < 0.05
+p-value calculated >= 0.05
+mean values are significantly different
+mean values are not significantly differentStatistical analysis - the basics
+Example:
+S.aures vs M.tuberculosis: is the genome size significantly different between the two species?
+df <- read.table("PATRIC_Statistics.csv",header = T,stringsAsFactors = F)
+str(df)
+table(df$Bacterium)
+tuberculosis <- subset(stat,Bacterium=="M_tuberculosis")
+tuberculosis<-droplevels(tuberculosis)
+aureus <- subset(stat,Bacterium=="S_aureus")
+aureus<-droplevels(aureus)
+g_tuberculosis <- tuberculosis$Genome.Length
+# quantitative variable
+g_aureus <- aureus$Genome.Length
+# quantitative variable
+shapiro.test(g_aureus) #the variable DOES NOT have a Normal distribution
+shapiro.test(g_tuberculosis) #the variable DOES NOT have a Normal distribution
+wilcox.test(g_aureus,g_tuberculosis) #p-value < 2.2e-16
+Genome size mean value is significantly different between the two species
+---
+## Statistical analysis - the basics
+```{r, eval=TRUE, echo=FALSE}
+grViz(diagram = "digraph flowchart {
+  node [fontname = arial, shape = box, color=Steelblue]
+  tab1 [label = '@@1']
+  tab2 [label = '@@2']
+  tab3 [label = '@@3',color=red]
+  tab4 [label = '@@4',color=red]
+
+  tab1 -> tab2;
+  tab2 -> tab3;
+  tab2 -> tab4
+}
+  
+  [1]: 'Qualitative Variables'
+  [2]: 'Chi-Square Test'    
+  [3]: 'p-value < 0.05'
+  [4]: 'p-value >= 0.05'
+  ")
+```
+
+---
+How to test whether there is an association between categorical variables:
+Qualitative variable
+Chi-square Test
+p-value < 0.05
+p-value >= 0.05Statistical analysis - the basics
+Chi-square test: it determines whether there is an association between categorical variables (i.e.,
+whether the variables are independent or related). This test utilizes a contingency table to analyze the
+data. A contingency table (or two-way table) is an arrangement in which data is classified according
+to two categorical variables. The categories for one variable appear in the rows, and the categories for
+the other variable appear in columns. Each variable must have two or more categories. Each cell
+reflects the total count of cases for a specific pair of categories
+• The null hypothesis for this test is that the categorical variables are indipendent (no correlation)
+• The alternative hypothesis for this test is that the categorical variables are correlated
+For this test, the p-value is the probability that the null hypothesis is true. If the p-value is less
+than 0.05, then the null hypothesis is rejected (because the probability is < 5%)Statistical analysis - the basics
+How to create a contingency table:
+contingency_table <- table(dataframe_name$column_1, dataframe_name$column_2)
+chisq.test(contingency_table)
+p-value calculated < 0.05The variables are dependent and related
+p-value calculated >= 0.05The variables are independentStatistical analysis - the basics
+Example:
+S.aures vs M.tuberculosis: is there a correlation between the microorganism and the outcome?
+t <- table(df$Bacterium,df$Outcome)
+chisq.test(t)
+The test is significant (p-vale < 0.05). The outcome is correlated with the microorganism
+
+---
+# Histograms
+.pull-left[
+Histogram plot with default values
+```{r }
+db <- read.csv("patric_redux.csv")
+
+```
+]

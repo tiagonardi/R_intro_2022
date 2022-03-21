@@ -34,9 +34,6 @@ library(gt)
 # style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
 
 ```
-```{r ,include=FALSE}
-db <- read.csv("patric_redux.csv",header = T,na.strings ="")
-```
 class: inverse, middle, center
 # Plot design
 ---
@@ -115,37 +112,85 @@ You can also use the *export* function in the __Plot tab__
 ---
 ## Barplot
 A barplot shows the relationship between categorical variables. Each variable is
-represented as a bar. The size of the bar represents its numeric value
+represented as a bar, and the bar size represents its numeric value
+
+
 In R, barplot() function computes a barplot of the given grouped values
-barplot(table, col = "colour_name", beside = TRUE, cex.names = number, las = 2, main
-= "Title", xlab = "x_name", ylab = "y_name")
-table: contingency table of the counts at each combination of factor levels
-col: a colour to be used to fill the bars
-beside = TRUE: the values in each column are juxtaposed rather than stacked
-las = 2: make all labels perpendicular to axis
-main, xlab, ylab: these arguments give names to title and axisBarplot
-For barplots, we can also specify a legend:
-legend (x, legend, fill = "colour_name", col = "colour_name", bg = "colour_name", pch
-= number)
-x: co-ordinates to be used to position the legend
-legend: the text of the legend
-fill: colors to use for filling the boxes beside the legend text
-col: colors of lines and points beside the legend text
-bg: the background color for the legend box
-pch:the plotting symbols appearing in the legendBarplot
-Example:
-t <- table(db$Sex,db$Isolation.Site)
-barplot(t,las=2, main = "Sex-Body",col = c("black","red"))
-legend("topright", c("Female", "Red"), col = c("black","red"), pch = 19)Scatter plot
-A scatter plot shows the relationship between two numerical variables. The data are
-displayed as a collection of points, each having the value of one variable determining the
-position on the horizontal axis and the value of the other variable determining the
+
+For the bar height you need a quantitative variable
+
+For the bar name you need a qualitative variable
+---
+class: hide-logo, inverse
+.pull-left[
+### Try to make one barplot, using the subsetted table, with the *ID* as qualitative and *Contigs* as quantitative variable]
+.pull-right[
+![](img/cowboy-bebop-cowboy.gif)]
+```{r, eval=TRUE}
+# I'm using a smaller table for readability sake
+db_sub <- subset(
+  db,
+  db$Isolation_location == "Barad-dur" | 
+    db$Isolation_location == "Isengard" )
+```
+
+```{r eval=FALSE}
+barplot(
+  height=quantitative_variable,
+  names=qualitative_variable)
+```
+---
+## Barplot
+```{r, eval=TRUE, dev.args = list(bg = "transparent"),echo=FALSE}
+barplot(height=db_sub$Contigs, names=db_sub$ID,col = "#32577F")
+```
+---
+## Barplot
+```{r, eval=FALSE}
+barplot(table, col = "colour_name",
+        horiz = T, main = "Title",
+        xlab = "x_name", ylab = "y_name",
+        width=c(0.1,0.2,3,1.5,0.3),
+        col=c("color","#HEX"), space=c(1,3))
+```
+You can edit labels, as you have done before with the histogram, changing bar colours, display the bars horizontally, modify the space between the bars or even their width
+
+Remember that you can check the __help__ using *?barplot*
+
+---
+```{r, eval=TRUE, echo=FALSE,dev.args = list(bg = "transparent")}
+barplot(height=db_sub$PATRIC.CDS,names=db_sub$ID,
+        horiz=T,
+        width=c(0.1,0.2,0.3,1.4,0.3),
+        col=c("#00A0B0","#6A4A3C","#CC333F","#EB6841","#EDC951"))
+```
+---
+## Scatter plot
+A scatter plot shows the relationship between two numerical variables
+
+The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and theother variable determining the
 position on the vertical axis
-In R, we can use the generic function plot()
-plot(x,y, col = "colour_name",main = "Title", xlab = "x_name", ylab = "y_name")
+
+In R, we can use the generic function *plot()*
+```{r , eval=FALSE}
+plot(x,y, col = "colour_name",
+main = "Title", xlab = "x_name", ylab = "y_name")
+```
 x,y: the two numerical variables
+
 col: a colour to be used to fill the bars
-main, xlab, ylab: these arguments give names to title and axisScatter plot
+
+main, xlab, ylab: these arguments give names to title and axis
+---
+
+```{r}
+plot(db$Genome.Length,db$Contigs, col=db$Host_ethnicity)
+```
+
+---
+
+---
+## Scatter plot
 Example:
 table(db$Quality)
 db$Quality <- as.factor(db$Quality)
