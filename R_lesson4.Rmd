@@ -55,6 +55,18 @@ population
 Variable: characteristic detected on each statistical unit, which can take different values in the different statistical units
 
 Observation: value assumed by a variable in a given statistical unit
+```{r, include=FALSE}
+df_log <- data.frame(Statistical_unit=c("Individual1","Individual2","Individual3"),
+                Variable=c("a","b","c")
+)
+gt_tbl <- gt(df_log)
+```
+
+```{r, echo=FALSE}
+gt_tbl
+```
+---
+## Variables classification
 ```{r, eval=TRUE, echo=FALSE}
 grViz(diagram = "digraph flowchart {
   node [fontname = arial, shape = box, color=Steelblue]
@@ -107,6 +119,7 @@ are real numbers
   - Intensity of reaction to an antigen: zero, medium, high
   - Educational qualification: compulsory school, bachelor, master, PhD
 ---
+## Analysis flowchart
 ```{r, eval=TRUE, echo=FALSE}
 grViz(diagram = "digraph flowchart {
   node [fontname = arial, shape = box, color=Steelblue]
@@ -137,12 +150,7 @@ grViz(diagram = "digraph flowchart {
 ```
 ---
 ## Statistical analysis - the basics
-How to test if the difference between the MEAN VALUE of quantitative variables is statistically significant BETWEEN the two groups
-Quantitative variable
-Check if the variable has a normal distribution
-Shapiro-Wilk Normality Test
-p-value < 0.05p-value >= 0.05
-Wilcoxon TestStudent’s t Test
+
 ---
 ## Statistical analysis - the basics
 What is a normal distribution?
@@ -153,34 +161,71 @@ The area under the normal distribution curve represents probability and the tota
 
 Most of the continuous data values in a normal distribution tend to cluster around the
 mean, and the further a value is from the mean, the less likely it is to occur
-
 ---
-## Statistical analysis - the basics
-How to test for normal distribution:
+## Normal distribution
+
+```{r normal, eval=TRUE, echo = FALSE,, dev.args = list(bg = "transparent")}
+normal_distr <- rnorm (n = 50000,
+                    mean = 0,
+                    sd = 1)
+#hist(ab_normal,breaks=100, col="#32577F")
+myhist <- hist(normal_distr,breaks=100,col="#32577F")
+multiplier <- myhist$counts / myhist$density
+mydensity <- density(normal_distr)
+mydensity$y <- mydensity$y * multiplier[1]
+
+lines(mydensity,col="red",lwd = 4)
+
+```
+---
+## Testing the normality
+.pull-left[
+To the test the normality we use the Shapiro-Wilk test
+
+```{r, eval=FALSE}
 shapiro.test(numeric_vector)
-• The null hypothesis for this test is that the data are normally distributed
-• The alternative hypothesis for this test is that the data are not normally distributed
+```
+- The null hypothesis for this test is that the data are normally distributed
 
-For this test, the p-value is the probability that the null hypothesis is true. If the p-value
-is less than 0.05, then the null hypothesis is rejected (because the probability is < 5%)
-p-value calculated < 0.05
-p-value calculated >= 0.05
-the variable does not have a Normal distribution
-the variable has a Normal distribution
+- The alternative hypothesis for this test is that the data are not normally distributed
+]
+.pull-right[![](img/abby.gif)]
+---
+class: middle
+## Testing the normality
+- If the __p-value__ is less than __0.05__ (5%), we rejected the null hypothesis and we assume the variable does not have a __normal distribution__
+
+- If the __p-value__ is more than  __0.05__ (5%), we assume the null hypothesis is true   and we assume that the variable has a __normal distribution__
+
+---
+class: inverse, middle
+## Important Reminder
+.pull-left[
+### The p-value is the probability of obtaining test results at least as extreme as the results actually observed, under the assumption that the null hypothesis is correct]
+.pull-right[![](img/cards.gif)]
+---
+class: inverse, middle, center
+## Other Reminder
+### The 0.05 (1/20) is a commonly used threshold, often considered adeguate. It's used a standard value, but there is no inherent reasons to prefer this specific value
+
+---
+class: inverse, middle, center, hide-logo
+## In RA Fisher own words
+.pull-left[
+#### "If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty or one in a hundred. Personally, the writer prefers to set a low standard of significance at the 5 per cent point, and ignore entirely all results which fails to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment rarely fails to give this level of significance"
+Fisher, R. A. 1926. The arrangement of field experiments. Journal of the
+Ministry of Agriculture. 33, pp. 503-515]
+
+.pull-right[![](img/fisher.jpg)]
+---
+## Have a try
+Load the usual tableand see if the *Contigs* variable has a normal distribution 
+```{r eval=FALSE}
+db <- read.csv("patric_redux.csv")
+shapiro.test(vector_name)
+```
 ---
 ## Statistical analysis - the basics
-How to test if two or more mean values are statistically different:
-wilcox.test(first_numeric_vector, second_numeric_vector)
-• The null hypothesis for this test is that the two mean values are not statistically
-different
-• The alternative hypothesis for this test is that the two mean values are statistically
-different
-For this test, the p-value is the probability that the null hypothesis is true. If the p-value
-is less than 0.05, then the null hypothesis is rejected (because the probability is < 5%)
-p-value calculated < 0.05
-p-value calculated >= 0.05
-mean values are significantly different
-mean values are not significantly differentStatistical analysis - the basics
 Example:
 S.aures vs M.tuberculosis: is the genome size significantly different between the two species?
 df <- read.table("PATRIC_Statistics.csv",header = T,stringsAsFactors = F)

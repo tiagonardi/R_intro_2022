@@ -235,7 +235,7 @@ df_log <- data.frame(Operator=c(">",">=","<","<=","==","!=", "&","|","!"),
 )
 gt_tbl <- gt(df_log)
 ```
-```
+
 
 ```{r, echo = FALSE, include= TRUE, results='asis'}
 gt_tbl
