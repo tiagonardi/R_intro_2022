@@ -34,8 +34,6 @@ library(gt)
 # style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
 
 ```
-# TO DO: TABELLA CON NA E CATEGORIE
----
 ## Vectors
 
 Let’s first create a vector:

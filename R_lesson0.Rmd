@@ -14,8 +14,6 @@ output:
     includes:
       after_body: insert-logo.html
 ---
-
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 
@@ -51,7 +49,7 @@ class: middle
 
 ### Cons
 - You have to learn how to use a scripting language
-- R supports only fairly large datasets
+- R natively supports only fairly large datasets 
 
 ---
 class: center, middle
@@ -80,6 +78,17 @@ For this course we will use __RStudio__ . It is a graphical interface for R, tha
 # RStudio download
 
 ![](img/rstudio_download.png)
+---
+## Plan
+
+- Introduction
+- Basic functions
+- Plotting
+- Hypothesis testing
+
++
+
+- Simulation of exam
 ---
 ## Open RStudio
 To open RStudio you can:

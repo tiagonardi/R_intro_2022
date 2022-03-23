@@ -191,3 +191,5 @@ plot(db$Genome.Length,db$Contigs,col= as.numeric(as.factor(db$Source)),cex = 2,p
 plot(db$Genome.Length,db$Contigs, col=c(red,blue),
      col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
 ```
+---
+## Legend

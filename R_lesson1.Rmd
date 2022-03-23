@@ -14,11 +14,8 @@ output:
     includes:
       after_body: insert-logo.html
 ---
-
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-
 ```
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
@@ -35,52 +32,6 @@ library(gt)
 
 ```
 
-class: center, middle
-## What is R?
-R is a language and environment for statistical computing and graphics
-
-R provides tools for statistical analysis and data visualisation
----
-class: middle
-### Pros
-- Free (as in "free speech", but also as in "free beer")
-- It runs on all platforms (Windows, Mac or Linux)
-- Can be extended with packages
-- Large community: easy to get help
-- R supports fairly large datasets (assuming you have enough RAM)
-
-### Cons
-- You have to learn how to use a scripting language
-- R supports only fairly large datasets
-
----
-class: center, middle
-background-image: url("img/coniglio.jpg")
-background-size: contain
-
-.pull-left[
-## Aim: coding in R without being too scared]
----
-class: inverse, middle, center
-# Installation
-- Installing R
-
-- Installing RStudio, the graphical interface
----
-## Installing R
-Download R from the http://cran.mirror.garr.it/mirrors/CRAN/ web page and install it
-![](img/r_install1.png)
----
-## RStudio
-For this course we will use __RStudio__ . It is a graphical interface for R, that helps the programmer making it more user-friendly.
-
-*After* installing R, download RStudio from https://www.rstudio.com/products/rstudio/download/#download
-
----
-# RStudio download
-
-![](img/rstudio_download.png)
----
 ## Open RStudio
 To open RStudio you can:
 .pull-right[![](img/rstudio_t.png)]
@@ -131,7 +82,7 @@ The console is useful for a quick test or for debugging
 
 Previous commands will be logged in the __History__
 
-But better to wite most of your code on the __Code Editor__
+But better to write most of your code on the __Code Editor__
 
 ---
 ## 3- Workspace and History

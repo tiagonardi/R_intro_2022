@@ -136,20 +136,20 @@ head(db)
 ```
 
 ```
-##                                          Genome.Name Contigs Genome.Length
-## 1 Yersinia pestis biovar Orientalis str. AS200901539     250       4572127
-## 2 Yersinia pestis biovar Orientalis str. AS200902147     277       4592682
-## 3 Yersinia pestis biovar Orientalis str. AS200901434     237       4572981
-## 4 Yersinia pestis biovar Orientalis str. AS200901509     263       4605070
-## 5                               Yersinia pestis 2501     201       4593919
-## 6                                Yersinia pestis 24H     140       4492822
-##   GC.Content PATRIC.CDS Isolation_location
-## 1       47.5       4398           Isengard
-## 2       47.5       4485          The Shire
-## 3       47.5       4378              Rohan
-## 4       47.5       4378             Mordor
-## 5       47.5       4507          The Shire
-## 6       47.6       4620          The Shire
+##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS
+## 1 Yersinia pestis AS539     250       4572127       47.5       4398
+## 2 Yersinia pestis AS147     277       4592682       47.5       4485
+## 3 Yersinia pestis AS134     237       4572981       47.5       4378
+## 4 Yersinia pestis AS509     263       4605070       47.5       4378
+## 5 Yersinia pestis  A251     201       4593919       47.5       4507
+## 6 Yersinia pestis   24H     140       4492822       47.6       4620
+##   Isolation_location Source
+## 1           Isengard Hobbit
+## 2          The Shire Hobbit
+## 3              Rohan  Human
+## 4             Mordor  Human
+## 5          The Shire Hobbit
+## 6             Erebor Dragon
 ```
 ---
 ## Rows and columns
@@ -163,8 +163,9 @@ colnames(db1) # It shows column names
 ```
 
 ```
-## [1] "Genome.Name"        "Contigs"            "Genome.Length"     
-## [4] "GC.Content"         "PATRIC.CDS"         "Isolation_location"
+## [1] "Species"            "ID"                 "Contigs"           
+## [4] "Genome.Length"      "GC.Content"         "PATRIC.CDS"        
+## [7] "Isolation_location" "Source"
 ```
 
 ```r
@@ -173,8 +174,9 @@ colnames(db1)
 ```
 
 ```
-## [1] "Genome.Name"        "Contigs"            "bp"                
-## [4] "GC.Content"         "PATRIC.CDS"         "Isolation_location"
+## [1] "Species"            "ID"                 "bp"                
+## [4] "Genome.Length"      "GC.Content"         "PATRIC.CDS"        
+## [7] "Isolation_location" "Source"
 ```
 
 ```r
@@ -196,7 +198,8 @@ rownames(db1) # It shows row names
 ```
 ##  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13" "14" "15"
 ## [16] "16" "17" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "28" "29" "30"
-## [31] "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "43" "44"
+## [31] "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "43" "44" "45"
+## [46] "46" "47" "48" "49" "50" "51" "52" "53" "54" "55" "56" "57" "58"
 ```
 
 ```r
@@ -212,20 +215,20 @@ head(db)
 ```
 
 ```
-##                                          Genome.Name Contigs Genome.Length
-## 1 Yersinia pestis biovar Orientalis str. AS200901539     250       4572127
-## 2 Yersinia pestis biovar Orientalis str. AS200902147     277       4592682
-## 3 Yersinia pestis biovar Orientalis str. AS200901434     237       4572981
-## 4 Yersinia pestis biovar Orientalis str. AS200901509     263       4605070
-## 5                               Yersinia pestis 2501     201       4593919
-## 6                                Yersinia pestis 24H     140       4492822
-##   GC.Content PATRIC.CDS Isolation_location
-## 1       47.5       4398           Isengard
-## 2       47.5       4485          The Shire
-## 3       47.5       4378              Rohan
-## 4       47.5       4378             Mordor
-## 5       47.5       4507          The Shire
-## 6       47.6       4620          The Shire
+##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS
+## 1 Yersinia pestis AS539     250       4572127       47.5       4398
+## 2 Yersinia pestis AS147     277       4592682       47.5       4485
+## 3 Yersinia pestis AS134     237       4572981       47.5       4378
+## 4 Yersinia pestis AS509     263       4605070       47.5       4378
+## 5 Yersinia pestis  A251     201       4593919       47.5       4507
+## 6 Yersinia pestis   24H     140       4492822       47.6       4620
+##   Isolation_location Source
+## 1           Isengard Hobbit
+## 2          The Shire Hobbit
+## 3              Rohan  Human
+## 4             Mordor  Human
+## 5          The Shire Hobbit
+## 6             Erebor Dragon
 ```
 ---
 ## Rows and columns
@@ -235,34 +238,20 @@ head(db1)
 ```
 
 ```
-##                                                                                           Genome.Name
-## Yersinia pestis biovar Orientalis str. AS200901539 Yersinia pestis biovar Orientalis str. AS200901539
-## Yersinia pestis biovar Orientalis str. AS200902147 Yersinia pestis biovar Orientalis str. AS200902147
-## Yersinia pestis biovar Orientalis str. AS200901434 Yersinia pestis biovar Orientalis str. AS200901434
-## Yersinia pestis biovar Orientalis str. AS200901509 Yersinia pestis biovar Orientalis str. AS200901509
-## Yersinia pestis 2501                                                             Yersinia pestis 2501
-## Yersinia pestis 24H                                                               Yersinia pestis 24H
-##                                                    Contigs      bp GC.Content
-## Yersinia pestis biovar Orientalis str. AS200901539     250 4572127       47.5
-## Yersinia pestis biovar Orientalis str. AS200902147     277 4592682       47.5
-## Yersinia pestis biovar Orientalis str. AS200901434     237 4572981       47.5
-## Yersinia pestis biovar Orientalis str. AS200901509     263 4605070       47.5
-## Yersinia pestis 2501                                   201 4593919       47.5
-## Yersinia pestis 24H                                    140 4492822       47.6
-##                                                    PATRIC.CDS
-## Yersinia pestis biovar Orientalis str. AS200901539       4398
-## Yersinia pestis biovar Orientalis str. AS200902147       4485
-## Yersinia pestis biovar Orientalis str. AS200901434       4378
-## Yersinia pestis biovar Orientalis str. AS200901509       4378
-## Yersinia pestis 2501                                     4507
-## Yersinia pestis 24H                                      4620
-##                                                    Isolation_location
-## Yersinia pestis biovar Orientalis str. AS200901539           Isengard
-## Yersinia pestis biovar Orientalis str. AS200902147          The Shire
-## Yersinia pestis biovar Orientalis str. AS200901434              Rohan
-## Yersinia pestis biovar Orientalis str. AS200901509             Mordor
-## Yersinia pestis 2501                                        The Shire
-## Yersinia pestis 24H                                         The Shire
+##           Species    ID  bp Genome.Length GC.Content PATRIC.CDS
+## 1 Yersinia pestis AS539 250       4572127       47.5       4398
+## 2 Yersinia pestis AS147 277       4592682       47.5       4485
+## 3 Yersinia pestis AS134 237       4572981       47.5       4378
+## 4 Yersinia pestis AS509 263       4605070       47.5       4378
+## 5 Yersinia pestis  A251 201       4593919       47.5       4507
+## 6 Yersinia pestis   24H 140       4492822       47.6       4620
+##   Isolation_location Source
+## 1           Isengard Hobbit
+## 2          The Shire Hobbit
+## 3              Rohan  Human
+## 4             Mordor  Human
+## 5          The Shire Hobbit
+## 6             Erebor Dragon
 ```
 ---
 ## Cleaning up
@@ -444,6 +433,503 @@ length(db2$Genome_ID) #1044
 max(db2$Contigs) #100
 min(db2$Contigs) #2
 range(db2$Contigs)
+```
+---
+## Subsetting
+T extract rows or columns on the basis of a pattern:
+
+```r
+subset(dataframe_name, dataframe_name$column_name logical_condition)
+```
+
+
+```r
+db &lt;- read.csv("patric_redux.csv",header = T,na.strings ="")
+gondor &lt;- subset(db,db$Isolation_location=="Gondor" &amp; db$Contigs&lt;100) # logical selection
+red_table &lt;- subset(db,select = c(1, 3, 4, 5)) # selection of columns
+```
+---
+## Subsetting
+
+```r
+gondor
+```
+
+```
+##                    Species         ID Contigs Genome.Length GC.Content
+## 15 Yersinia enterocolitica        M32      46       4692341   47.20000
+## 16 Yersinia enterocolitica   FORC_017      22       4723612   46.80000
+## 17 Yersinia enterocolitica   FORC_013      46       4749283   47.30000
+## 18 Yersinia enterocolitica   FORC_004      76       4695233   47.22671
+## 20 Yersinia enterocolitica   FORC_002       1       3924069   42.59000
+## 21 Yersinia enterocolitica  NCTC10460       3       4767810   46.91510
+## 23 Yersinia enterocolitica    LC18E-3      96       4676549   47.14303
+## 24 Yersinia enterocolitica LC18E-9-14      28       4675119   47.14470
+## 31 Yersinia enterocolitica    IP01119      77       4643207   46.72000
+## 55         Yersinia pestis      PY-23      67       4537614   47.50000
+##    PATRIC.CDS Isolation_location Source
+## 15       4875             Gondor  Human
+## 16       4599             Gondor  Human
+## 17       4603             Gondor  Human
+## 18       4563             Gondor  Human
+## 20       4124             Gondor  Human
+## 21       4590             Gondor  Human
+## 23       4496             Gondor Hobbit
+## 24       4468             Gondor  Human
+## 31       4794             Gondor  Human
+## 55       5130             Gondor  Human
+```
+---
+# Logical operators
+
+<div id="afhevxqzyz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#afhevxqzyz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#afhevxqzyz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#afhevxqzyz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#afhevxqzyz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#afhevxqzyz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#afhevxqzyz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#afhevxqzyz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#afhevxqzyz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#afhevxqzyz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#afhevxqzyz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#afhevxqzyz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#afhevxqzyz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#afhevxqzyz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#afhevxqzyz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#afhevxqzyz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#afhevxqzyz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#afhevxqzyz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#afhevxqzyz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#afhevxqzyz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#afhevxqzyz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#afhevxqzyz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#afhevxqzyz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#afhevxqzyz .gt_left {
+  text-align: left;
+}
+
+#afhevxqzyz .gt_center {
+  text-align: center;
+}
+
+#afhevxqzyz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#afhevxqzyz .gt_font_normal {
+  font-weight: normal;
+}
+
+#afhevxqzyz .gt_font_bold {
+  font-weight: bold;
+}
+
+#afhevxqzyz .gt_font_italic {
+  font-style: italic;
+}
+
+#afhevxqzyz .gt_super {
+  font-size: 65%;
+}
+
+#afhevxqzyz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#afhevxqzyz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#afhevxqzyz .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#afhevxqzyz .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#afhevxqzyz .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Operator</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Description</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">&gt;</td>
+<td class="gt_row gt_left">Greater than</td></tr>
+    <tr><td class="gt_row gt_left">&gt;=</td>
+<td class="gt_row gt_left">Greater than or equal tp</td></tr>
+    <tr><td class="gt_row gt_left">&lt;</td>
+<td class="gt_row gt_left">Lesser than</td></tr>
+    <tr><td class="gt_row gt_left">&lt;=</td>
+<td class="gt_row gt_left">Lesser than or equal to</td></tr>
+    <tr><td class="gt_row gt_left">==</td>
+<td class="gt_row gt_left">Equal to</td></tr>
+    <tr><td class="gt_row gt_left">!=</td>
+<td class="gt_row gt_left">Not equal to</td></tr>
+    <tr><td class="gt_row gt_left">&amp;</td>
+<td class="gt_row gt_left">AND</td></tr>
+    <tr><td class="gt_row gt_left">|</td>
+<td class="gt_row gt_left">OR</td></tr>
+    <tr><td class="gt_row gt_left">!</td>
+<td class="gt_row gt_left">NOT</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+---
+## Dropping levels
+When subsetting data frames there may be some levels (for factors) that are unused
+
+Remove them because they may alter downstream analyses
+
+```r
+table(data_frame$column)
+```
+If you get a factor with a value of 0 you should  drop the levels
+
+```r
+dataframe_name &lt;- droplevels (dataframe_name)
 ```
 ---
 class: inverse, middle
