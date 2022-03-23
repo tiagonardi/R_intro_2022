@@ -1,0 +1,621 @@
+---
+title: "Introduction to R"
+subtitle: "🧉"
+author: "Tiago Nardi"
+institute: "University of Pavia"
+output:
+  xaringan::moon_reader:
+    css: [extra.css, xaringan-themer.css]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    includes:
+      after_body: insert-logo.html
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+```
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+  #style_mono_accent(
+  style_duo(
+  primary_color = "#f2DB86",
+  #base_color = "#B2284B",
+  secondary_color = "#32577F",
+
+)
+library(gt)
+
+# style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
+
+```
+
+class: center, middle
+## What is R?
+R is a language and environment for statistical computing and graphics
+
+R provides tools for statistical analysis and data visualisation
+---
+class: middle
+### Pros
+- Free (as in "free speech", but also as in "free beer")
+- It runs on all platforms (Windows, Mac or Linux)
+- Can be extended with packages
+- Large community: easy to get help
+- R supports fairly large datasets (assuming you have enough RAM)
+
+### Cons
+- You have to learn how to use a scripting language
+- R supports only fairly large datasets
+
+---
+class: center, middle
+background-image: url("img/coniglio.jpg")
+background-size: contain
+
+.pull-left[
+## Aim: coding in R without being too scared]
+---
+class: inverse, middle, center
+# Installation
+- Installing R
+
+- Installing RStudio, the graphical interface
+---
+## Installing R
+Download R from the http://cran.mirror.garr.it/mirrors/CRAN/ web page and install it
+![](img/r_install1.png)
+---
+## RStudio
+For this course we will use __RStudio__ . It is a graphical interface for R, that helps the programmer making it more user-friendly.
+
+*After* installing R, download RStudio from https://www.rstudio.com/products/rstudio/download/#download
+
+---
+# RStudio download
+
+![](img/rstudio_download.png)
+---
+## Open RStudio
+To open RStudio you can:
+.pull-right[![](img/rstudio_t.png)]
+.pull-left[
+- Double Click on the Rstudio icon 
+
+- Open a terminal and run
+  - On Linux: __rstudio__
+  - On Mac: __open -na Rstudio__ ]
+---
+## First look into RStudio
+![](img/rstudio_interface.png)
+You can change the order and the window(pane) size from the settings
+---
+# 1 - Code Editor
+The __Code Editor__ - also known as __Source Pane__ - is a notepad for your R code
+
+Script files written in R code are typically saved with a .R extension
+
+You can save (and load) your code on your computer
+
+Code written in the __Source Pane__ will not be evaluated until you expressly run it
+
+- Executing a Single Line:
+Ctrl+Enter (or use the Run toolbar button) to execute the line of code where the cursor currently resides 
+
+- Executing Multiple Lines:
+Ctrl+Enter key (or use the Run toolbar button) after selecting the lines
+![](img/editor_run.png)
+
+---
+## 2 - Console
+
+The core of R, it's where the code is evaluated
+
+The prompt (__>__ by default) indicates that the console is ready to run new code
+
+Click on the __console__, type directly the commands and press enter ↵ to run it
+
+![](img/console.png)
+---
+## 2 - Console
+Each command will be executed one at a time
+
+You can run commands or in the console or in the __Source Pane__
+
+The console is useful for a quick test or for debugging
+
+Previous commands will be logged in the __History__
+
+But better to wite most of your code on the __Code Editor__
+
+---
+## 3- Workspace and History
+The Environment tab will contain all your data and objects
+
+You can click on objects to inspect them
+
+You will have informations such as the number of rows and observation
+
+History contain previous used commands
+
+![](img/environment.png)
+---
+## 4 - Plots and Files
+This pane contains various informations:
+
+- Files: your  __present working directory__, and the file present in that folder. You can change your working directory with a graphic interface from here
+
+- Plots: your plots (duh), you can zoom on them and export in various formats and sizes
+
+- Packages: you can load (and unload) previously downloaded __packages__ (extension of R capability)
+
+- Help: online R documentation, you can search a command on it, or write in the console *?command*, ex. * ?chisq.test*
+---
+## Two tips
+Remember: 
+- RStudio has a very useful feature called "code completion": use the Tab key (↹) to complete the
+full name of an object or a function
+
+- Comments can be used to explain R code, and to make it more readable. It can also be used
+to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
+---
+class:inverse, middle, center
+## Let's start the practicals
+![](img/cowboy-bebop-cowboy.gif)
+
+---
+##  Getting our feet wet
+
+To start, we can use R as a fancy calculator
+
+The commands are the the basic mathematical operators
+```{r, include=FALSE}
+df_mat <- data.frame(Operator=c("+","-","*","/","^"),
+                Description=c("Sum","Subtraction","Multiplication","Division","Exponentiation")
+)
+gt_tbl <- gt(df_mat)
+```
+
+```{r, echo = FALSE, include= TRUE, results='asis'}
+gt_tbl
+```
+---
+##  Getting our feet wet
+.pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
+Try these commands in the __console__
+
+```{r eval= FALSE}
+40 + 2
+
+44 - 2
+
+42/11
+
+4^3
+```
+
+
+---
+## Getting our feet wet
+
+Executing the code should get you these results
+```{r eval= TRUE}
+
+40 + 2
+
+44- 2
+
+42/11
+
+4^3
+```
+
+---
+## Logical operators
+
+You can use logical operators: they check if a statement is true and output a Boolean value (TRUE/FALSE)
+
+The logical operators are:
+```{r, include=FALSE}
+df_log <- data.frame(Operator=c(">",">=","<","<=","==","!=", "&","|","!"),
+                Description=c("Greater than",
+                              "Greater than or equal tp",
+                              "Lesser than",
+                              "Lesser than or equal to",
+                              "Equal to",
+                              "Not equal to",
+                              "AND",
+                              "OR",
+                              "NOT")
+)
+gt_tbl <- gt(df_log)
+```
+
+
+```{r, echo = FALSE, include= TRUE, results='asis'}
+gt_tbl
+```
+---
+## Logical operators
+Try these commands in the __console__
+```{r eval= FALSE}
+
+42 > 42
+
+42 >= 42
+
+42 == 42
+
+42 != 71
+```
+---
+## Logical operators
+```{r eval= TRUE}
+
+42 > 42
+
+42 >= 42
+
+42 == 41
+
+42 != 71
+```
+
+
+---
+## R objects
+The entities that R creates and manipulates are __objects__
+
+__Objects__ are stored by name in the active memory of the
+computer
+
+To create an __object__, we need to give it a name followed by the assignment operator "<-":
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+variable_name <- value
+```
+
+After assigning an object it should appear in the __environment tab__, where you can inspect it
+
+You can call the object by its name and use it with any function
+
+---
+# Example
+```{r eval=TRUE, tidy=FALSE,comment='#'}
+answer <- 42
+```
+
+```{r eval=TRUE, tidy=FALSE,comment='#'}
+answer
+answer * 2
+answer - answer
+answer > 5
+```
+---
+## R objects
+
+If you assigning a new value to a named __object__ you overwrite it
+
+```{r eval=TRUE, tidy=FALSE,comment='#'}
+answer <- 42
+answer
+answer <- 20
+answer
+answer <- answer * 2
+answer
+```
+
+---
+## R objects
+1) __Object__ name must start with a letter and can be a combination of letters, digits,
+period(.) and underscore(_). If it starts with period(.), it cannot be followed by a digit
+
+2) __Object__ names are case-sensitive (age, Age and AGE are three different variables)
+
+3) Reserved words cannot be used as __Object__ name (TRUE, FALSE, NULL, if...)
+
+---
+## Variables and vectors
+Strings (a series of letters) must be enclosed in
+quotes, either double(“ “) or single (‘ ‘)
+
+Numbers enclosed in quotes are considered strings, not numbers and can't be used for mathematical operations
+
+Variable: single value (number or a string)
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+name <- "string"
+```
+
+Vector: an ordered collection of values. Create it using c() function with its elements separated by a comma
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+hobbits <- c("Frodo", "Sam")
+```
+---
+## R data types
+Numeric: decimal values
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+grade <- 18
+```
+Character: letters or numbers enclosed by quotes
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+my_name <- “Bilbo”
+```
+
+Logical: a variable that can have a value of TRUE or FALSE
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+logic_var1 <- TRUE
+```
+---
+# Practicals
+How to check the class of a variable:
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+class(objects)
+```
+
+Try:
+
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+var1 <- "777"
+var2 <- 777
+class(var1)
+class(var2)
+```
+---
+# Practicals
+To change the variable/vector type:
+From any type to character:
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+name <- as.character(name)
+```
+
+From any type to numeric (a character cannot be changed into a number):
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+name <- as.numeric(name)
+```
+From any type to factor:
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+name <- as.factor(name)
+```
+---
+## Factors
+Factor: objects which are used to group data into categories. Each group is assigned to a
+level which identifies the group
+
+How to convert a variable into a factor:
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+variable_name <- as.factor(variable_name)
+
+
+f <- c("East","West","East","North","North")
+class(f) # It’s a character
+f <- as.factor(f) #Function to convert a variable into a factor
+```
+Check levels of a factor:
+```{r eval=FALSE}
+levels(variable_name)
+levels(f) # "East" "North" "West"
+```
+By default, R sorts the levels of a factor alphabetically
+---
+## Data frame
+A table in which each column contains values of one variable and each row contains
+one set of values from each column.
+![](img/data_frame.png)
+---
+## Data frame
+How to create a data frame from vectors:
+```{r eval=FALSE}
+dataframe_name <- data.frame(column1,column2,column3...)
+```
+Let’s first create 3 vectors
+```{r eval=TRUE}
+hobbits <- c("Frodo","Merry","Pippin","Sam")
+age <- c(51,37,29,39)
+ringbearer <- c("yes","no","no","briefly")
+# and now let’s use these vectors to build our data frame
+df <- data.frame(hobbits,age,ringbearer)
+```
+
+```{r eval=TRUE, echo = FALSE}
+gt_tbl <- gt(df)
+gt_tbl
+```
+---
+## Data frame
+Also can be done in a single command
+```{r eval=TRUE}
+data.frame(hobbits <- c("Frodo","Merry","Pippin","Sam"),
+           age <- c(51,37,29,39),
+           ringbearer <- c("yes","no","no","briefly"))
+```
+---
+## Data frame
+To access the columns of a data frame:
+```{r eval=FALSE}
+dataframe_name$column_name
+```
+To change the object type:
+```{r eval=FALSE}
+dataframe_name$column_name <- as.character(dataframe_name$column_name)
+```
+As an example
+```{r eval=TRUE}
+df$hobbits
+df$hobbits2 <- df$hobbits
+df$hobbits2
+```
+---
+class: inverse, middle, center
+# How to manage external files
+---
+## Set working directory
+Every time you start a R session it will start in a specific directory
+
+To know you current __working directory__ you can use the command
+```{r eval=FALSE}
+getwd( )
+```
+To change the __working directory__ directory 
+```{r eval=FALSE}
+setwd("/path/to/my/directory")
+```
+---
+## Set working directory
+You can also set up the directory through the graphical interface, clicking on "More" on the files tab
+![](img/setwd.png)
+---
+## Tables
+
+Table can be (and often are) saved as csv/tsv files
+
+These are text files, in which __v__alues are __s__eparated by a __c__omma (,) or by a __t__ab
+
+If you open a CSV table with a notepad you will read something like
+```
+Frodo,51,yes
+Merry,37,no
+Pippin,29,no
+Sam,39,briefly
+```
+A TSV table will look like
+```
+Frodo   51    yes
+Merry   37    no
+Pippin  29    no
+Sam   39    briefly
+```
+Other separators are possible but most of the case will use comma, semicolons or tab
+
+---
+## Tables
+
+Another aspect is the presence of a header
+
+A first row that contains the names of the columns
+
+```
+Hobbit,age,ringbearer
+Frodo,51,yes
+Merry,37,no
+Pippin,29,no
+Sam,39,briefly
+```
+When you load a file check if there file contains a header
+Possible mistakes:
+- using the first row as column names
+- using the column names as values
+
+---
+## Open an external table
+Download the table at the link, and save it into a directory
+
+https://drive.google.com/file/d/1UMmE_KZial63WJVleg4xbX6GXCtCTd45/view?usp=sharing
+
+and then change the R __working directory__ to the folder where you have saved the table
+```{r eval=FALSE}
+setwd("/path/to/my/directory")
+```
+---
+## Reading a table
+
+You can read the table using this command
+```{r eval=FALSE}
+dataframe_name <- read.csv("File_name", 
+                           header = TRUE,
+                           sep=",")
+```
+The first parameter of "read.csv" is the name of the file and its position relative to the __working directory__
+
+The second specify the presence of a header
+
+The third which separator has been used in the table
+
+__Functions__ have often default value for some of the parameters that are used if are not specified
+
+For example *read.csv* will use *sep=","* if not specified
+---
+## Reading a table
+There are various commands that can be used to read a table in R
+
+They are all variation of the more general command *read.table*, with different defaults
+```{r, include=FALSE}
+elenco_tab <- data.frame(Command=c("read.table","read.csv","read.csv2","read.delim","read.delim2"),
+                Defaults=c("sep='', header=FALSE, dec = '.'",
+                              "sep=',', header=TRUE, dec = '.'",
+                              "sep=';', header=TRUE, dec = ','",
+                              "sep='\t' ,header=TRUE, dec = '.'",
+                              "sep='\t', header=TRUE, dec = ','"
+                              )
+)
+gt_elenco_tab <- gt(elenco_tab)
+```
+
+```{r, echo = FALSE, include= TRUE, results='asis'}
+gt_elenco_tab
+```
+
+The read __functions__ indicated with a 2 are designed for countries that use "," to indicate decimals (e.g. Italy)
+---
+## Practicals
+.pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
+After setting up the __working directory__ read the downloaded table, and assign it to an object named patric_table 
+```{r eval=TRUE}
+patric_table <- read.csv("patric_redux.csv",header = T,
+                           sep=",")
+```
+You can write run the object name in the __console__ to have a look at it, or click the name in the __environment tab__
+
+Also try to read the table with a wrong separator (";")
+```{r eval=TRUE}
+wrong_table <- read.csv2("patric_redux.csv")
+```
+---
+# Practicals
+Inspect *patric_table* clicking on it on the __environment tab__
+![](img/patric.png)
+---
+# Practicals
+Inspect also the *wrong_table* to see what happens with a wrong separator
+![](img/wrong_table.png)
+
+R was unable to divide correctly the columns ("1 variable")
+![](img/wrong_col.png)
+---
+# Practicals
+.pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
+Check if the database has been imported correctly for *patric_table*
+```{r eval=FALSE}
+head(dataframe_name) # returns the first part of a data frame
+str(dataframe_name) # compactly display the internal structure
+summary(dataframe_name) # display statistics for sample and subgroups
+```
+Check column and row names in *patric_table*:
+```{r names-label,eval=FALSE}
+colnames(dataframe_name)
+rownames(dataframe_name)
+```
+---
+## Results
+```{r eval=TRUE}
+head(patric_table)
+```
+---
+## Results
+```{r eval=TRUE}
+str(patric_table)
+```
+---
+## Results
+```{r eval=TRUE}
+summary(patric_table)
+```
+---
+## Results
+```{r eval=TRUE}
+colnames(patric_table)
+rownames(patric_table)
+```

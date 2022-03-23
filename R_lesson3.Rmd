@@ -89,12 +89,14 @@ hist(dataframe_name$column,
 ![](img/cowboy-bebop-cowboy.gif)]
 ---
 ```{r hist2, echo = FALSE, dev.args = list(bg = "transparent")}
-hist(db$Genome.Length, breaks = 20, main = "Genome Length Distribution",
+hist(db$Genome.Length, breaks = 20, 
+     main = "Genome Length Distribution",
      col = "#32577F",border="black",xlab="Length")
 ```
 
 ```{r, eval = FALSE}
-hist(db$Genome.Length, breaks = 20, main = "Genome Length Distribution",
+hist(db$Genome.Length, breaks = 20,
+     main = "Genome Length Distribution",
      col = "#32577F",border="black",xlab="Length")
 ```
 ---
@@ -168,8 +170,7 @@ barplot(height=db_sub$PATRIC.CDS,names=db_sub$ID,
 ## Scatter plot
 A scatter plot shows the relationship between two numerical variables
 
-The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and theother variable determining the
-position on the vertical axis
+The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and the other variable determining the position on the vertical axis
 
 In R, we can use the generic function *plot()*
 ```{r , eval=FALSE}
@@ -183,17 +184,10 @@ col: a colour to be used to fill the bars
 main, xlab, ylab: these arguments give names to title and axis
 ---
 
-```{r}
-plot(db$Genome.Length,db$Contigs, col=db$Host_ethnicity)
+```{r, echo=FALSE}
+plot(db$Genome.Length,db$Contigs,col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
 ```
-
----
-
----
-## Scatter plot
-Example:
-table(db$Quality)
-db$Quality <- as.factor(db$Quality)
-str(db$Quality)
-plot(db$Genome.Length,db$Contigs,xlab = "Length",ylab = "Contigs",
-main="Length-Contigs",col=c("red","black","green")[db$Quality]))
+```{r, eval=FALSE}
+plot(db$Genome.Length,db$Contigs, col=c(red,blue),
+     col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
+```

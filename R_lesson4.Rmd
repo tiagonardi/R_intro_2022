@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R - part 3"
+title: "Introduction to R - part 4"
 subtitle: "🧉"
 author: "Tiago Nardi"
 institute: "University of Pavia"
@@ -225,26 +225,78 @@ db <- read.csv("patric_redux.csv")
 shapiro.test(vector_name)
 ```
 ---
-## Statistical analysis - the basics
-Example:
-S.aures vs M.tuberculosis: is the genome size significantly different between the two species?
-df <- read.table("PATRIC_Statistics.csv",header = T,stringsAsFactors = F)
-str(df)
-table(df$Bacterium)
-tuberculosis <- subset(stat,Bacterium=="M_tuberculosis")
-tuberculosis<-droplevels(tuberculosis)
-aureus <- subset(stat,Bacterium=="S_aureus")
-aureus<-droplevels(aureus)
-g_tuberculosis <- tuberculosis$Genome.Length
-# quantitative variable
-g_aureus <- aureus$Genome.Length
-# quantitative variable
-shapiro.test(g_aureus) #the variable DOES NOT have a Normal distribution
-shapiro.test(g_tuberculosis) #the variable DOES NOT have a Normal distribution
-wilcox.test(g_aureus,g_tuberculosis) #p-value < 2.2e-16
-Genome size mean value is significantly different between the two species
+## Shapiro test
+```{r eval=TRUE}
+db <- read.csv("patric_redux.csv")
+shapiro.test(db$Contigs)
+```
+__p-value__ lesser than 0.05
+
+We assume that the distribution is not normal
+
+This information is used to decide which test to use for hypothesis testing
 ---
-## Statistical analysis - the basics
+## Hypothesis testing
+
+We test if the __mean__ of two (or more) values are __significantly different__
+
+- The null hypothesis for this test is that the two mean values are not statistically
+different
+- The alternative hypothesis for this test is that the two mean values are statistically
+different
+
+
+- If the __p-value__ is less than __0.05__ (5%), we rejected the null hypothesis and we assume the two mean values are __significantly different__
+
+- If the __p-value__ is more than  __0.05__ (5%), we assume the null hypothesis is true   and we assume that the two mean values are not __significantly different__
+---
+## Hypothesis testing
+When the sample is normally distributed we use the T test
+
+When the sample is not normally distributed we use the Wilcoxon test
+
+Wilcoxon test measures medians, not means 
+
+``` {r, eval= FALSE}
+wilcox.test(first_numeric_vector, second_numeric_vector)
+
+t.test(first_numeric_vector, second_numeric_vector)
+```
+![](img/gosset.jpg)
+---
+## Exercise
+.pull-left[
+We want to check if the samples with Source from *Hobbit* have a different mean of *Contigs* compared to sample with a Source from *Human*
+
+- Use the *patric_redux.csv* dataset and use subset to have the *Contigs* for the two categories
+- Check if the *Contigs* variable has a normal distribution and test the hypothesis with the correct test]
+.pull-right[![](img/cowboy-bebop-cowboy.gif)]
+```{r eval=FALSE}
+db <- read.csv("patric_redux.csv")
+shapiro.test(numeric_vector)
+wilcox.test(first_numeric_vector, second_numeric_vector)
+t.test(first_numeric_vector, second_numeric_vector)
+
+```
+---
+## Results
+```{r}
+db <- read.csv("patric_redux.csv")
+hobbit <- subset(db,db$Source=="Hobbit")
+human <- subset(db,db$Source=="Human")
+shapiro.test(hobbit$Contigs)
+shapiro.test(human$Contigs)
+```
+
+---
+## Results
+```{r}
+wilcox.test(hobbit$Contigs,human$Contigs)
+```
+
+---
+## Chi squared test
+Test whether there is an association between categorical variables
 ```{r, eval=TRUE, echo=FALSE}
 grViz(diagram = "digraph flowchart {
   node [fontname = arial, shape = box, color=Steelblue]
@@ -264,40 +316,53 @@ grViz(diagram = "digraph flowchart {
   [4]: 'p-value >= 0.05'
   ")
 ```
-
 ---
-How to test whether there is an association between categorical variables:
-Qualitative variable
-Chi-square Test
-p-value < 0.05
-p-value >= 0.05Statistical analysis - the basics
-Chi-square test: it determines whether there is an association between categorical variables (i.e.,
-whether the variables are independent or related). This test utilizes a contingency table to analyze the
-data. A contingency table (or two-way table) is an arrangement in which data is classified according
-to two categorical variables. The categories for one variable appear in the rows, and the categories for
-the other variable appear in columns. Each variable must have two or more categories. Each cell
-reflects the total count of cases for a specific pair of categories
-• The null hypothesis for this test is that the categorical variables are indipendent (no correlation)
-• The alternative hypothesis for this test is that the categorical variables are correlated
-For this test, the p-value is the probability that the null hypothesis is true. If the p-value is less
-than 0.05, then the null hypothesis is rejected (because the probability is < 5%)Statistical analysis - the basics
-How to create a contingency table:
-contingency_table <- table(dataframe_name$column_1, dataframe_name$column_2)
-chisq.test(contingency_table)
-p-value calculated < 0.05The variables are dependent and related
-p-value calculated >= 0.05The variables are independentStatistical analysis - the basics
-Example:
-S.aures vs M.tuberculosis: is there a correlation between the microorganism and the outcome?
-t <- table(df$Bacterium,df$Outcome)
-chisq.test(t)
-The test is significant (p-vale < 0.05). The outcome is correlated with the microorganism
+## Chi-square test
 
----
-# Histograms
-.pull-left[
-Histogram plot with default values
-```{r }
-db <- read.csv("patric_redux.csv")
+Chi-square test requires a contingency table
 
+Contingency table (two-way table): data is classified with two categorical variables.
+In the rows we have the categories for one variable, and in the columns the categories for the other variable.
+
+Each variable must have two or more categories. 
+
+Each cell reflects the total count of cases for a specific pair of categories
+```{r, eval=TRUE}
+db_red <- subset(db,(db$Isolation_location=="The Shire" |
+                       db$Isolation_location=="Gondor"))
+cont_db <- table(db_red$Isolation_location, db_red$Source)
+cont_db
 ```
-]
+
+---
+## Chi-squared test
+- The null hypothesis for this test is that the categorical variables are independent (no correlation)
+- The alternative hypothesis for this test is that the categorical variables are correlated
+
+```{r, eval=TRUE}
+chisq.test(cont_db)
+```
+Warning message as the dataset is limited
+---
+## Exercise
+.pull-left[
+Using the subsetted database (only from *The Shire* and *Gondor*), we want to check if there is an association between the *Species* of the bacteria and the *Source* of the isolate
+
+- Prepare a contingency table
+- Check the hypothesis Chi-squared]
+.pull-right[![](img/cowboy-bebop-cowboy.gif)]
+```{r, eval=FALSE}
+subsetted_table <- subset(table,logical_condition)
+contigency_table <- table(var1,var2)
+chisq.test(contigency_table)
+```
+---
+## Results
+```{r, eval=TRUE}
+db_red <- subset(db,(db$Isolation_location=="The Shire" |
+                       db$Isolation_location=="Gondor"))
+cont_db <- table(db_red$Species, db_red$Source)
+cont_db
+chisq.test(cont_db)
+```
+So there is a significative association between these two categories

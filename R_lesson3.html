@@ -83,7 +83,8 @@ hist(dataframe_name$column,
 
 
 ```r
-hist(db$Genome.Length, breaks = 20, main = "Genome Length Distribution",
+hist(db$Genome.Length, breaks = 20,
+     main = "Genome Length Distribution",
      col = "#32577F",border="black",xlab="Length")
 ```
 ---
@@ -154,8 +155,7 @@ Remember that you can check the __help__ using *?barplot*
 ## Scatter plot
 A scatter plot shows the relationship between two numerical variables
 
-The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and theother variable determining the
-position on the vertical axis
+The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and the other variable determining the position on the vertical axis
 
 In R, we can use the generic function *plot()*
 
@@ -170,16 +170,14 @@ col: a colour to be used to fill the bars
 main, xlab, ylab: these arguments give names to title and axis
 ---
 
-
-```r
-plot(db$Genome.Length,db$Contigs,col=c("red","black","green","yellow","coral","grey")[db$Host_ethnicity])
-```
-
 ![](R_lesson3_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 
+```r
+plot(db$Genome.Length,db$Contigs, col=c(red,blue),
+     col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
+```
 ---
 
----
 ## Scatter plot
 Example:
 table(db$Quality)

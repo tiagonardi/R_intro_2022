@@ -1,45 +1,59 @@
-Genome Name,ID,Contigs,Genome Length,GC Content,PATRIC CDS,Isolation_location,Host_ethnicity
-Yersinia pestis,AS200901539,250,4572127,47.5,4398,Isengard,Hobbit
-Yersinia pestis,AS200902147,277,4592682,47.5,4485,The Shire,Hobbit
-Yersinia pestis,AS200901434,237,4572981,47.5,4378,Rohan,Human
-Yersinia pestis,AS200901509,263,4605070,47.5,4378,Mordor,Human
-Yersinia pestis,2501,201,4593919,47.5,4507,The Shire,Hobbit
-Yersinia pestis,24H,140,4492822,47.6,4620,Moria,Dragon
+Species,ID,Contigs,Genome Length,GC Content,PATRIC CDS,Isolation_location,Source
+Yersinia pestis,AS539,250,4572127,47.5,4398,Isengard,Hobbit
+Yersinia pestis,AS147,277,4592682,47.5,4485,The Shire,Hobbit
+Yersinia pestis,AS134,237,4572981,47.5,4378,Rohan,Human
+Yersinia pestis,AS509,263,4605070,47.5,4378,Mordor,Human
+Yersinia pestis,A251,201,4593919,47.5,4507,The Shire,Hobbit
+Yersinia pestis,24H,140,4492822,47.6,4620,Erebor,Dragon
 Yersinia pestis,EBD10-058,581,4542680,47.4,4364,Barad-dur,Hobbit
 Yersinia kristensenii,M73,56,4753210,47.226715,4570,Mordor,Human
 Yersinia kristensenii,M47,56,4743892,47.27142,4555,Rohan,Dwarf
 Yersinia kristensenii,HR100,67,4761749,47.409576,4605,Rohan,Human
 Yersinia kristensenii,M70,81,4889404,47.099667,4806,Lothlorien,Elf
+Yersinia kristensenii,M71,60,4745596,47.1,4720,Rohan,Human
+Yersinia kristensenii,M72,77,4743182,47.23,4566,Harad,Human
+Yersinia kristensenii,M73,65,4744232,47.16,4601,Rohan,Human
+Yersinia enterocolitica,M32,46,4692341,47.2,4875,Gondor,Human
+Yersinia enterocolitica,FORC_017,22,4723612,46.8,4599,Gondor,Human
+Yersinia enterocolitica,FORC_013,46,4749283,47.3,4603,Gondor,Human
+Yersinia enterocolitica,FORC_004,76,4695233,47.226715,4563,Gondor,Human
 Yersinia enterocolitica,FDAARGOS_227,2,5073657,47.47,4958,Rohan,Human
 Yersinia enterocolitica,FORC_002,1,3924069,42.59,4124,Gondor,Human
-Yersinia enterocolitica,NCTC10460,2,4767810,46.915104,4590,Gondor,Human
-Yersinia enterocolitica,NCTC10462,45,3840239,46.804977,3731,The Shire,Hobbit
-Yersinia enterocolitica,LC18E-3,56,4676549,47.143032,4496,Gondor,Hobbit
+Yersinia enterocolitica,NCTC10460,3,4767810,46.915104,4590,Gondor,Human
+Yersinia enterocolitica,NCTC10462,145,3840239,46.804977,3731,The Shire,Hobbit
+Yersinia enterocolitica,LC18E-3,96,4676549,47.143032,4496,Gondor,Hobbit
 Yersinia enterocolitica,LC18E-9-14,28,4675119,47.144703,4468,Gondor,Human
-Yersinia enterocolitica,M34,156,4982633,47.065258,4941,The Shire,Human
+Yersinia enterocolitica,M34,36,4982633,47.065258,4941,The Shire,Human
 Yersinia enterocolitica,HR88,74,4745632,47.010895,4597,Harad,Human
 Yersinia enterocolitica,M29A27,135,5059344,47.097965,5078,Rohan,Human
-Yersinia enterocolitica,PS23,60,4639377,47.088005,4479,Barad-dur,Orc
-Yersinia enterocolitica,FORC_003,2,4837317,47.04,4580,Barad-dur,Orc
+Yersinia enterocolitica,PS23,362,4639377,47.088005,4479,Barad-dur,Orc
+Yersinia enterocolitica,FORC_003,202,4837317,47.04,4580,Barad-dur,Orc
 Yersinia enterocolitica,ERL072344,119,4458462,46.92,4383,Harad,Human
-Yersinia enterocolitica,IP01119,177,4643207,46.72,4794,Gondor,Human
-Yersinia enterocolitica,IP20322,93,4510028,46.98,4407,The Shire,Hobbit
+Yersinia enterocolitica,IP01119,77,4643207,46.72,4794,Gondor,Human
+Yersinia enterocolitica,IP20322,193,4510028,46.98,4407,The Shire,Hobbit
 Yersinia enterocolitica,IP05342,169,4722666,46.77,4935,Lothlorien,Elf
 Yersinia enterocolitica,IP06077,159,4594630,46.79,4743,Lothlorien,Elf
-Yersinia enterocolitica,IP00178,183,4609560,46.84,4807,Moria,Dwarf
-Yersinia pestis,1116-D,388,4470393,47.56,9392,Rivendell,Elf
-Yersinia pestis,173,316,4569957,47.53,4644,Rivendell,Elf
-Yersinia pestis,261,249,4579841,47.528397,4639,Isengard,Human
-Yersinia pestis,139,416,3963071,48.332645,8419,Lothlorien,Elf
-Yersinia pestis,1313,235,4598307,47.537018,5203,Lothlorien,Elf
-Yersinia pestis,1906,301,4573713,47.529743,4772,Moria,Dwarf
-Yersinia pestis,2751-55,278,4582594,47.53343,5130,The Shire,Hobbit
-Yersinia pestis,262,249,4532410,47.462852,4681,Mirkwood,Human
-Yersinia pestis,1240,321,4582524,47.530334,4688,Gondor,Human
-Yersinia pestis,2513,227,4537723,47.45978,4684,The Shire,Hobbit
-Yersinia pestis,2514,212,4629574,47.50026,4766,Lothlorien,Elf
-Yersinia pestis,111,210,4582792,47.53611,4626,Mordor,Orc
+Yersinia kristensenii,M53,90,4744530,46.9,4797,Erebor,Dwarf
+Yersinia enterocolitica,IP00178,183,4609560,46.84,4807,Erebor,Dwarf
+Yersinia pestis,1116-D,3,4470393,47.56,9392,Rivendell,Elf
+Yersinia pestis,YP173,3,4569957,47.53,4644,Rivendell,Elf
+Yersinia pestis,YP261,249,4579841,47.528397,4639,Isengard,Human
+Yersinia pestis,YP139,416,3963071,48.332645,8419,Lothlorien,Elf
+Yersinia pestis,YP1313,235,4598307,47.537018,5203,Lothlorien,Elf
+Yersinia pestis,YP1906,301,4573713,47.529743,4772,Erebor,Dwarf
+Yersinia pestis,YP2751-55,278,4582594,47.53343,5130,The Shire,Hobbit
+Yersinia pestis,YP262,249,4532410,47.462852,4681,Mirkwood,Human
+Yersinia pestis,YP1240,121,4582524,47.530334,4688,Gondor,Human
+Yersinia pestis,YP2513,227,4537723,47.45978,4684,The Shire,Hobbit
+Yersinia pestis,YP2514,212,4629574,47.50026,4766,Lothlorien,Elf
+Yersinia pestis,YP111,210,4582792,47.53611,4626,Mordor,Orc
 Yersinia pestis,PY-19,535,4510880,47.5,4275,The Shire,Hobbit
-Yersinia pestis,PY-76,462,4498987,47.5,4267,Rivendell,Hobbit
+Yersinia pestis,PY-76,4,4498987,47.5,4267,Rivendell,Hobbit
 Yersinia pestis,PY-102,537,4672350,47.5,4473,The Shire,Hobbit
-Yersinia pestis,PY-103,533,4591865,47.8,4327,Harad,Human
+Yersinia pestis,PY-103,377,4591865,47.8,4327,Harad,Human
+Yersinia pestis,PY-101,300,4591745,47.226715,4330,Rohan,Human
+Yersinia pestis,PY-22,377,4540396,47.6,4245,The Shire,Hobbit
+Yersinia pestis,PY-23,67,4537614,47.5,5130,Gondor,Human
+Yersinia pestis,PY-24,387,4640238,47.7,4681,The Shire,Hobbit
+Yersinia pestis,PY-25,222,4540928,47.5,4688,The Shire,Hobbit
+Yersinia pestis,PY-77,189,4497645,47.7,4684,The Shire,Hobbit
