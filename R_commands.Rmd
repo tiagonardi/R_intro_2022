@@ -197,16 +197,21 @@ table(dataframe_name$column_1, dataframe_name$column_2)
 ## GRAPHS
 Visualize a distribution:
 ``` {r, eval=FALSE}
-hist(dataframe_name$column, breaks = "value", col = "colour_name", border = "color_name", main = "Title",
-xlab = "x_name", ylab = "y_name")
-- Visualize a distribution of grouped values:
-barplot(table, col = "colour_name", beside = TRUE, cex.names = number, las = number, main = "Title", xlab =
-"x_name", ylab = "y_name")
-- Add the legend to a plot:
-legend(coordinates, legend_text, fill = "colour_name", col = "colour_name", bg = "colour_name", pch=number)
+hist(dataframe_name$column, breaks = "value", col = "colour_name",
+     border = "color_name", main = "Title",xlab = "x_name", ylab = "y_name")
+```
+Visualize a distribution of grouped values
+``` {r, eval=FALSE}
+barplot(table, col = "colour_name", beside = TRUE, cex.names = number,
+        las = number, main = "Title", xlab ="x_name", ylab = "y_name")
+```
+Add the legend to a plot
+``` {r, eval=FALSE}
+legend(coordinates, legend_text, fill = "colour_name", col = "colour_name",
+       bg = "colour_name", pch=number)
 legend("topright", legend_text, col = "colour_name", pch = 15)
 ```
-Save a graph:
+Save a graph
 ``` {r, eval=FALSE}
 pdf("Graph_name.pdf")
 graph_command
