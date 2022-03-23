@@ -23,11 +23,10 @@ class: center, middle, inverse, title-slide
 
 
 
-# TO DO: TABELLA CON NA E CATEGORIE
----
 ## Vectors
 
-Let’s first create a vector:
+
+Let’s first create a __vector__, with 5 __elements__:
 
 ```r
 x &lt;- c(2, 5, 8, 1, 2)
@@ -51,6 +50,18 @@ x[c(1,2)] # show the first and second element
 ```
 ## [1] 2 5
 ```
+---
+## Exercise
+Try these operations on your vector
+
+```r
+vector[N:N]
+vector[3:5]
+vector[c(1,3:5)]
+vector[-2]
+```
+
+
 ---
 ## Vectors
 You can select a slice of the vector using the colon *:*
@@ -136,20 +147,13 @@ head(db)
 ```
 
 ```
-##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS
-## 1 Yersinia pestis AS539     250       4572127       47.5       4398
-## 2 Yersinia pestis AS147     277       4592682       47.5       4485
-## 3 Yersinia pestis AS134     237       4572981       47.5       4378
-## 4 Yersinia pestis AS509     263       4605070       47.5       4378
-## 5 Yersinia pestis  A251     201       4593919       47.5       4507
-## 6 Yersinia pestis   24H     140       4492822       47.6       4620
-##   Isolation_location Source
-## 1           Isengard Hobbit
-## 2          The Shire Hobbit
-## 3              Rohan  Human
-## 4             Mordor  Human
-## 5          The Shire Hobbit
-## 6             Erebor Dragon
+##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS Isolation_location Source
+## 1 Yersinia pestis AS539     250       4572127       47.5       4398           Isengard Hobbit
+## 2 Yersinia pestis AS147     277       4592682       47.5       4485          The Shire Hobbit
+## 3 Yersinia pestis AS134     237       4572981       47.5       4378              Rohan  Human
+## 4 Yersinia pestis AS509     263       4605070       47.5       4378             Mordor  Human
+## 5 Yersinia pestis  A251     201       4593919       47.5       4507          The Shire Hobbit
+## 6 Yersinia pestis   24H     140       4492822       47.6       4620             Erebor Dragon
 ```
 ---
 ## Rows and columns
@@ -163,9 +167,8 @@ colnames(db1) # It shows column names
 ```
 
 ```
-## [1] "Species"            "ID"                 "Contigs"           
-## [4] "Genome.Length"      "GC.Content"         "PATRIC.CDS"        
-## [7] "Isolation_location" "Source"
+## [1] "Species"            "ID"                 "Contigs"            "Genome.Length"     
+## [5] "GC.Content"         "PATRIC.CDS"         "Isolation_location" "Source"
 ```
 
 ```r
@@ -174,9 +177,8 @@ colnames(db1)
 ```
 
 ```
-## [1] "Species"            "ID"                 "bp"                
-## [4] "Genome.Length"      "GC.Content"         "PATRIC.CDS"        
-## [7] "Isolation_location" "Source"
+## [1] "Species"            "ID"                 "bp"                 "Genome.Length"     
+## [5] "GC.Content"         "PATRIC.CDS"         "Isolation_location" "Source"
 ```
 
 ```r
@@ -196,10 +198,10 @@ rownames(db1) # It shows row names
 ```
 
 ```
-##  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13" "14" "15"
-## [16] "16" "17" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "28" "29" "30"
-## [31] "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "43" "44" "45"
-## [46] "46" "47" "48" "49" "50" "51" "52" "53" "54" "55" "56" "57" "58"
+##  [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13" "14" "15" "16" "17" "18"
+## [19] "19" "20" "21" "22" "23" "24" "25" "26" "27" "28" "29" "30" "31" "32" "33" "34" "35" "36"
+## [37] "37" "38" "39" "40" "41" "42" "43" "44" "45" "46" "47" "48" "49" "50" "51" "52" "53" "54"
+## [55] "55" "56" "57" "58"
 ```
 
 ```r
@@ -215,20 +217,13 @@ head(db)
 ```
 
 ```
-##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS
-## 1 Yersinia pestis AS539     250       4572127       47.5       4398
-## 2 Yersinia pestis AS147     277       4592682       47.5       4485
-## 3 Yersinia pestis AS134     237       4572981       47.5       4378
-## 4 Yersinia pestis AS509     263       4605070       47.5       4378
-## 5 Yersinia pestis  A251     201       4593919       47.5       4507
-## 6 Yersinia pestis   24H     140       4492822       47.6       4620
-##   Isolation_location Source
-## 1           Isengard Hobbit
-## 2          The Shire Hobbit
-## 3              Rohan  Human
-## 4             Mordor  Human
-## 5          The Shire Hobbit
-## 6             Erebor Dragon
+##           Species    ID Contigs Genome.Length GC.Content PATRIC.CDS Isolation_location Source
+## 1 Yersinia pestis AS539     250       4572127       47.5       4398           Isengard Hobbit
+## 2 Yersinia pestis AS147     277       4592682       47.5       4485          The Shire Hobbit
+## 3 Yersinia pestis AS134     237       4572981       47.5       4378              Rohan  Human
+## 4 Yersinia pestis AS509     263       4605070       47.5       4378             Mordor  Human
+## 5 Yersinia pestis  A251     201       4593919       47.5       4507          The Shire Hobbit
+## 6 Yersinia pestis   24H     140       4492822       47.6       4620             Erebor Dragon
 ```
 ---
 ## Rows and columns
@@ -238,20 +233,13 @@ head(db1)
 ```
 
 ```
-##           Species    ID  bp Genome.Length GC.Content PATRIC.CDS
-## 1 Yersinia pestis AS539 250       4572127       47.5       4398
-## 2 Yersinia pestis AS147 277       4592682       47.5       4485
-## 3 Yersinia pestis AS134 237       4572981       47.5       4378
-## 4 Yersinia pestis AS509 263       4605070       47.5       4378
-## 5 Yersinia pestis  A251 201       4593919       47.5       4507
-## 6 Yersinia pestis   24H 140       4492822       47.6       4620
-##   Isolation_location Source
-## 1           Isengard Hobbit
-## 2          The Shire Hobbit
-## 3              Rohan  Human
-## 4             Mordor  Human
-## 5          The Shire Hobbit
-## 6             Erebor Dragon
+##           Species    ID  bp Genome.Length GC.Content PATRIC.CDS Isolation_location Source
+## 1 Yersinia pestis AS539 250       4572127       47.5       4398           Isengard Hobbit
+## 2 Yersinia pestis AS147 277       4592682       47.5       4485          The Shire Hobbit
+## 3 Yersinia pestis AS134 237       4572981       47.5       4378              Rohan  Human
+## 4 Yersinia pestis AS509 263       4605070       47.5       4378             Mordor  Human
+## 5 Yersinia pestis  A251 201       4593919       47.5       4507          The Shire Hobbit
+## 6 Yersinia pestis   24H 140       4492822       47.6       4620             Erebor Dragon
 ```
 ---
 ## Cleaning up
@@ -456,38 +444,38 @@ gondor
 ```
 
 ```
-##                    Species         ID Contigs Genome.Length GC.Content
-## 15 Yersinia enterocolitica        M32      46       4692341   47.20000
-## 16 Yersinia enterocolitica   FORC_017      22       4723612   46.80000
-## 17 Yersinia enterocolitica   FORC_013      46       4749283   47.30000
-## 18 Yersinia enterocolitica   FORC_004      76       4695233   47.22671
-## 20 Yersinia enterocolitica   FORC_002       1       3924069   42.59000
-## 21 Yersinia enterocolitica  NCTC10460       3       4767810   46.91510
-## 23 Yersinia enterocolitica    LC18E-3      96       4676549   47.14303
-## 24 Yersinia enterocolitica LC18E-9-14      28       4675119   47.14470
-## 31 Yersinia enterocolitica    IP01119      77       4643207   46.72000
-## 55         Yersinia pestis      PY-23      67       4537614   47.50000
-##    PATRIC.CDS Isolation_location Source
-## 15       4875             Gondor  Human
-## 16       4599             Gondor  Human
-## 17       4603             Gondor  Human
-## 18       4563             Gondor  Human
-## 20       4124             Gondor  Human
-## 21       4590             Gondor  Human
-## 23       4496             Gondor Hobbit
-## 24       4468             Gondor  Human
-## 31       4794             Gondor  Human
-## 55       5130             Gondor  Human
+##                    Species         ID Contigs Genome.Length GC.Content PATRIC.CDS
+## 15 Yersinia enterocolitica        M32      46       4692341   47.20000       4875
+## 16 Yersinia enterocolitica   FORC_017      22       4723612   46.80000       4599
+## 17 Yersinia enterocolitica   FORC_013      46       4749283   47.30000       4603
+## 18 Yersinia enterocolitica   FORC_004      76       4695233   47.22671       4563
+## 20 Yersinia enterocolitica   FORC_002       1       3924069   42.59000       4124
+## 21 Yersinia enterocolitica  NCTC10460       3       4767810   46.91510       4590
+## 23 Yersinia enterocolitica    LC18E-3      96       4676549   47.14303       4496
+## 24 Yersinia enterocolitica LC18E-9-14      28       4675119   47.14470       4468
+## 31 Yersinia enterocolitica    IP01119      77       4643207   46.72000       4794
+## 55         Yersinia pestis      PY-23      67       4537614   47.50000       5130
+##    Isolation_location Source
+## 15             Gondor  Human
+## 16             Gondor  Human
+## 17             Gondor  Human
+## 18             Gondor  Human
+## 20             Gondor  Human
+## 21             Gondor  Human
+## 23             Gondor Hobbit
+## 24             Gondor  Human
+## 31             Gondor  Human
+## 55             Gondor  Human
 ```
 ---
 # Logical operators
 
-<div id="afhevxqzyz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="rihidmesvd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#afhevxqzyz .gt_table {
+#rihidmesvd .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -512,7 +500,7 @@ gondor
   border-left-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_heading {
+#rihidmesvd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -524,7 +512,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_title {
+#rihidmesvd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -536,7 +524,7 @@ gondor
   border-bottom-width: 0;
 }
 
-#afhevxqzyz .gt_subtitle {
+#rihidmesvd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -548,13 +536,13 @@ gondor
   border-top-width: 0;
 }
 
-#afhevxqzyz .gt_bottom_border {
+#rihidmesvd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_col_headings {
+#rihidmesvd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -569,7 +557,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_col_heading {
+#rihidmesvd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -589,7 +577,7 @@ gondor
   overflow-x: hidden;
 }
 
-#afhevxqzyz .gt_column_spanner_outer {
+#rihidmesvd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,15 +589,15 @@ gondor
   padding-right: 4px;
 }
 
-#afhevxqzyz .gt_column_spanner_outer:first-child {
+#rihidmesvd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#afhevxqzyz .gt_column_spanner_outer:last-child {
+#rihidmesvd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#afhevxqzyz .gt_column_spanner {
+#rihidmesvd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -621,7 +609,7 @@ gondor
   width: 100%;
 }
 
-#afhevxqzyz .gt_group_heading {
+#rihidmesvd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -646,7 +634,7 @@ gondor
   vertical-align: middle;
 }
 
-#afhevxqzyz .gt_empty_group_heading {
+#rihidmesvd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -661,15 +649,15 @@ gondor
   vertical-align: middle;
 }
 
-#afhevxqzyz .gt_from_md > :first-child {
+#rihidmesvd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#afhevxqzyz .gt_from_md > :last-child {
+#rihidmesvd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#afhevxqzyz .gt_row {
+#rihidmesvd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -688,7 +676,7 @@ gondor
   overflow-x: hidden;
 }
 
-#afhevxqzyz .gt_stub {
+#rihidmesvd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -701,7 +689,7 @@ gondor
   padding-right: 5px;
 }
 
-#afhevxqzyz .gt_stub_row_group {
+#rihidmesvd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -715,11 +703,11 @@ gondor
   vertical-align: top;
 }
 
-#afhevxqzyz .gt_row_group_first td {
+#rihidmesvd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#afhevxqzyz .gt_summary_row {
+#rihidmesvd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -729,16 +717,16 @@ gondor
   padding-right: 5px;
 }
 
-#afhevxqzyz .gt_first_summary_row {
+#rihidmesvd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_first_summary_row.thick {
+#rihidmesvd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#afhevxqzyz .gt_last_summary_row {
+#rihidmesvd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -748,7 +736,7 @@ gondor
   border-bottom-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_grand_summary_row {
+#rihidmesvd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -758,7 +746,7 @@ gondor
   padding-right: 5px;
 }
 
-#afhevxqzyz .gt_first_grand_summary_row {
+#rihidmesvd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -768,11 +756,11 @@ gondor
   border-top-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_striped {
+#rihidmesvd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#afhevxqzyz .gt_table_body {
+#rihidmesvd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -781,7 +769,7 @@ gondor
   border-bottom-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_footnotes {
+#rihidmesvd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -795,7 +783,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_footnote {
+#rihidmesvd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -804,7 +792,7 @@ gondor
   padding-right: 5px;
 }
 
-#afhevxqzyz .gt_sourcenotes {
+#rihidmesvd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -818,7 +806,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#afhevxqzyz .gt_sourcenote {
+#rihidmesvd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -826,60 +814,60 @@ gondor
   padding-right: 5px;
 }
 
-#afhevxqzyz .gt_left {
+#rihidmesvd .gt_left {
   text-align: left;
 }
 
-#afhevxqzyz .gt_center {
+#rihidmesvd .gt_center {
   text-align: center;
 }
 
-#afhevxqzyz .gt_right {
+#rihidmesvd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#afhevxqzyz .gt_font_normal {
+#rihidmesvd .gt_font_normal {
   font-weight: normal;
 }
 
-#afhevxqzyz .gt_font_bold {
+#rihidmesvd .gt_font_bold {
   font-weight: bold;
 }
 
-#afhevxqzyz .gt_font_italic {
+#rihidmesvd .gt_font_italic {
   font-style: italic;
 }
 
-#afhevxqzyz .gt_super {
+#rihidmesvd .gt_super {
   font-size: 65%;
 }
 
-#afhevxqzyz .gt_footnote_marks {
+#rihidmesvd .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#afhevxqzyz .gt_asterisk {
+#rihidmesvd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#afhevxqzyz .gt_slash_mark {
+#rihidmesvd .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#afhevxqzyz .gt_fraction_numerator {
+#rihidmesvd .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#afhevxqzyz .gt_fraction_denominator {
+#rihidmesvd .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;

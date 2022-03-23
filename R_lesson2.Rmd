@@ -36,7 +36,8 @@ library(gt)
 ```
 ## Vectors
 
-Let’s first create a vector:
+
+Let’s first create a __vector__, with 5 __elements__:
 ```{r, include=TRUE}
 x <- c(2, 5, 8, 1, 2)
 ```
@@ -49,6 +50,17 @@ To select multiple elements use the concatenate function
 ```{r, include=TRUE}
 x[c(1,2)] # show the first and second element
 ```
+---
+## Exercise
+Try these operations on your vector
+```{r, eval=FALSE}
+vector[N:N]
+vector[3:5]
+vector[c(1,3:5)]
+vector[-2]
+```
+
+
 ---
 ## Vectors
 You can select a slice of the vector using the colon *:*

@@ -560,7 +560,7 @@ gt_elenco_tab <- gt(elenco_tab)
 gt_elenco_tab
 ```
 
-The read __functions__ indicated with a 2 are designed for countries that use "," to indicate decimals (e.g. Italy)
+The read __functions__ indicated with a 2 are designed for countries that use "," to indicate decimals (e.g. Italy 🇮🇹)
 ---
 ## Exercise
 .pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
@@ -569,14 +569,14 @@ After setting up the __working directory__ read the downloaded table, and assign
 patric_table <- read.csv("patric_redux.csv",header = T,
                            sep=",")
 ```
-You can write run the object name in the __console__ to have a look at it, or click the name in the __environment tab__
+You can run the object name in the __console__ to have a look at it, or (better) click the name in the __environment tab__ or use *view(patric_table)*
 
 Also try to read the table with a wrong separator (";")
 ```{r eval=TRUE}
 wrong_table <- read.csv2("patric_redux.csv")
 ```
 ---
-# Practicals
+# Exercise
 Inspect *patric_table* clicking on it on the __environment tab__
 ![](img/patric.png)
 ---
@@ -587,9 +587,9 @@ Inspect also the *wrong_table* to see what happens with a wrong separator
 R was unable to divide correctly the columns ("1 variable")
 ![](img/wrong_col.png)
 ---
-# Practicals
+# Exercises
 .pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
-Check if the database has been imported correctly for *patric_table*
+Check if the table has been imported correctly
 ```{r eval=FALSE}
 head(dataframe_name) # returns the first part of a data frame
 str(dataframe_name) # compactly display the internal structure
