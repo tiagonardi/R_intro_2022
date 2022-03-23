@@ -31,7 +31,7 @@ library(gt)
 # style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
 
 ```
-
+class: middle
 ## Open RStudio
 To open RStudio you can:
 .pull-right[![](img/rstudio_t.png)]
@@ -112,11 +112,10 @@ Remember:
 - RStudio has a very useful feature called "code completion": use the Tab key (↹) to complete the
 full name of an object or a function
 
-- Comments can be used to explain R code, and to make it more readable. It can also be used
-to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
+- Comments can be used to explain R code, and to make it more readable. You can also use them to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
 ---
 class:inverse, middle, center
-## Let's start the practicals
+## Let's start
 ![](img/cowboy-bebop-cowboy.gif)
 
 ---
@@ -159,7 +158,7 @@ Executing the code should get you these results
 
 40 + 2
 
-44- 2
+44 - 2
 
 42/11
 
@@ -219,13 +218,15 @@ Try these commands in the __console__
 
 
 ---
+class: middle
 ## R objects
 The entities that R creates and manipulates are __objects__
 
 __Objects__ are stored by name in the active memory of the
 computer
 
-To create an __object__, we need to give it a name followed by the assignment operator "<-":
+To create an __object__, we need to give it a name followed by the assignment operator "<-"
+
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 variable_name <- value
 ```
@@ -233,14 +234,36 @@ variable_name <- value
 After assigning an object it should appear in the __environment tab__, where you can inspect it
 
 You can call the object by its name and use it with any function
+---
+class: middle
+## R objects
+1) __Object__ name must start with a letter and can be a combination of letters, digits,
+period(.) and underscore(_). If it starts with period(.), it cannot be followed by a digit
+
+2) __Object__ names are case-sensitive (*age*, *Age* and *AGE* are three different variables)
+
+3) Reserved words cannot be used as __Object__ name (TRUE, FALSE, NULL, if...)
 
 ---
-# Example
+# Try it!
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
+Assign a number to a variable of your choosing
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+answer <- 42
+Try some operations (arithmetic and logical)
+```
+--
+```{r eval=FALSE, tidy=FALSE,comment='#'}
+answer
+answer * 2
+answer - answer
+answer > 5
+```
+---
+# Try it!
 ```{r eval=TRUE, tidy=FALSE,comment='#'}
 answer <- 42
-```
-
-```{r eval=TRUE, tidy=FALSE,comment='#'}
 answer
 answer * 2
 answer - answer
@@ -249,26 +272,19 @@ answer > 5
 ---
 ## R objects
 
-If you assigning a new value to a named __object__ you overwrite it
+If you assign a new value to a named __object__ you overwrite it
 
 ```{r eval=TRUE, tidy=FALSE,comment='#'}
 answer <- 42
 answer
 answer <- 20
 answer
+```
+You can assign a variable to the variable itself
+```{r eval=TRUE, tidy=FALSE,comment='#'}
 answer <- answer * 2
 answer
 ```
-
----
-## R objects
-1) __Object__ name must start with a letter and can be a combination of letters, digits,
-period(.) and underscore(_). If it starts with period(.), it cannot be followed by a digit
-
-2) __Object__ names are case-sensitive (age, Age and AGE are three different variables)
-
-3) Reserved words cannot be used as __Object__ name (TRUE, FALSE, NULL, if...)
-
 ---
 ## Variables and vectors
 Strings (a series of letters) must be enclosed in
@@ -301,7 +317,7 @@ Logical: a variable that can have a value of TRUE or FALSE
 logic_var1 <- TRUE
 ```
 ---
-# Practicals
+# Exercise
 How to check the class of a variable:
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 class(objects)
@@ -353,16 +369,18 @@ levels(f) # "East" "North" "West"
 By default, R sorts the levels of a factor alphabetically
 ---
 ## Data frame
-A table in which each column contains values of one variable and each row contains
+A table in which each __column__ contains values of one variable and each row contains
 one set of values from each column.
 ![](img/data_frame.png)
 ---
 ## Data frame
-How to create a data frame from vectors:
+To create a data frame from vectors
 ```{r eval=FALSE}
 dataframe_name <- data.frame(column1,column2,column3...)
 ```
-Let’s first create 3 vectors
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
+Let’s first create 3 vectors (must be of the same length)
 ```{r eval=TRUE}
 hobbits <- c("Frodo","Merry","Pippin","Sam")
 age <- c(51,37,29,39)
@@ -370,20 +388,28 @@ ringbearer <- c("yes","no","no","briefly")
 # and now let’s use these vectors to build our data frame
 df <- data.frame(hobbits,age,ringbearer)
 ```
+---
+## Data frame
+Inspect the dataframe clicking on it in the __environment tab__
 
+Or write in the console
+```{r eval=FALSE}
+View(df)
+```
 ```{r eval=TRUE, echo = FALSE}
 gt_tbl <- gt(df)
 gt_tbl
 ```
 ---
 ## Data frame
-Also can be done in a single command
+Also it can be done in a single command
 ```{r eval=TRUE}
 data.frame(hobbits <- c("Frodo","Merry","Pippin","Sam"),
            age <- c(51,37,29,39),
            ringbearer <- c("yes","no","no","briefly"))
 ```
 ---
+class: middle
 ## Data frame
 To access the columns of a data frame:
 ```{r eval=FALSE}
@@ -393,11 +419,31 @@ To change the object type:
 ```{r eval=FALSE}
 dataframe_name$column_name <- as.character(dataframe_name$column_name)
 ```
-As an example
+You can add a column to a __data frame__ assigning a vector to it
+```{r eval=FALSE}
+dataframe_name$new_column <- vector
+```
+---
+class: middle
+## Exercise
+.pull-right[<img src="img/cowboy-bebop-cowboy.gif" style="width: 70%" />]
+.pull-left[
+Create a vector to add to the data frame
+
+It should have the same length of the other columns
+
+Add it to the data frame and inspect it
+
+]
+---
+## Results
 ```{r eval=TRUE}
-df$hobbits
-df$hobbits2 <- df$hobbits
-df$hobbits2
+breakfast_taken <- c(2,3,2,4)
+df$breakfasts <- breakfast_taken
+```
+```{r eval=TRUE, echo=FALSE}
+colazione_tbl <- gt(df)
+colazione_tbl
 ```
 ---
 class: inverse, middle, center
@@ -462,11 +508,16 @@ Possible mistakes:
 
 ---
 ## Open an external table
-Download the table at the link, and save it into a directory
+We will work with the table *patric_redux.csv*
+
+You can download the table at the link, and save it into a folder of your choice
+
 
 https://drive.google.com/file/d/1UMmE_KZial63WJVleg4xbX6GXCtCTd45/view?usp=sharing
 
-and then change the R __working directory__ to the folder where you have saved the table
+Otherwise yoy can download it from the gdrive folder of the course or from github
+
+Change your R __working directory__ to the folder where you have saved the table
 ```{r eval=FALSE}
 setwd("/path/to/my/directory")
 ```
@@ -511,7 +562,7 @@ gt_elenco_tab
 
 The read __functions__ indicated with a 2 are designed for countries that use "," to indicate decimals (e.g. Italy)
 ---
-## Practicals
+## Exercise
 .pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
 After setting up the __working directory__ read the downloaded table, and assign it to an object named patric_table 
 ```{r eval=TRUE}
