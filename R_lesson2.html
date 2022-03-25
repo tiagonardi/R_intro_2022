@@ -51,19 +51,19 @@ x[c(1,2)] # show the first and second element
 ## [1] 2 5
 ```
 ---
-## Exercise
+class: middle
+## Indexing the vectors
 Try these operations on your vector
 
 ```r
-vector[N:N]
 vector[3:5]
 vector[c(1,3:5)]
 vector[-2]
+vector[vector &gt; 2]
 ```
-
-
+Can you guess what you were extracting with these commands?
 ---
-## Vectors
+## Indexing the vectors
 You can select a slice of the vector using the colon *:*
 
 ```r
@@ -92,7 +92,25 @@ x[-2]
 ## [1] 2 8 1 2
 ```
 ---
-## Vectors
+## Indexing the vectors
+Chose a numerical value and try these commands with you vector
+
+```r
+vector[vector &gt; value]
+vector &gt; value
+```
+Why these results are different?
+
+Can you guess it?
+
+Write also a vector with only boolean values (TRUE/FALSE) with the same length of your first vector
+
+```r
+vector2 &lt;- c(FALSE,TRUE,TRUE,FALSE,FALSE)
+vector[vector2]
+```
+---
+## Indexing the vectors
 You can select elements in the vector using logical conditions
 
 ```r
@@ -102,7 +120,7 @@ x[x &gt; 2] # show all elements greater than 2
 ```
 ## [1] 5 8
 ```
-To access the vector you have to specify the values *inside* the brackets
+To access the vector you have to specify the values *inside* the brackets.
 
 Otherwise you apply the logical operation to all elements in the vector
 
@@ -112,6 +130,17 @@ x &gt; 2
 
 ```
 ## [1] FALSE  TRUE  TRUE FALSE FALSE
+```
+
+You can supply a logical vector to get only the elements in the positions with TRUE
+
+```r
+mr_boole &lt;- c(FALSE,TRUE,TRUE,FALSE,FALSE)
+x[mr_boole]
+```
+
+```
+## [1] 5 8
 ```
 ---
 ## Vectors
@@ -139,6 +168,7 @@ x[3]
 
 ---
 ## Rows and columns
+Let's load the usual table (remember the working directory)
 
 ```r
 db &lt;- read.csv("patric_redux.csv", header = T)
@@ -172,17 +202,17 @@ colnames(db1) # It shows column names
 ```
 
 ```r
-colnames(db1)[3] &lt;- "bp" # change the third column name
+colnames(db1)[4] &lt;- "bp" # change the fourth column name
 colnames(db1)
 ```
 
 ```
-## [1] "Species"            "ID"                 "bp"                 "Genome.Length"     
+## [1] "Species"            "ID"                 "Contigs"            "bp"                
 ## [5] "GC.Content"         "PATRIC.CDS"         "Isolation_location" "Source"
 ```
 
 ```r
-colnames(db1)[3] # Get only the third column
+colnames(db1)[4] # Get only the fourth column
 ```
 
 ```
@@ -205,7 +235,7 @@ rownames(db1) # It shows row names
 ```
 
 ```r
-rownames(db1) &lt;- db1$Genome.Name # We set as rownames all values from column
+rownames(db1) &lt;- db1$ID # We set as rownames all values from column
 ```
 
 ---
@@ -213,7 +243,7 @@ rownames(db1) &lt;- db1$Genome.Name # We set as rownames all values from column
 
 
 ```r
-head(db)
+head(db) # read the first 6 rows
 ```
 
 ```
@@ -229,24 +259,24 @@ head(db)
 ## Rows and columns
 
 ```r
-head(db1)
+head(db1) # see the differences between this and the previous table
 ```
 
 ```
-##           Species    ID  bp Genome.Length GC.Content PATRIC.CDS Isolation_location Source
-## 1 Yersinia pestis AS539 250       4572127       47.5       4398           Isengard Hobbit
-## 2 Yersinia pestis AS147 277       4592682       47.5       4485          The Shire Hobbit
-## 3 Yersinia pestis AS134 237       4572981       47.5       4378              Rohan  Human
-## 4 Yersinia pestis AS509 263       4605070       47.5       4378             Mordor  Human
-## 5 Yersinia pestis  A251 201       4593919       47.5       4507          The Shire Hobbit
-## 6 Yersinia pestis   24H 140       4492822       47.6       4620             Erebor Dragon
+##               Species    ID Contigs      bp GC.Content PATRIC.CDS Isolation_location Source
+## AS539 Yersinia pestis AS539     250 4572127       47.5       4398           Isengard Hobbit
+## AS147 Yersinia pestis AS147     277 4592682       47.5       4485          The Shire Hobbit
+## AS134 Yersinia pestis AS134     237 4572981       47.5       4378              Rohan  Human
+## AS509 Yersinia pestis AS509     263 4605070       47.5       4378             Mordor  Human
+## A251  Yersinia pestis  A251     201 4593919       47.5       4507          The Shire Hobbit
+## 24H   Yersinia pestis   24H     140 4492822       47.6       4620             Erebor Dragon
 ```
 ---
 ## Cleaning up
 To remove a column assign a __NULL__ value to it
 
 ```r
-db1$contigs &lt;- NULL # delete the column
+db1$Contigs &lt;- NULL # delete the column
 ```
 
 If you want to remove an __object__ from R use
@@ -277,9 +307,8 @@ If don't specify one of the two values you get all elements (All rows/All column
 dataframe_name[,1] # all rows, first column
 dataframe_name[1,] # first row, all column
 ```
-
-
 ---
+## Accessing the data frame 
 
 ```r
 dataframe_name["row_name", "column_name"]
@@ -288,6 +317,128 @@ dataframe_name[ , "column_name"]
 dataframe_name[ , column_index]
 dataframe_name["row_name", ]
 dataframe_name[row_index,]
+```
+Try to access: 
+
+the full row of sample *24H*
+
+the *Source* of sample *EBD10-058*
+
+the full column of *Isolation_location*
+
+From the third to the 13th row the column *PATRIC.CDS"
+
+All rows, excluding from the 4th row to the 10th, columns *bp* *GC.Content* 
+
+---
+## Accessing the data frame 
+
+```r
+db1["24H",]
+```
+
+```
+##             Species  ID      bp GC.Content PATRIC.CDS Isolation_location Source
+## 24H Yersinia pestis 24H 4492822       47.6       4620             Erebor Dragon
+```
+
+```r
+db1["EBD10-058","Source"]
+```
+
+```
+## [1] "Hobbit"
+```
+
+```r
+db1[,"Isolation_location"]
+```
+
+```
+##  [1] "Isengard"   "The Shire"  "Rohan"      "Mordor"     "The Shire"  "Erebor"    
+##  [7] "Barad-dur"  "Mordor"     "Rohan"      "Rohan"      "Lothlorien" "Rohan"     
+## [13] "Harad"      "Rohan"      "Gondor"     "Gondor"     "Gondor"     "Gondor"    
+## [19] "Rohan"      "Gondor"     "Gondor"     "The Shire"  "Gondor"     "Gondor"    
+## [25] "The Shire"  "Harad"      "Rohan"      "Barad-dur"  "Barad-dur"  "Harad"     
+## [31] "Gondor"     "The Shire"  "Lothlorien" "Lothlorien" "Erebor"     "Erebor"    
+## [37] "Rivendell"  "Rivendell"  "Isengard"   "Lothlorien" "Lothlorien" "Erebor"    
+## [43] "The Shire"  "Mirkwood"   "Gondor"     "The Shire"  "Lothlorien" "Mordor"    
+## [49] "The Shire"  "Rivendell"  "The Shire"  "Harad"      "Rohan"      "The Shire" 
+## [55] "Gondor"     "The Shire"  "The Shire"  "The Shire"
+```
+---
+## Accessing the data frame 
+
+```r
+db1[1:13,"PATRIC.CDS"] #check the rows inspecting db1
+```
+
+```
+##  [1] 4398 4485 4378 4378 4507 4620 4364 4570 4555 4605 4806 4720 4566
+```
+
+```r
+db1[-(4:10),c("bp","GC.Content")]
+```
+
+```
+##                   bp GC.Content
+## AS539        4572127   47.50000
+## AS147        4592682   47.50000
+## AS134        4572981   47.50000
+## M70          4889404   47.09967
+## M71          4745596   47.10000
+## M72          4743182   47.23000
+## M74          4744232   47.16000
+## M32          4692341   47.20000
+## FORC_017     4723612   46.80000
+## FORC_013     4749283   47.30000
+## FORC_004     4695233   47.22671
+## FDAARGOS_227 5073657   47.47000
+## FORC_002     3924069   42.59000
+## NCTC10460    4767810   46.91510
+## NCTC10462    3840239   46.80498
+## LC18E-3      4676549   47.14303
+## LC18E-9-14   4675119   47.14470
+## M34          4982633   47.06526
+## HR88         4745632   47.01089
+## M29A27       5059344   47.09797
+## PS23         4639377   47.08801
+## FORC_003     4837317   47.04000
+## ERL072344    4458462   46.92000
+## IP01119      4643207   46.72000
+## IP20322      4510028   46.98000
+## IP05342      4722666   46.77000
+## IP06077      4594630   46.79000
+## M53          4744530   46.90000
+## IP00178      4609560   46.84000
+## 1116-D       4470393   47.56000
+## YP173        4569957   47.53000
+## YP261        4579841   47.52840
+## YP139        3963071   48.33264
+## YP1313       4598307   47.53702
+## YP1906       4573713   47.52974
+## YP2751-55    4582594   47.53343
+## YP262        4532410   47.46285
+## YP1240       4582524   47.53033
+## YP2513       4537723   47.45978
+## YP2514       4629574   47.50026
+## YP111        4582792   47.53611
+## PY-19        4510880   47.50000
+## PY-76        4498987   47.50000
+## PY-102       4672350   47.50000
+## PY-103       4591865   47.80000
+## PY-101       4591745   47.22671
+## PY-22        4540396   47.60000
+## PY-23        4537614   47.50000
+## PY-24        4640238   47.70000
+## PY-25        4540928   47.50000
+## PY-77        4497645   47.70000
+```
+---
+## Accessing the data frame 
+
+```r
 dataframe_name[ , c("column_1_name", "column_2_name")]
 dataframe_name[ , c(first_column_index, second_column_index)]
 dataframe_name[c("row_1_name", "row_2_name"), ]
@@ -296,12 +447,13 @@ dataframe_name[ , c(first_column_index : last_column_index)]
 dataframe_name[c(first_row_index : last_row_index),]
 ```
 You can mix and match different ways to access the data
+
+```r
 db[1,4] # First rown and 4th column
 db[1,"Contigs"] #First row and column "Contigs"
 db[35:78,] # From row 35 to 78 and all columns
 db[,c(4,5)] #All rows and the 4th and 5th column
-
-
+```
 ---
 class: inverse, middle
 .pull-left[
@@ -310,7 +462,7 @@ class: inverse, middle
 .pull-right[![](img/ein2.gif)]
 ---
 ## Object type
-With the various form of extraction you get similar results but differerent data types
+With the various form of extraction you get similar results but different data types
 
 ```r
 dataframe_name[column_index]
@@ -319,14 +471,109 @@ dataframe_name[, column_index] # Pay attention to the comma
 dataframe_name$column_index
 dataframe_name$column_index[row_index]
 ```
-Assign these values to a new __object__
+Chose a column from the database and try the diffferent options
 
-Look at how it appears in the environment
+Assign these values to a new __objects__
 
+Look at how they appear in the environment
 
+What's the difference?
+---
+## Object type
+
+```r
+typeof(db1[1])
+```
+
+```
+## [1] "list"
+```
+
+```r
+typeof(db1[, 1])
+```
+
+```
+## [1] "character"
+```
+
+```r
+typeof(db1[[1]])
+```
+
+```
+## [1] "character"
+```
+
+```r
+db1[1]
+```
+
+```
+##                              Species
+## AS539                Yersinia pestis
+## AS147                Yersinia pestis
+## AS134                Yersinia pestis
+## AS509                Yersinia pestis
+## A251                 Yersinia pestis
+## 24H                  Yersinia pestis
+## EBD10-058            Yersinia pestis
+## M73            Yersinia kristensenii
+## M47            Yersinia kristensenii
+## HR100          Yersinia kristensenii
+## M70            Yersinia kristensenii
+## M71            Yersinia kristensenii
+## M72            Yersinia kristensenii
+## M74            Yersinia kristensenii
+## M32          Yersinia enterocolitica
+## FORC_017     Yersinia enterocolitica
+## FORC_013     Yersinia enterocolitica
+## FORC_004     Yersinia enterocolitica
+## FDAARGOS_227 Yersinia enterocolitica
+## FORC_002     Yersinia enterocolitica
+## NCTC10460    Yersinia enterocolitica
+## NCTC10462    Yersinia enterocolitica
+## LC18E-3      Yersinia enterocolitica
+## LC18E-9-14   Yersinia enterocolitica
+## M34          Yersinia enterocolitica
+## HR88         Yersinia enterocolitica
+## M29A27       Yersinia enterocolitica
+## PS23         Yersinia enterocolitica
+## FORC_003     Yersinia enterocolitica
+## ERL072344    Yersinia enterocolitica
+## IP01119      Yersinia enterocolitica
+## IP20322      Yersinia enterocolitica
+## IP05342      Yersinia enterocolitica
+## IP06077      Yersinia enterocolitica
+## M53            Yersinia kristensenii
+## IP00178      Yersinia enterocolitica
+## 1116-D               Yersinia pestis
+## YP173                Yersinia pestis
+## YP261                Yersinia pestis
+## YP139                Yersinia pestis
+## YP1313               Yersinia pestis
+## YP1906               Yersinia pestis
+## YP2751-55            Yersinia pestis
+## YP262                Yersinia pestis
+## YP1240               Yersinia pestis
+## YP2513               Yersinia pestis
+## YP2514               Yersinia pestis
+## YP111                Yersinia pestis
+## PY-19                Yersinia pestis
+## PY-76                Yersinia pestis
+## PY-102               Yersinia pestis
+## PY-103               Yersinia pestis
+## PY-101               Yersinia pestis
+## PY-22                Yersinia pestis
+## PY-23                Yersinia pestis
+## PY-24                Yersinia pestis
+## PY-25                Yersinia pestis
+## PY-77                Yersinia pestis
+```
 ---
 ## Not Available
 In R, missing values are represented by the symbol NA (not available)
+
 To test for missing values
 
 ```r
@@ -340,142 +587,135 @@ is.na (y) #find which value is missing
 To remove missing values from a data frame:
 
 ```r
-db2 &lt;- db1[complete.cases(db1), ] # we remove all those rows having NA values
+db2 &lt;- db1[complete.cases(db1), ] # remove all rows with NA values
 ```
 ---
+class: middle
 ## Data frame functions
-*Table* produces a table of counts. It creates tabular results of categorical variables
+*Table* creates a tabular results of categorical variables
 
 ```r
-table(db1$Isolation.Site) 
+table(datafra$column) 
 ```
+
+```r
+table(db1$Isolation_location)
+```
+
+```
+## 
+##  Barad-dur     Erebor     Gondor      Harad   Isengard Lothlorien   Mirkwood     Mordor 
+##          3          4         11          4          2          6          1          3 
+##  Rivendell      Rohan  The Shire 
+##          3          8         13
+```
+
+---
+class: middle
+## Data frame functions
 *gsub* takes an input value and replace it with another one
 
 ```r
-db2$Isolation.Site&lt;-gsub("Respiratory","Lungs",db2$Isolation.Site) # the word “Respiratory” is replaced with “Lungs”
+db1$Isolation_location&lt;-gsub("Barad-dur",
+                             "Varallo Pombia",
+                             db1$Isolation_location)
 ```
+the word “Barad-dur” is replaced with “Varallo Pombia” and save the replaced column in the dataframe
+
+Try to replace something from the column *Source*
+---
+class: middle
+## Data frame functions
 *unique* identify and eliminate duplicated values in an object. The object can be a vector or
 a data frame. On data frames the function removes duplicated rows
 
 ```r
-country &lt;- db2$Isolation.Country
+country &lt;- db1$Isolation_location
 unique_country &lt;- unique(country)
 ```
 ---
+class: middle
 ## Functions on data frames
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
+
 How to check if a value is present in a column or vector:
 
 ```r
 value %in% vector
-value %in% dataframe_name$column_name
 ```
 To extract the first location that has the value of interest:
 
 ```r
 match("value", dataframe_name$column_name)
-match("Italy", db2$Isolation.Country)
+```
+Use these functions to see if one value of you choice is present in the column *Isolation_location*, and see which row has the first occurrence 
+---
+class: middle
+## Functions on data frames
+
+```r
+"Varallo Pombia" %in% db1$Isolation_location
+```
+
+```
+## [1] TRUE
+```
+
+
+```r
+match("Varallo Pombia", db1$Isolation_location)
+```
+
+```
+## [1] 7
+```
+
+```r
+db1$Isolation_location[7]
+```
+
+```
+## [1] "Varallo Pombia"
 ```
 ---
-## Binding
-To combine two columns into a new one:
+class: middle, inverse
+.pull-left[## Subsetting and Binding]
+.pull-right[
 
-```r
-paste(dataframe_name$column_name_1, dataframe_name$column_name_2, sep=” “)
-db2$Genome&lt;-paste(db2$Genome_ID,db2$Genome_Name,sep=" ") # create a new column pasting the other two
-```
-*cbind* and *rbind* are functions which can combine together several vectors of the same
-length
-
-*cbind* combines vectors as columns
-*rbind* combines them as rows
-
-```r
-new_c &lt;- rep("Illumina",1044) # create a vector composed of 1044 values. Not asked for the exam
-db2 &lt;- cbind (db2,new_c) # new_c is a new a column of the data frame
-```
-
-```r
-new_r &lt;- db2[1,] # new vector containing the first row of data frame
-new_r[1,1] &lt;- "1280_14681_2" # change the first value of the vector
-db2 &lt;- rbind(db2,new_r) #new_r now is a new row of the data frame
-db2 &lt;- db2 [-c(1045),] # remove the row “new_r”
-```
----
-# Functions
-Sort a data frame in R (by default, sorting is ASCENDING)
-
-```r
-dataframe_name &lt;- dataframe_name[order(dataframe_name$column), ]
-db2&lt;- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
-```
-
-```r
-length(dataframe_name$column_name)
-length(db2$Genome_ID) #1044
-```
-*max* returns the maximum value of a numeric vector or column
-*min* returns the minimum value of a numeric vector or column
-*range* it outputs the smallest and largest values of the numeric vector or column
-
-```r
-max(db2$Contigs) #100
-min(db2$Contigs) #2
-range(db2$Contigs)
-```
+### Cutting, pasting and modifying data frames ![](img/cut.gif)]
 ---
 ## Subsetting
-T extract rows or columns on the basis of a pattern:
+From a table, extract only a part of it, using a __pattern__
+
 
 ```r
 subset(dataframe_name, dataframe_name$column_name logical_condition)
 ```
-
-
-```r
-db &lt;- read.csv("patric_redux.csv",header = T,na.strings ="")
-gondor &lt;- subset(db,db$Isolation_location=="Gondor" &amp; db$Contigs&lt;100) # logical selection
-red_table &lt;- subset(db,select = c(1, 3, 4, 5)) # selection of columns
-```
----
-## Subsetting
+For example, if we want to keep genomes not too fragmented we can select elements with less than 100 contigs
 
 ```r
-gondor
+decent_qual &lt;- subset(db, db$Contigs &lt; 100)
 ```
+You can use more than one logical condition using AND(*&amp;*) OR (*|*), or just using two subsets
 
+```r
+gondor &lt;- subset(db,db$Contigs&lt;100 &amp;
+                 db$Isolation_location=="Gondor")
 ```
-##                    Species         ID Contigs Genome.Length GC.Content PATRIC.CDS
-## 15 Yersinia enterocolitica        M32      46       4692341   47.20000       4875
-## 16 Yersinia enterocolitica   FORC_017      22       4723612   46.80000       4599
-## 17 Yersinia enterocolitica   FORC_013      46       4749283   47.30000       4603
-## 18 Yersinia enterocolitica   FORC_004      76       4695233   47.22671       4563
-## 20 Yersinia enterocolitica   FORC_002       1       3924069   42.59000       4124
-## 21 Yersinia enterocolitica  NCTC10460       3       4767810   46.91510       4590
-## 23 Yersinia enterocolitica    LC18E-3      96       4676549   47.14303       4496
-## 24 Yersinia enterocolitica LC18E-9-14      28       4675119   47.14470       4468
-## 31 Yersinia enterocolitica    IP01119      77       4643207   46.72000       4794
-## 55         Yersinia pestis      PY-23      67       4537614   47.50000       5130
-##    Isolation_location Source
-## 15             Gondor  Human
-## 16             Gondor  Human
-## 17             Gondor  Human
-## 18             Gondor  Human
-## 20             Gondor  Human
-## 21             Gondor  Human
-## 23             Gondor Hobbit
-## 24             Gondor  Human
-## 31             Gondor  Human
-## 55             Gondor  Human
+You can subset for columns:
+
+```r
+red_table &lt;- subset(db,select = c(1, 3, 4, 5))
 ```
 ---
 # Logical operators
 
-<div id="rihidmesvd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ndhwimuwoh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rihidmesvd .gt_table {
+#ndhwimuwoh .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -500,7 +740,7 @@ gondor
   border-left-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_heading {
+#ndhwimuwoh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -512,7 +752,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_title {
+#ndhwimuwoh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -524,7 +764,7 @@ gondor
   border-bottom-width: 0;
 }
 
-#rihidmesvd .gt_subtitle {
+#ndhwimuwoh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -536,13 +776,13 @@ gondor
   border-top-width: 0;
 }
 
-#rihidmesvd .gt_bottom_border {
+#ndhwimuwoh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_col_headings {
+#ndhwimuwoh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -557,7 +797,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_col_heading {
+#ndhwimuwoh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -577,7 +817,7 @@ gondor
   overflow-x: hidden;
 }
 
-#rihidmesvd .gt_column_spanner_outer {
+#ndhwimuwoh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -589,15 +829,15 @@ gondor
   padding-right: 4px;
 }
 
-#rihidmesvd .gt_column_spanner_outer:first-child {
+#ndhwimuwoh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rihidmesvd .gt_column_spanner_outer:last-child {
+#ndhwimuwoh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rihidmesvd .gt_column_spanner {
+#ndhwimuwoh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -609,7 +849,7 @@ gondor
   width: 100%;
 }
 
-#rihidmesvd .gt_group_heading {
+#ndhwimuwoh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -634,7 +874,7 @@ gondor
   vertical-align: middle;
 }
 
-#rihidmesvd .gt_empty_group_heading {
+#ndhwimuwoh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -649,15 +889,15 @@ gondor
   vertical-align: middle;
 }
 
-#rihidmesvd .gt_from_md > :first-child {
+#ndhwimuwoh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rihidmesvd .gt_from_md > :last-child {
+#ndhwimuwoh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rihidmesvd .gt_row {
+#ndhwimuwoh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -676,7 +916,7 @@ gondor
   overflow-x: hidden;
 }
 
-#rihidmesvd .gt_stub {
+#ndhwimuwoh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -689,7 +929,7 @@ gondor
   padding-right: 5px;
 }
 
-#rihidmesvd .gt_stub_row_group {
+#ndhwimuwoh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,11 +943,11 @@ gondor
   vertical-align: top;
 }
 
-#rihidmesvd .gt_row_group_first td {
+#ndhwimuwoh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rihidmesvd .gt_summary_row {
+#ndhwimuwoh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -717,16 +957,16 @@ gondor
   padding-right: 5px;
 }
 
-#rihidmesvd .gt_first_summary_row {
+#ndhwimuwoh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_first_summary_row.thick {
+#ndhwimuwoh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rihidmesvd .gt_last_summary_row {
+#ndhwimuwoh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -736,7 +976,7 @@ gondor
   border-bottom-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_grand_summary_row {
+#ndhwimuwoh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -746,7 +986,7 @@ gondor
   padding-right: 5px;
 }
 
-#rihidmesvd .gt_first_grand_summary_row {
+#ndhwimuwoh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -756,11 +996,11 @@ gondor
   border-top-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_striped {
+#ndhwimuwoh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rihidmesvd .gt_table_body {
+#ndhwimuwoh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -769,7 +1009,7 @@ gondor
   border-bottom-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_footnotes {
+#ndhwimuwoh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -783,7 +1023,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_footnote {
+#ndhwimuwoh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -792,7 +1032,7 @@ gondor
   padding-right: 5px;
 }
 
-#rihidmesvd .gt_sourcenotes {
+#ndhwimuwoh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -806,7 +1046,7 @@ gondor
   border-right-color: #D3D3D3;
 }
 
-#rihidmesvd .gt_sourcenote {
+#ndhwimuwoh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -814,60 +1054,60 @@ gondor
   padding-right: 5px;
 }
 
-#rihidmesvd .gt_left {
+#ndhwimuwoh .gt_left {
   text-align: left;
 }
 
-#rihidmesvd .gt_center {
+#ndhwimuwoh .gt_center {
   text-align: center;
 }
 
-#rihidmesvd .gt_right {
+#ndhwimuwoh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rihidmesvd .gt_font_normal {
+#ndhwimuwoh .gt_font_normal {
   font-weight: normal;
 }
 
-#rihidmesvd .gt_font_bold {
+#ndhwimuwoh .gt_font_bold {
   font-weight: bold;
 }
 
-#rihidmesvd .gt_font_italic {
+#ndhwimuwoh .gt_font_italic {
   font-style: italic;
 }
 
-#rihidmesvd .gt_super {
+#ndhwimuwoh .gt_super {
   font-size: 65%;
 }
 
-#rihidmesvd .gt_footnote_marks {
+#ndhwimuwoh .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rihidmesvd .gt_asterisk {
+#ndhwimuwoh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rihidmesvd .gt_slash_mark {
+#ndhwimuwoh .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#rihidmesvd .gt_fraction_numerator {
+#ndhwimuwoh .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#rihidmesvd .gt_fraction_denominator {
+#ndhwimuwoh .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -906,6 +1146,495 @@ gondor
 </table>
 </div>
 ---
+class: middle
+## Exercise
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
+
+Get a table with only genomes from Elf and 4500000 as genome length
+
+```r
+subset(dataframe_name, dataframe_name$column_name logical_condition)
+```
+---
+## Exercise
+
+```r
+rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
+                 db$Source=="Elf")
+```
+<div id="mtwvljabuc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mtwvljabuc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mtwvljabuc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mtwvljabuc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mtwvljabuc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mtwvljabuc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mtwvljabuc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mtwvljabuc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mtwvljabuc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mtwvljabuc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mtwvljabuc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mtwvljabuc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mtwvljabuc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mtwvljabuc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mtwvljabuc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mtwvljabuc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mtwvljabuc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mtwvljabuc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mtwvljabuc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mtwvljabuc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mtwvljabuc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mtwvljabuc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mtwvljabuc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mtwvljabuc .gt_left {
+  text-align: left;
+}
+
+#mtwvljabuc .gt_center {
+  text-align: center;
+}
+
+#mtwvljabuc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mtwvljabuc .gt_font_normal {
+  font-weight: normal;
+}
+
+#mtwvljabuc .gt_font_bold {
+  font-weight: bold;
+}
+
+#mtwvljabuc .gt_font_italic {
+  font-style: italic;
+}
+
+#mtwvljabuc .gt_super {
+  font-size: 65%;
+}
+
+#mtwvljabuc .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#mtwvljabuc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mtwvljabuc .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#mtwvljabuc .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#mtwvljabuc .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Species</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">ID</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Contigs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Genome.Length</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">GC.Content</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PATRIC.CDS</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Isolation_location</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Source</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Yersinia kristensenii</td>
+<td class="gt_row gt_left">M70</td>
+<td class="gt_row gt_right">81</td>
+<td class="gt_row gt_right">4889404</td>
+<td class="gt_row gt_right">47.09967</td>
+<td class="gt_row gt_right">4806</td>
+<td class="gt_row gt_left">Lothlorien</td>
+<td class="gt_row gt_left">Elf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia enterocolitica</td>
+<td class="gt_row gt_left">IP05342</td>
+<td class="gt_row gt_right">169</td>
+<td class="gt_row gt_right">4722666</td>
+<td class="gt_row gt_right">46.77000</td>
+<td class="gt_row gt_right">4935</td>
+<td class="gt_row gt_left">Lothlorien</td>
+<td class="gt_row gt_left">Elf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia enterocolitica</td>
+<td class="gt_row gt_left">IP06077</td>
+<td class="gt_row gt_right">159</td>
+<td class="gt_row gt_right">4594630</td>
+<td class="gt_row gt_right">46.79000</td>
+<td class="gt_row gt_right">4743</td>
+<td class="gt_row gt_left">Lothlorien</td>
+<td class="gt_row gt_left">Elf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">YP173</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">4569957</td>
+<td class="gt_row gt_right">47.53000</td>
+<td class="gt_row gt_right">4644</td>
+<td class="gt_row gt_left">Rivendell</td>
+<td class="gt_row gt_left">Elf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">YP1313</td>
+<td class="gt_row gt_right">235</td>
+<td class="gt_row gt_right">4598307</td>
+<td class="gt_row gt_right">47.53702</td>
+<td class="gt_row gt_right">5203</td>
+<td class="gt_row gt_left">Lothlorien</td>
+<td class="gt_row gt_left">Elf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">YP2514</td>
+<td class="gt_row gt_right">212</td>
+<td class="gt_row gt_right">4629574</td>
+<td class="gt_row gt_right">47.50026</td>
+<td class="gt_row gt_right">4766</td>
+<td class="gt_row gt_left">Lothlorien</td>
+<td class="gt_row gt_left">Elf</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+---
+class: middle
 ## Dropping levels
 When subsetting data frames there may be some levels (for factors) that are unused
 
@@ -920,6 +1649,126 @@ If you get a factor with a value of 0 you should  drop the levels
 dataframe_name &lt;- droplevels (dataframe_name)
 ```
 ---
+class: middle
+## Binding
+.pull-left[
+#### Combining vectors to a a dataframe:
+
+- #### ___c___*bind* to bind a __c__olumn to a dataframe
+
+- #### ___r___*bind* to bind a __r__ow to a dataframe
+
+- #### vectors have to be of the same lenght]
+.pull-right[![](img/binding.png)]
+---
+class: middle
+# Binding - Pasting
+
+Paste combine strings to a single string, or two vectors of strings
+
+```r
+new_vector&lt;-paste(string_vector1,string_vector2,sep=" ")
+```
+In the new string/vector the original strings will be separated by the separator (*sep=*)
+
+If you don't want any separation write *sep=""*
+
+You can assign the new vector to a dataframe or use it to replace a column
+
+You can use a fixed string
+
+```r
+new_vector&lt;-paste("fixed_string",string_vector2,sep="")
+```
+---
+class: middle
+## Exercise
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
+
+Create 2 subsets:
+- one with only samples from *Erebor* 
+- one with only samples from *Barad-dur*
+
+Bind the two tables into a single dataframe, and add a column pasting *Isolation_location* and *Source* columns
+
+```r
+new_df &lt;- rbind(df1,df2) #new_r now is a new row of the data frame
+new_vector&lt;-paste(string_vector1,string_vector2,sep=" ")
+```
+---
+class: middle
+# Exercise
+
+
+```r
+Erebor &lt;- subset(db, db$Isolation_location=="Erebor")
+Barad_dur &lt;- subset(db, db$Isolation_location=="Barad-dur")
+db2 &lt;- rbind(Erebor, Barad_dur)
+db2$newco &lt;- paste(db2$Isolation_location,db2$Source)
+```
+---
+# Sort
+Sort a data frame in R (by default, sorting is ASCENDING)
+
+```r
+dataframe_name &lt;- dataframe_name[order(dataframe_name$column), ]
+```
+
+```
+db2&lt;- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
+```
+---
+## Vector functions
+These can be applied in the same way on vectors
+
+```r
+function(vector)
+```
+*length* returns the length of the vector (or the columns number in a dataframe)
+
+*max* returns the maximum value of a numeric vector or column
+
+*min* returns the minimum value of a numeric vector or column
+
+*range* it outputs the smallest and largest values of the numeric vector or column
+---
+# Exercise
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
+
+- Get the range of the *GC.Content*
+
+- Get the max value of contigs in only Hobbit samples
+
+- Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
+---
+## Results
+
+```r
+range(db$GC.Content)
+```
+
+```
+## [1] 42.59000 48.33264
+```
+
+```r
+hobbit &lt;- subset(db, db$Source == "Hobbit")
+max(hobbit$Contigs)
+```
+
+```
+## [1] 581
+```
+
+```r
+contig_100 &lt;- subset(db, db$Contigs &lt; 100)
+min(contig_100$PATRIC.CDS)
+```
+
+```
+## [1] 4124
+```
+---
 class: inverse, middle
 ## Good things come in small packages
 ---
@@ -930,11 +1779,10 @@ To extend the functionalities we can install external packages
 
 To install a package in R:
 
+```r
 install.packages("library_name")
-
-after you have installed you can load it with
-library(library_name)
-Example:
+```
+after you have installed you can load the package
 
 ```r
 # There's a time and place for everything
@@ -942,6 +1790,28 @@ Example:
 install.packages(“ggplot2”)
 library(ggplot2)
 ```
+---
+![](img/ikea1.png)
+## install.packages("package")
+---
+![](img/ikea2.png)
+
+## library(package)
+---
+class: inverse, middle, center
+# EXTRA
+---
+class: middle
+## Libraries
+
+- Arguably __tidyverse__ is the most important set of packages, including:
+
+  - *Dplyr*: makes data manipulation much more easier
+
+  - *ggplot2*: extensive system to create graphics, extremely powerful
+- *Bioconductor*: series of packages for biology and genomics
+- *RColorBrewer*: useful tool to manage color palettes in R
+- *Xaringan*: to use markdown to write slides (including these slide)
 ---
 # Dplyr
 dplyr is a package for data manipulation, providing a consistent set of functions that help
@@ -951,16 +1821,17 @@ you solve the most common data manipulation challenges
 install.packages (“dplyr”)
 library (dplyr)
 ```
+A common use is the *join* function
+
 In order to combine two data frames, at least one column must be present in both data
 frames and have the same header
-colnames(db2) #
-colnames(res) #
+
 
 ```r
-full &lt;- full_join(res,db2,by="Genome_ID")
-semi &lt;- semi_join(res,db2,by="Genome_ID")
-left &lt;- left_join(res,db2,by="Genome_ID")
-right &lt;- right_join(res,db2,by="Genome_ID")
+full &lt;- full_join(db1,db2,by="Genome_ID") # all rows
+inner &lt;- inner_join(db1,db2,by="Genome_ID") # rows present in both
+left &lt;- left_join(db1,db2,by="Genome_ID") # all rows in db1
+right &lt;- right_join(db1,db2,by="Genome_ID") # all rows in db2
 ```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

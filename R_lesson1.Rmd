@@ -109,8 +109,7 @@ This pane contains various informations:
 ---
 ## Two tips
 Remember: 
-- RStudio has a very useful feature called "code completion": use the Tab key (↹) to complete the
-full name of an object or a function
+- RStudio (and other IDEs) has a very useful feature called "code completion": use the Tab key (↹) to autocomplete the full name of an object or a function, or a file/folder location
 
 - Comments can be used to explain R code, and to make it more readable. You can also use them to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
 ---
@@ -452,17 +451,24 @@ class: inverse, middle, center
 ## Set working directory
 Every time you start a R session it will start in a specific directory
 
-To know you current __working directory__ you can use the command
+To know your current __working directory__ you can use the command
 ```{r eval=FALSE}
-getwd( )
+getwd()
 ```
 To change the __working directory__ directory 
 ```{r eval=FALSE}
 setwd("/path/to/my/directory")
 ```
+Use *../* to go to the parent directory (the folder containing your current folder) 
+
 ---
 ## Set working directory
-You can also set up the directory through the graphical interface, clicking on "More" on the files tab
+You can also set up the directory through the graphical interface: 
+
+Click on the three dots in the __files tab__ to select a directory
+![](img/select_folder.png)
+
+And then click on "More" on the __files tab__ and select *Set As Working Directory*
 ![](img/setwd.png)
 ---
 ## Tables
@@ -501,7 +507,7 @@ Merry,37,no
 Pippin,29,no
 Sam,39,briefly
 ```
-When you load a file check if there file contains a header
+When you load a file check if the table contains a header
 Possible mistakes:
 - using the first row as column names
 - using the column names as values
@@ -512,15 +518,16 @@ We will work with the table *patric_redux.csv*
 
 You can download the table at the link, and save it into a folder of your choice
 
-
 https://drive.google.com/file/d/1UMmE_KZial63WJVleg4xbX6GXCtCTd45/view?usp=sharing
 
-Otherwise yoy can download it from the gdrive folder of the course or from github
+Otherwise you can download it from the gdrive folder of the course or from github
 
 Change your R __working directory__ to the folder where you have saved the table
 ```{r eval=FALSE}
 setwd("/path/to/my/directory")
 ```
+
+Or navigate to the folder using "files"
 ---
 ## Reading a table
 

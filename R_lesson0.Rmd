@@ -102,6 +102,7 @@ The zip file *R_lessons_2021_2022* in the course gdrive contains:
 - *patric_redux.csv*, the table we will use for the lessons
 
 The course material is also available online at https://tiagonardi.github.io/R_intro_2022/
+---
+## Other resources
 
-
-
+https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf

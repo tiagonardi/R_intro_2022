@@ -51,18 +51,18 @@ To select multiple elements use the concatenate function
 x[c(1,2)] # show the first and second element
 ```
 ---
-## Exercise
+class: middle
+## Indexing the vectors
 Try these operations on your vector
 ```{r, eval=FALSE}
-vector[N:N]
 vector[3:5]
 vector[c(1,3:5)]
 vector[-2]
+vector[vector > 2]
 ```
-
-
+Can you guess what you were extracting with these commands?
 ---
-## Vectors
+## Indexing the vectors
 You can select a slice of the vector using the colon *:*
 ```{r, include=TRUE}
 x[3:5] # show all elements from a starting index (3) to an ending index (5) (slicing)
@@ -76,16 +76,38 @@ You can get all the elements barring the elements with a minus before it *-*
 x[-2]
 ```
 ---
-## Vectors
+## Indexing the vectors
+Chose a numerical value and try these commands with you vector
+```{r, eval=FALSE}
+vector[vector > value]
+vector > value
+```
+Why these results are different?
+
+Can you guess it?
+
+Write also a vector with only boolean values (TRUE/FALSE) with the same length of your first vector
+```{r, eval=FALSE}
+vector2 <- c(FALSE,TRUE,TRUE,FALSE,FALSE)
+vector[vector2]
+```
+---
+## Indexing the vectors
 You can select elements in the vector using logical conditions
 ```{r, include=TRUE}
 x[x > 2] # show all elements greater than 2
 ```
-To access the vector you have to specify the values *inside* the brackets
+To access the vector you have to specify the values *inside* the brackets.
 
 Otherwise you apply the logical operation to all elements in the vector
 ```{r}
 x > 2
+```
+
+You can supply a logical vector to get only the elements in the positions with TRUE
+```{r}
+mr_boole <- c(FALSE,TRUE,TRUE,FALSE,FALSE)
+x[mr_boole]
 ```
 ---
 ## Vectors
@@ -101,6 +123,7 @@ x[3]
 
 ---
 ## Rows and columns
+Let's load the usual table (remember the working directory)
 ```{r, include = TRUE}
 db <- read.csv("patric_redux.csv", header = T)
 db1 <- db # let's make a copy of the data frame
@@ -114,9 +137,9 @@ To change the name use the *colnames()* functions
 To get a column use the column number like a vector index
 ``` {r}
 colnames(db1) # It shows column names
-colnames(db1)[3] <- "bp" # change the third column name
+colnames(db1)[4] <- "bp" # change the fourth column name
 colnames(db1)
-colnames(db1)[3] # Get only the third column
+colnames(db1)[4] # Get only the fourth column
 ```
 
 ---
@@ -124,25 +147,25 @@ colnames(db1)[3] # Get only the third column
 How to set row names:
 ``` {r}
 rownames(db1) # It shows row names
-rownames(db1) <- db1$Genome.Name # We set as rownames all values from column
+rownames(db1) <- db1$ID # We set as rownames all values from column
 ```
 
 ---
 ## Rows and columns
 
 ``` {r}
-head(db)
+head(db) # read the first 6 rows
 ```
 ---
 ## Rows and columns
 ``` {r}
-head(db1)
+head(db1) # see the differences between this and the previous table
 ```
 ---
 ## Cleaning up
 To remove a column assign a __NULL__ value to it
 ``` {r}
-db1$contigs <- NULL # delete the column
+db1$Contigs <- NULL # delete the column
 ```
 
 If you want to remove an __object__ from R use
@@ -170,16 +193,44 @@ If don't specify one of the two values you get all elements (All rows/All column
 dataframe_name[,1] # all rows, first column
 dataframe_name[1,] # first row, all column
 ```
-
-
 ---
-``` {r, eval= FALSE}
+## Accessing the data frame 
+``` {r, eval=FALSE}
 dataframe_name["row_name", "column_name"]
 dataframe_name[row_index, column_index]
 dataframe_name[ , "column_name"]
 dataframe_name[ , column_index]
 dataframe_name["row_name", ]
 dataframe_name[row_index,]
+```
+Try to access: 
+
+the full row of sample *24H*
+
+the *Source* of sample *EBD10-058*
+
+the full column of *Isolation_location*
+
+From the third to the 13th row the column *PATRIC.CDS"
+
+All rows, excluding from the 4th row to the 10th, columns *bp* *GC.Content* 
+
+---
+## Accessing the data frame 
+```{r, eval=TRUE}
+db1["24H",]
+db1["EBD10-058","Source"]
+db1[,"Isolation_location"]
+```
+---
+## Accessing the data frame 
+```{r, eval=TRUE}
+db1[1:13,"PATRIC.CDS"] #check the rows inspecting db1
+db1[-(4:10),c("bp","GC.Content")]
+```
+---
+## Accessing the data frame 
+```{r, eval=FALSE}
 dataframe_name[ , c("column_1_name", "column_2_name")]
 dataframe_name[ , c(first_column_index, second_column_index)]
 dataframe_name[c("row_1_name", "row_2_name"), ]
@@ -188,12 +239,12 @@ dataframe_name[ , c(first_column_index : last_column_index)]
 dataframe_name[c(first_row_index : last_row_index),]
 ```
 You can mix and match different ways to access the data
+```{r, eval=FALSE}
 db[1,4] # First rown and 4th column
 db[1,"Contigs"] #First row and column "Contigs"
 db[35:78,] # From row 35 to 78 and all columns
 db[,c(4,5)] #All rows and the 4th and 5th column
-
-
+```
 ---
 class: inverse, middle
 .pull-left[
@@ -202,7 +253,7 @@ class: inverse, middle
 .pull-right[![](img/ein2.gif)]
 ---
 ## Object type
-With the various form of extraction you get similar results but differerent data types
+With the various form of extraction you get similar results but different data types
 ``` {r, eval= FALSE}
 dataframe_name[column_index]
 dataframe_name[[column_index]] 
@@ -210,14 +261,26 @@ dataframe_name[, column_index] # Pay attention to the comma
 dataframe_name$column_index
 dataframe_name$column_index[row_index]
 ```
-Assign these values to a new __object__
+Chose a column from the database and try the diffferent options
 
-Look at how it appears in the environment
+Assign these values to a new __objects__
 
+Look at how they appear in the environment
 
+What's the difference?
+---
+## Object type
+``` {r, eval= TRUE}
+typeof(db1[1])
+typeof(db1[, 1])
+typeof(db1[[1]])
+db1[1]
+
+```
 ---
 ## Not Available
 In R, missing values are represented by the symbol NA (not available)
+
 To test for missing values
 ``` {r}
 y <- c(1,2,3,NA)
@@ -225,93 +288,90 @@ is.na (y) #find which value is missing
 ```
 To remove missing values from a data frame:
 ``` {r, eval= FALSE}
-db2 <- db1[complete.cases(db1), ] # we remove all those rows having NA values
+db2 <- db1[complete.cases(db1), ] # remove all rows with NA values
 ```
 ---
+class: middle
 ## Data frame functions
-*Table* produces a table of counts. It creates tabular results of categorical variables
+*Table* creates a tabular results of categorical variables
 ``` {r, eval= FALSE}
-table(db1$Isolation.Site) 
+table(datafra$column) 
 ```
+``` {r, eval= TRUE}
+table(db1$Isolation_location)
+```
+
+---
+class: middle
+## Data frame functions
 *gsub* takes an input value and replace it with another one
-``` {r, eval= FALSE}
-db2$Isolation.Site<-gsub("Respiratory","Lungs",db2$Isolation.Site) # the word “Respiratory” is replaced with “Lungs”
+``` {r, eval= TRUE}
+db1$Isolation_location<-gsub("Barad-dur",
+                             "Varallo Pombia",
+                             db1$Isolation_location)
 ```
+the word “Barad-dur” is replaced with “Varallo Pombia” and save the replaced column in the dataframe
+
+Try to replace something from the column *Source*
+---
+class: middle
+## Data frame functions
 *unique* identify and eliminate duplicated values in an object. The object can be a vector or
 a data frame. On data frames the function removes duplicated rows
-``` {r, eval= FALSE}
-country <- db2$Isolation.Country
+``` {r, eval= TRUE}
+country <- db1$Isolation_location
 unique_country <- unique(country)
 ```
 ---
+class: middle
 ## Functions on data frames
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
 How to check if a value is present in a column or vector:
 ``` {r, eval= FALSE}
 value %in% vector
-value %in% dataframe_name$column_name
 ```
 To extract the first location that has the value of interest:
 ``` {r, eval= FALSE}
 match("value", dataframe_name$column_name)
-match("Italy", db2$Isolation.Country)
 ```
+Use these functions to see if one value of you choice is present in the column *Isolation_location*, and see which row has the first occurrence 
 ---
-## Binding
-To combine two columns into a new one:
-``` {r, eval= FALSE}
-paste(dataframe_name$column_name_1, dataframe_name$column_name_2, sep=” “)
-db2$Genome<-paste(db2$Genome_ID,db2$Genome_Name,sep=" ") # create a new column pasting the other two
+class: middle
+## Functions on data frames
+``` {r, eval= TRUE}
+"Varallo Pombia" %in% db1$Isolation_location
 ```
-*cbind* and *rbind* are functions which can combine together several vectors of the same
-length
 
-*cbind* combines vectors as columns
-*rbind* combines them as rows
-``` {r, eval= FALSE}
-new_c <- rep("Illumina",1044) # create a vector composed of 1044 values. Not asked for the exam
-db2 <- cbind (db2,new_c) # new_c is a new a column of the data frame
-```
-``` {r, eval= FALSE}
-new_r <- db2[1,] # new vector containing the first row of data frame
-new_r[1,1] <- "1280_14681_2" # change the first value of the vector
-db2 <- rbind(db2,new_r) #new_r now is a new row of the data frame
-db2 <- db2 [-c(1045),] # remove the row “new_r”
+``` {r, eval= TRUE}
+match("Varallo Pombia", db1$Isolation_location)
+db1$Isolation_location[7]
 ```
 ---
-# Functions
-Sort a data frame in R (by default, sorting is ASCENDING)
-``` {r, eval= FALSE}
-dataframe_name <- dataframe_name[order(dataframe_name$column), ]
-db2<- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
-```
-``` {r, eval= FALSE}
-length(dataframe_name$column_name)
-length(db2$Genome_ID) #1044
-```
-*max* returns the maximum value of a numeric vector or column
-*min* returns the minimum value of a numeric vector or column
-*range* it outputs the smallest and largest values of the numeric vector or column
-``` {r, eval= FALSE}
-max(db2$Contigs) #100
-min(db2$Contigs) #2
-range(db2$Contigs)
-```
+class: middle, inverse
+.pull-left[## Subsetting and Binding]
+.pull-right[
+
+### Cutting, pasting and modifying data frames ![](img/cut.gif)]
 ---
 ## Subsetting
-T extract rows or columns on the basis of a pattern:
+From a table, extract only a part of it, using a __pattern__
+
 ``` {r eval=FALSE}
 subset(dataframe_name, dataframe_name$column_name logical_condition)
 ```
-
+For example, if we want to keep genomes not too fragmented we can select elements with less than 100 contigs
 ``` {r eval=TRUE}
-db <- read.csv("patric_redux.csv",header = T,na.strings ="")
-gondor <- subset(db,db$Isolation_location=="Gondor" & db$Contigs<100) # logical selection
-red_table <- subset(db,select = c(1, 3, 4, 5)) # selection of columns
+decent_qual <- subset(db, db$Contigs < 100)
 ```
----
-## Subsetting
-``` {r eval=TRUE}
-gondor
+You can use more than one logical condition using AND(*&*) OR (*|*), or just using two subsets
+```{r}
+gondor <- subset(db,db$Contigs<100 &
+                 db$Isolation_location=="Gondor")
+```
+You can subset for columns:
+``` {r eval=FALSE}
+red_table <- subset(db,select = c(1, 3, 4, 5))
 ```
 ---
 # Logical operators
@@ -333,6 +393,26 @@ gt_tbl <- gt(df_log)
 gt_tbl
 ```
 ---
+class: middle
+## Exercise
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
+Get a table with only genomes from Elf and 4500000 as genome length
+``` {r eval=FALSE}
+subset(dataframe_name, dataframe_name$column_name logical_condition)
+```
+---
+## Exercise
+``` {r eval=TRUE}
+rohan <- subset(db,db$Genome.Length > 4500000 &
+                 db$Source=="Elf")
+```
+```{r, echo=FALSE}
+g_r <- gt(rohan)
+g_r
+```
+---
+class: middle
 ## Dropping levels
 When subsetting data frames there may be some levels (for factors) that are unused
 
@@ -345,6 +425,101 @@ If you get a factor with a value of 0 you should  drop the levels
 dataframe_name <- droplevels (dataframe_name)
 ```
 ---
+class: middle
+## Binding
+.pull-left[
+#### Combining vectors to a a dataframe:
+
+- #### ___c___*bind* to bind a __c__olumn to a dataframe
+
+- #### ___r___*bind* to bind a __r__ow to a dataframe
+
+- #### vectors have to be of the same lenght]
+.pull-right[![](img/binding.png)]
+---
+class: middle
+# Binding - Pasting
+
+Paste combine strings to a single string, or two vectors of strings
+```{r, eval= FALSE}
+new_vector<-paste(string_vector1,string_vector2,sep=" ")
+```
+In the new string/vector the original strings will be separated by the separator (*sep=*)
+
+If you don't want any separation write *sep=""*
+
+You can assign the new vector to a dataframe or use it to replace a column
+
+You can use a fixed string
+```{r, eval= FALSE}
+new_vector<-paste("fixed_string",string_vector2,sep="")
+```
+---
+class: middle
+## Exercise
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
+Create 2 subsets:
+- one with only samples from *Erebor* 
+- one with only samples from *Barad-dur*
+
+Bind the two tables into a single dataframe, and add a column pasting *Isolation_location* and *Source* columns
+``` {r, eval= FALSE}
+new_df <- rbind(df1,df2) #new_r now is a new row of the data frame
+new_vector<-paste(string_vector1,string_vector2,sep=" ")
+```
+---
+class: middle
+# Exercise
+
+``` {r, eval= TRUE}
+Erebor <- subset(db, db$Isolation_location=="Erebor")
+Barad_dur <- subset(db, db$Isolation_location=="Barad-dur")
+db2 <- rbind(Erebor, Barad_dur)
+db2$newco <- paste(db2$Isolation_location,db2$Source)
+```
+---
+# Sort
+Sort a data frame in R (by default, sorting is ASCENDING)
+``` {r, eval= FALSE}
+dataframe_name <- dataframe_name[order(dataframe_name$column), ]
+```
+
+```
+db2<- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
+```
+---
+## Vector functions
+These can be applied in the same way on vectors
+```{r, eval=FALSE}
+function(vector)
+```
+*length* returns the length of the vector (or the columns number in a dataframe)
+
+*max* returns the maximum value of a numeric vector or column
+
+*min* returns the minimum value of a numeric vector or column
+
+*range* it outputs the smallest and largest values of the numeric vector or column
+---
+# Exercise
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
+- Get the range of the *GC.Content*
+
+- Get the max value of contigs in only Hobbit samples
+
+- Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
+---
+## Results
+``` {r, eval= TRUE}
+range(db$GC.Content)
+hobbit <- subset(db, db$Source == "Hobbit")
+max(hobbit$Contigs)
+contig_100 <- subset(db, db$Contigs < 100)
+min(contig_100$PATRIC.CDS)
+```
+---
 class: inverse, middle
 ## Good things come in small packages
 ---
@@ -354,18 +529,38 @@ R, by default, only comes with a restricted number of functions
 To extend the functionalities we can install external packages 
 
 To install a package in R:
-
+```{r, eval=FALSE}
 install.packages("library_name")
-
-after you have installed you can load it with
-library(library_name)
-Example:
+```
+after you have installed you can load the package
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 # There's a time and place for everything
 # but do not run this code now
 install.packages(“ggplot2”)
 library(ggplot2)
 ```
+---
+![](img/ikea1.png)
+## install.packages("package")
+---
+![](img/ikea2.png)
+
+## library(package)
+---
+class: inverse, middle, center
+# EXTRA
+---
+class: middle
+## Libraries
+
+- Arguably __tidyverse__ is the most important set of packages, including:
+
+  - *Dplyr*: makes data manipulation much more easier
+
+  - *ggplot2*: extensive system to create graphics, extremely powerful
+- *Bioconductor*: series of packages for biology and genomics
+- *RColorBrewer*: useful tool to manage color palettes in R
+- *Xaringan*: to use markdown to write slides (including these slide)
 ---
 # Dplyr
 dplyr is a package for data manipulation, providing a consistent set of functions that help
@@ -374,13 +569,14 @@ you solve the most common data manipulation challenges
 install.packages (“dplyr”)
 library (dplyr)
 ```
+A common use is the *join* function
+
 In order to combine two data frames, at least one column must be present in both data
 frames and have the same header
-colnames(db2) #
-colnames(res) #
+
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
-full <- full_join(res,db2,by="Genome_ID")
-semi <- semi_join(res,db2,by="Genome_ID")
-left <- left_join(res,db2,by="Genome_ID")
-right <- right_join(res,db2,by="Genome_ID")
+full <- full_join(db1,db2,by="Genome_ID") # all rows
+inner <- inner_join(db1,db2,by="Genome_ID") # rows present in both
+left <- left_join(db1,db2,by="Genome_ID") # all rows in db1
+right <- right_join(db1,db2,by="Genome_ID") # all rows in db2
 ```
