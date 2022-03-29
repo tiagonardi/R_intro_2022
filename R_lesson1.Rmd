@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R"
+title: "Introduction to R - part 1"
 subtitle: "🧉"
 author: "Tiago Nardi"
 institute: "University of Pavia"
