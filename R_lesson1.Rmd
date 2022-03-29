@@ -69,7 +69,7 @@ The core of R, it's where the code is evaluated
 
 The prompt (__>__ by default) indicates that the console is ready to run new code
 
-Click on the __console__, type directly the commands and press enter ↵ to run it
+Click on the __console__, type directly the commands and press enter ↵ to run them
 
 ![](img/console.png)
 ---
@@ -105,11 +105,15 @@ This pane contains various informations:
 
 - Packages: you can load (and unload) previously downloaded __packages__ (extension of R capability)
 
-- Help: online R documentation, you can search a command on it, or write in the console *?command*, ex. * ?chisq.test*
+- Help: online R documentation, you can search a command on it, or write in the console *?command*
+```{r, eval=FALSE}
+?chisq.test
+```
 ---
+class: middle
 ## Two tips
 Remember: 
-- RStudio (and other IDEs) has a very useful feature called "code completion": use the Tab key (↹) to autocomplete the full name of an object or a function, or a file/folder location
+- RStudio (as other IDEs) has a very useful feature called "code completion": use the Tab key (↹) to autocomplete the full name of an object or a function, or a file/folder location
 
 - Comments can be used to explain R code, and to make it more readable. You can also use them to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
 ---
@@ -191,6 +195,7 @@ gt_tbl
 ```
 ---
 ## Logical operators
+.pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
 Try these commands in the __console__
 ```{r eval= FALSE}
 
@@ -201,9 +206,13 @@ Try these commands in the __console__
 42 == 42
 
 42 != 71
+
+42 == 42 | 42 != 42 
+
+42 == 42 & 42 != 42
 ```
 ---
-## Logical operators
+class: hide-logo
 ```{r eval= TRUE}
 
 42 > 42
@@ -213,9 +222,23 @@ Try these commands in the __console__
 42 == 41
 
 42 != 71
+
+42 == 42 | 42 != 42
+
+42 == 42 & 42 != 42
 ```
+---
+class: middle
+##  AND OR
+<img src="img/true_muses.gif" style="width: 50%"/>
+#### OR *|*
+If at least one the statements is __TRUE__ -> __TRUE__
 
+If both are __FALSE__ -> __FALSE__
+#### AND *&*
+If two statements are both __TRUE__ -> __TRUE__
 
+If at least one of the statements is __FALSE__ -> __FALSE__
 ---
 class: middle
 ## R objects
@@ -237,7 +260,7 @@ You can call the object by its name and use it with any function
 class: middle
 ## R objects
 1) __Object__ name must start with a letter and can be a combination of letters, digits,
-period(.) and underscore(_). If it starts with period(.), it cannot be followed by a digit
+period *.* and underscore *_*. If it starts with period *.*, it cannot be followed by a digit
 
 2) __Object__ names are case-sensitive (*age*, *Age* and *AGE* are three different variables)
 
@@ -291,32 +314,40 @@ quotes, either double(“ “) or single (‘ ‘)
 
 Numbers enclosed in quotes are considered strings, not numbers and can't be used for mathematical operations
 
-Variable: single value (number or a string)
+#### Variable
+single value (number or a string)
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 name <- "string"
 ```
 
-Vector: an ordered collection of values. Create it using c() function with its elements separated by a comma
+#### Vector
+an ordered collection of values. Create it using c() function with its elements separated by a comma
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 hobbits <- c("Frodo", "Sam")
 ```
 ---
+class: middle
 ## R data types
-Numeric: decimal values
+#### Numeric
+decimal values
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 grade <- 18
 ```
-Character: letters or numbers enclosed by quotes
+#### Character
+letters or numbers enclosed by quotes
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 my_name <- “Bilbo”
 ```
 
-Logical: a variable that can have a value of TRUE or FALSE
+#### Logical
+a variable that can have a value of TRUE or FALSE
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 logic_var1 <- TRUE
 ```
 ---
-# Exercise
+## Exercise
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
 How to check the class of a variable:
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 class(objects)
@@ -331,7 +362,8 @@ class(var1)
 class(var2)
 ```
 ---
-# Practicals
+class: middle
+## Changing types
 To change the variable/vector type:
 From any type to character:
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
@@ -367,19 +399,19 @@ levels(f) # "East" "North" "West"
 ```
 By default, R sorts the levels of a factor alphabetically
 ---
-## Data frame
+## Data frames
 A table in which each __column__ contains values of one variable and each row contains
 one set of values from each column.
 ![](img/data_frame.png)
 ---
-## Data frame
+## Data frames
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
+
 To create a data frame from vectors
 ```{r eval=FALSE}
 dataframe_name <- data.frame(column1,column2,column3...)
 ```
-<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
-
-Let’s first create 3 vectors (must be of the same length)
+Let’s first create 3 vectors (they must be of the same length)
 ```{r eval=TRUE}
 hobbits <- c("Frodo","Merry","Pippin","Sam")
 age <- c(51,37,29,39)
@@ -388,7 +420,7 @@ ringbearer <- c("yes","no","no","briefly")
 df <- data.frame(hobbits,age,ringbearer)
 ```
 ---
-## Data frame
+## Data frames
 Inspect the dataframe clicking on it in the __environment tab__
 
 Or write in the console
@@ -399,8 +431,12 @@ View(df)
 gt_tbl <- gt(df)
 gt_tbl
 ```
+
+Probably better to codify the last column as a boolean variable or use only "yes" or "no":
+
+Being consistent is fundamental when using table
 ---
-## Data frame
+## Data frames
 Also it can be done in a single command
 ```{r eval=TRUE}
 data.frame(hobbits <- c("Frodo","Merry","Pippin","Sam"),
@@ -409,16 +445,16 @@ data.frame(hobbits <- c("Frodo","Merry","Pippin","Sam"),
 ```
 ---
 class: middle
-## Data frame
-To access the columns of a data frame:
+## Data frames
+To access the __columns__ of a data frame:
 ```{r eval=FALSE}
 dataframe_name$column_name
 ```
-To change the object type:
+To change the __object__ type:
 ```{r eval=FALSE}
 dataframe_name$column_name <- as.character(dataframe_name$column_name)
 ```
-You can add a column to a __data frame__ assigning a vector to it
+You can add a column to a __data frame__ assigning a __vector__ to it
 ```{r eval=FALSE}
 dataframe_name$new_column <- vector
 ```
@@ -448,6 +484,7 @@ colazione_tbl
 class: inverse, middle, center
 # How to manage external files
 ---
+class: middle
 ## Set working directory
 Every time you start a R session it will start in a specific directory
 
@@ -491,14 +528,15 @@ Merry   37    no
 Pippin  29    no
 Sam   39    briefly
 ```
-Other separators are possible but most of the case will use comma, semicolons or tab
+Other separators are possible but most of the cases will use comma, semicolons or tab
 
 ---
+class: middle
 ## Tables
 
-Another aspect is the presence of a header
+Another aspect is the presence of a __header__
 
-A first row that contains the names of the columns
+The __header__ is a first row that contains the names of the columns
 
 ```
 Hobbit,age,ringbearer
@@ -507,7 +545,7 @@ Merry,37,no
 Pippin,29,no
 Sam,39,briefly
 ```
-When you load a file check if the table contains a header
+When you load a file check if the table contains a __header__
 Possible mistakes:
 - using the first row as column names
 - using the column names as values
@@ -516,18 +554,20 @@ Possible mistakes:
 ## Open an external table
 We will work with the table *patric_redux.csv*
 
-You can download the table at the link, and save it into a folder of your choice
+You can download the table from the course gdrive, and save it into a folder of your choice
 
 https://drive.google.com/file/d/1UMmE_KZial63WJVleg4xbX6GXCtCTd45/view?usp=sharing
 
-Otherwise you can download it from the gdrive folder of the course or from github
+Otherwise you can download it from github
+
+https://github.com/tiagonardi/R_intro_2022/blob/gh-pages/patric_redux.csv
 
 Change your R __working directory__ to the folder where you have saved the table
 ```{r eval=FALSE}
 setwd("/path/to/my/directory")
 ```
 
-Or navigate to the folder using "files"
+Or navigate to the folder using __Files tab__
 ---
 ## Reading a table
 
@@ -571,7 +611,7 @@ The read __functions__ indicated with a 2 are designed for countries that use ",
 ---
 ## Exercise
 .pull.left[<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />]
-After setting up the __working directory__ read the downloaded table, and assign it to an object named patric_table 
+After setting up the __working directory__ read the downloaded table, and assign it to an object named *patric_table* 
 ```{r eval=TRUE}
 patric_table <- read.csv("patric_redux.csv",header = T,
                            sep=",")

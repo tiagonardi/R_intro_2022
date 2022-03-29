@@ -21,11 +21,10 @@ class: center, middle, inverse, title-slide
 
 
 
-
-
 class: inverse, middle, center
 # Plot design
 ---
+class: middle
 # Histograms
 A histogram is a representation of the distribution of numerical data
 
@@ -41,7 +40,7 @@ hist(db$GC.Content)
 ```
 ]
 .pull-right[
-![](R_lesson3_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 ]
 ---
 # Histograms
@@ -134,7 +133,7 @@ barplot(
 ```
 ---
 ## Barplot
-![](R_lesson3_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 ---
 ## Barplot
 
@@ -150,7 +149,7 @@ You can edit labels, as you have done before with the histogram, changing bar co
 Remember that you can check the __help__ using *?barplot*
 
 ---
-![](R_lesson3_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 ---
 ## Scatter plot
 A scatter plot shows the relationship between two numerical variables
@@ -170,21 +169,18 @@ col: a colour to be used to fill the bars
 main, xlab, ylab: these arguments give names to title and axis
 ---
 
-![](R_lesson3_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ```r
 plot(db$Genome.Length,db$Contigs, col=c(red,blue),
      col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
 ```
----
 
-## Scatter plot
-Example:
-table(db$Quality)
-db$Quality &lt;- as.factor(db$Quality)
-str(db$Quality)
-plot(db$Genome.Length,db$Contigs,xlab = "Length",ylab = "Contigs",
-main="Length-Contigs",col=c("red","black","green")[db$Quality]))
+---
+## Extra - Data visualisation
+### 
+https://socviz.co/  
+Introduction to Data visualisation, principle to use to make effective plot
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

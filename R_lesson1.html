@@ -59,7 +59,7 @@ The core of R, it's where the code is evaluated
 
 The prompt (__&gt;__ by default) indicates that the console is ready to run new code
 
-Click on the __console__, type directly the commands and press enter ↵ to run it
+Click on the __console__, type directly the commands and press enter ↵ to run them
 
 ![](img/console.png)
 ---
@@ -95,11 +95,16 @@ This pane contains various informations:
 
 - Packages: you can load (and unload) previously downloaded __packages__ (extension of R capability)
 
-- Help: online R documentation, you can search a command on it, or write in the console *?command*, ex. * ?chisq.test*
+- Help: online R documentation, you can search a command on it, or write in the console *?command*
+
+```r
+?chisq.test
+```
 ---
+class: middle
 ## Two tips
 Remember: 
-- RStudio (and other IDEs) has a very useful feature called "code completion": use the Tab key (↹) to autocomplete the full name of an object or a function, or a file/folder location
+- RStudio (as other IDEs) has a very useful feature called "code completion": use the Tab key (↹) to autocomplete the full name of an object or a function, or a file/folder location
 
 - Comments can be used to explain R code, and to make it more readable. You can also use them to prevent execution when testing alternative code. Comments starts with a #, when executing the code R will ignore anything that starts with #
 ---
@@ -115,12 +120,12 @@ To start, we can use R as a fancy calculator
 The commands are the the basic mathematical operators
 
 
-<div id="dsxvtjmbgs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uvyhxltqmp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dsxvtjmbgs .gt_table {
+#uvyhxltqmp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -145,7 +150,7 @@ The commands are the the basic mathematical operators
   border-left-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_heading {
+#uvyhxltqmp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -157,7 +162,7 @@ The commands are the the basic mathematical operators
   border-right-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_title {
+#uvyhxltqmp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -169,7 +174,7 @@ The commands are the the basic mathematical operators
   border-bottom-width: 0;
 }
 
-#dsxvtjmbgs .gt_subtitle {
+#uvyhxltqmp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -181,13 +186,13 @@ The commands are the the basic mathematical operators
   border-top-width: 0;
 }
 
-#dsxvtjmbgs .gt_bottom_border {
+#uvyhxltqmp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_col_headings {
+#uvyhxltqmp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -202,7 +207,7 @@ The commands are the the basic mathematical operators
   border-right-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_col_heading {
+#uvyhxltqmp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -222,7 +227,7 @@ The commands are the the basic mathematical operators
   overflow-x: hidden;
 }
 
-#dsxvtjmbgs .gt_column_spanner_outer {
+#uvyhxltqmp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -234,15 +239,15 @@ The commands are the the basic mathematical operators
   padding-right: 4px;
 }
 
-#dsxvtjmbgs .gt_column_spanner_outer:first-child {
+#uvyhxltqmp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dsxvtjmbgs .gt_column_spanner_outer:last-child {
+#uvyhxltqmp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dsxvtjmbgs .gt_column_spanner {
+#uvyhxltqmp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -254,7 +259,7 @@ The commands are the the basic mathematical operators
   width: 100%;
 }
 
-#dsxvtjmbgs .gt_group_heading {
+#uvyhxltqmp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -279,7 +284,7 @@ The commands are the the basic mathematical operators
   vertical-align: middle;
 }
 
-#dsxvtjmbgs .gt_empty_group_heading {
+#uvyhxltqmp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -294,15 +299,15 @@ The commands are the the basic mathematical operators
   vertical-align: middle;
 }
 
-#dsxvtjmbgs .gt_from_md > :first-child {
+#uvyhxltqmp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dsxvtjmbgs .gt_from_md > :last-child {
+#uvyhxltqmp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dsxvtjmbgs .gt_row {
+#uvyhxltqmp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -321,7 +326,7 @@ The commands are the the basic mathematical operators
   overflow-x: hidden;
 }
 
-#dsxvtjmbgs .gt_stub {
+#uvyhxltqmp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -334,7 +339,7 @@ The commands are the the basic mathematical operators
   padding-right: 5px;
 }
 
-#dsxvtjmbgs .gt_stub_row_group {
+#uvyhxltqmp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -348,11 +353,11 @@ The commands are the the basic mathematical operators
   vertical-align: top;
 }
 
-#dsxvtjmbgs .gt_row_group_first td {
+#uvyhxltqmp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dsxvtjmbgs .gt_summary_row {
+#uvyhxltqmp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -362,16 +367,16 @@ The commands are the the basic mathematical operators
   padding-right: 5px;
 }
 
-#dsxvtjmbgs .gt_first_summary_row {
+#uvyhxltqmp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_first_summary_row.thick {
+#uvyhxltqmp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dsxvtjmbgs .gt_last_summary_row {
+#uvyhxltqmp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -381,7 +386,7 @@ The commands are the the basic mathematical operators
   border-bottom-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_grand_summary_row {
+#uvyhxltqmp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -391,7 +396,7 @@ The commands are the the basic mathematical operators
   padding-right: 5px;
 }
 
-#dsxvtjmbgs .gt_first_grand_summary_row {
+#uvyhxltqmp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -401,11 +406,11 @@ The commands are the the basic mathematical operators
   border-top-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_striped {
+#uvyhxltqmp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dsxvtjmbgs .gt_table_body {
+#uvyhxltqmp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -414,7 +419,7 @@ The commands are the the basic mathematical operators
   border-bottom-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_footnotes {
+#uvyhxltqmp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -428,7 +433,7 @@ The commands are the the basic mathematical operators
   border-right-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_footnote {
+#uvyhxltqmp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -437,7 +442,7 @@ The commands are the the basic mathematical operators
   padding-right: 5px;
 }
 
-#dsxvtjmbgs .gt_sourcenotes {
+#uvyhxltqmp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -451,7 +456,7 @@ The commands are the the basic mathematical operators
   border-right-color: #D3D3D3;
 }
 
-#dsxvtjmbgs .gt_sourcenote {
+#uvyhxltqmp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -459,60 +464,60 @@ The commands are the the basic mathematical operators
   padding-right: 5px;
 }
 
-#dsxvtjmbgs .gt_left {
+#uvyhxltqmp .gt_left {
   text-align: left;
 }
 
-#dsxvtjmbgs .gt_center {
+#uvyhxltqmp .gt_center {
   text-align: center;
 }
 
-#dsxvtjmbgs .gt_right {
+#uvyhxltqmp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dsxvtjmbgs .gt_font_normal {
+#uvyhxltqmp .gt_font_normal {
   font-weight: normal;
 }
 
-#dsxvtjmbgs .gt_font_bold {
+#uvyhxltqmp .gt_font_bold {
   font-weight: bold;
 }
 
-#dsxvtjmbgs .gt_font_italic {
+#uvyhxltqmp .gt_font_italic {
   font-style: italic;
 }
 
-#dsxvtjmbgs .gt_super {
+#uvyhxltqmp .gt_super {
   font-size: 65%;
 }
 
-#dsxvtjmbgs .gt_footnote_marks {
+#uvyhxltqmp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#dsxvtjmbgs .gt_asterisk {
+#uvyhxltqmp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dsxvtjmbgs .gt_slash_mark {
+#uvyhxltqmp .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#dsxvtjmbgs .gt_fraction_numerator {
+#uvyhxltqmp .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#dsxvtjmbgs .gt_fraction_denominator {
+#uvyhxltqmp .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -605,12 +610,12 @@ The logical operators are:
 
 
 
-<div id="msokefkmlf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="myvzixesty" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#msokefkmlf .gt_table {
+#myvzixesty .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -635,7 +640,7 @@ The logical operators are:
   border-left-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_heading {
+#myvzixesty .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -647,7 +652,7 @@ The logical operators are:
   border-right-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_title {
+#myvzixesty .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -659,7 +664,7 @@ The logical operators are:
   border-bottom-width: 0;
 }
 
-#msokefkmlf .gt_subtitle {
+#myvzixesty .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -671,13 +676,13 @@ The logical operators are:
   border-top-width: 0;
 }
 
-#msokefkmlf .gt_bottom_border {
+#myvzixesty .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_col_headings {
+#myvzixesty .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -692,7 +697,7 @@ The logical operators are:
   border-right-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_col_heading {
+#myvzixesty .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -712,7 +717,7 @@ The logical operators are:
   overflow-x: hidden;
 }
 
-#msokefkmlf .gt_column_spanner_outer {
+#myvzixesty .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -724,15 +729,15 @@ The logical operators are:
   padding-right: 4px;
 }
 
-#msokefkmlf .gt_column_spanner_outer:first-child {
+#myvzixesty .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#msokefkmlf .gt_column_spanner_outer:last-child {
+#myvzixesty .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#msokefkmlf .gt_column_spanner {
+#myvzixesty .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -744,7 +749,7 @@ The logical operators are:
   width: 100%;
 }
 
-#msokefkmlf .gt_group_heading {
+#myvzixesty .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +774,7 @@ The logical operators are:
   vertical-align: middle;
 }
 
-#msokefkmlf .gt_empty_group_heading {
+#myvzixesty .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -784,15 +789,15 @@ The logical operators are:
   vertical-align: middle;
 }
 
-#msokefkmlf .gt_from_md > :first-child {
+#myvzixesty .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#msokefkmlf .gt_from_md > :last-child {
+#myvzixesty .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#msokefkmlf .gt_row {
+#myvzixesty .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -811,7 +816,7 @@ The logical operators are:
   overflow-x: hidden;
 }
 
-#msokefkmlf .gt_stub {
+#myvzixesty .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -824,7 +829,7 @@ The logical operators are:
   padding-right: 5px;
 }
 
-#msokefkmlf .gt_stub_row_group {
+#myvzixesty .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -838,11 +843,11 @@ The logical operators are:
   vertical-align: top;
 }
 
-#msokefkmlf .gt_row_group_first td {
+#myvzixesty .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#msokefkmlf .gt_summary_row {
+#myvzixesty .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -852,16 +857,16 @@ The logical operators are:
   padding-right: 5px;
 }
 
-#msokefkmlf .gt_first_summary_row {
+#myvzixesty .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_first_summary_row.thick {
+#myvzixesty .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#msokefkmlf .gt_last_summary_row {
+#myvzixesty .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -871,7 +876,7 @@ The logical operators are:
   border-bottom-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_grand_summary_row {
+#myvzixesty .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -881,7 +886,7 @@ The logical operators are:
   padding-right: 5px;
 }
 
-#msokefkmlf .gt_first_grand_summary_row {
+#myvzixesty .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -891,11 +896,11 @@ The logical operators are:
   border-top-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_striped {
+#myvzixesty .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#msokefkmlf .gt_table_body {
+#myvzixesty .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -904,7 +909,7 @@ The logical operators are:
   border-bottom-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_footnotes {
+#myvzixesty .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -918,7 +923,7 @@ The logical operators are:
   border-right-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_footnote {
+#myvzixesty .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -927,7 +932,7 @@ The logical operators are:
   padding-right: 5px;
 }
 
-#msokefkmlf .gt_sourcenotes {
+#myvzixesty .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -941,7 +946,7 @@ The logical operators are:
   border-right-color: #D3D3D3;
 }
 
-#msokefkmlf .gt_sourcenote {
+#myvzixesty .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -949,60 +954,60 @@ The logical operators are:
   padding-right: 5px;
 }
 
-#msokefkmlf .gt_left {
+#myvzixesty .gt_left {
   text-align: left;
 }
 
-#msokefkmlf .gt_center {
+#myvzixesty .gt_center {
   text-align: center;
 }
 
-#msokefkmlf .gt_right {
+#myvzixesty .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#msokefkmlf .gt_font_normal {
+#myvzixesty .gt_font_normal {
   font-weight: normal;
 }
 
-#msokefkmlf .gt_font_bold {
+#myvzixesty .gt_font_bold {
   font-weight: bold;
 }
 
-#msokefkmlf .gt_font_italic {
+#myvzixesty .gt_font_italic {
   font-style: italic;
 }
 
-#msokefkmlf .gt_super {
+#myvzixesty .gt_super {
   font-size: 65%;
 }
 
-#msokefkmlf .gt_footnote_marks {
+#myvzixesty .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#msokefkmlf .gt_asterisk {
+#myvzixesty .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#msokefkmlf .gt_slash_mark {
+#myvzixesty .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#msokefkmlf .gt_fraction_numerator {
+#myvzixesty .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#msokefkmlf .gt_fraction_denominator {
+#myvzixesty .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1042,6 +1047,7 @@ The logical operators are:
 </div>
 ---
 ## Logical operators
+.pull.left[&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;]
 Try these commands in the __console__
 
 ```r
@@ -1052,9 +1058,13 @@ Try these commands in the __console__
 42 == 42
 
 42 != 71
+
+42 == 42 | 42 != 42 
+
+42 == 42 &amp; 42 != 42
 ```
 ---
-## Logical operators
+class: hide-logo
 
 ```r
 42 &gt; 42
@@ -1088,7 +1098,33 @@ Try these commands in the __console__
 ## [1] TRUE
 ```
 
+```r
+42 == 42 | 42 != 42
+```
 
+```
+## [1] TRUE
+```
+
+```r
+42 == 42 &amp; 42 != 42
+```
+
+```
+## [1] FALSE
+```
+---
+class: middle
+##  AND OR
+&lt;img src="img/true_muses.gif" style="width: 50%"/&gt;
+#### OR *|*
+If at least one the statements is __TRUE__ -&gt; __TRUE__
+
+If both are __FALSE__ -&gt; __FALSE__
+#### AND *&amp;*
+If two statements are both __TRUE__ -&gt; __TRUE__
+
+If at least one of the statements is __FALSE__ -&gt; __FALSE__
 ---
 class: middle
 ## R objects
@@ -1111,7 +1147,7 @@ You can call the object by its name and use it with any function
 class: middle
 ## R objects
 1) __Object__ name must start with a letter and can be a combination of letters, digits,
-period(.) and underscore(_). If it starts with period(.), it cannot be followed by a digit
+period *.* and underscore *_*. If it starts with period *.*, it cannot be followed by a digit
 
 2) __Object__ names are case-sensitive (*age*, *Age* and *AGE* are three different variables)
 
@@ -1210,37 +1246,45 @@ quotes, either double(“ “) or single (‘ ‘)
 
 Numbers enclosed in quotes are considered strings, not numbers and can't be used for mathematical operations
 
-Variable: single value (number or a string)
+#### Variable
+single value (number or a string)
 
 ```r
 name &lt;- "string"
 ```
 
-Vector: an ordered collection of values. Create it using c() function with its elements separated by a comma
+#### Vector
+an ordered collection of values. Create it using c() function with its elements separated by a comma
 
 ```r
 hobbits &lt;- c("Frodo", "Sam")
 ```
 ---
+class: middle
 ## R data types
-Numeric: decimal values
+#### Numeric
+decimal values
 
 ```r
 grade &lt;- 18
 ```
-Character: letters or numbers enclosed by quotes
+#### Character
+letters or numbers enclosed by quotes
 
 ```r
 my_name &lt;- “Bilbo”
 ```
 
-Logical: a variable that can have a value of TRUE or FALSE
+#### Logical
+a variable that can have a value of TRUE or FALSE
 
 ```r
 logic_var1 &lt;- TRUE
 ```
 ---
-# Exercise
+## Exercise
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
+
 How to check the class of a variable:
 
 ```r
@@ -1257,7 +1301,8 @@ class(var1)
 class(var2)
 ```
 ---
-# Practicals
+class: middle
+## Changing types
 To change the variable/vector type:
 From any type to character:
 
@@ -1298,20 +1343,20 @@ levels(f) # "East" "North" "West"
 ```
 By default, R sorts the levels of a factor alphabetically
 ---
-## Data frame
+## Data frames
 A table in which each __column__ contains values of one variable and each row contains
 one set of values from each column.
 ![](img/data_frame.png)
 ---
-## Data frame
+## Data frames
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
+
 To create a data frame from vectors
 
 ```r
 dataframe_name &lt;- data.frame(column1,column2,column3...)
 ```
-&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
-
-Let’s first create 3 vectors (must be of the same length)
+Let’s first create 3 vectors (they must be of the same length)
 
 ```r
 hobbits &lt;- c("Frodo","Merry","Pippin","Sam")
@@ -1321,7 +1366,7 @@ ringbearer &lt;- c("yes","no","no","briefly")
 df &lt;- data.frame(hobbits,age,ringbearer)
 ```
 ---
-## Data frame
+## Data frames
 Inspect the dataframe clicking on it in the __environment tab__
 
 Or write in the console
@@ -1329,12 +1374,12 @@ Or write in the console
 ```r
 View(df)
 ```
-<div id="ahhziqwbbw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dtjxbakfqz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ahhziqwbbw .gt_table {
+#dtjxbakfqz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1359,7 +1404,7 @@ View(df)
   border-left-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_heading {
+#dtjxbakfqz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1371,7 +1416,7 @@ View(df)
   border-right-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_title {
+#dtjxbakfqz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1383,7 +1428,7 @@ View(df)
   border-bottom-width: 0;
 }
 
-#ahhziqwbbw .gt_subtitle {
+#dtjxbakfqz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1395,13 +1440,13 @@ View(df)
   border-top-width: 0;
 }
 
-#ahhziqwbbw .gt_bottom_border {
+#dtjxbakfqz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_col_headings {
+#dtjxbakfqz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1416,7 +1461,7 @@ View(df)
   border-right-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_col_heading {
+#dtjxbakfqz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1436,7 +1481,7 @@ View(df)
   overflow-x: hidden;
 }
 
-#ahhziqwbbw .gt_column_spanner_outer {
+#dtjxbakfqz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1448,15 +1493,15 @@ View(df)
   padding-right: 4px;
 }
 
-#ahhziqwbbw .gt_column_spanner_outer:first-child {
+#dtjxbakfqz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ahhziqwbbw .gt_column_spanner_outer:last-child {
+#dtjxbakfqz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ahhziqwbbw .gt_column_spanner {
+#dtjxbakfqz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1468,7 +1513,7 @@ View(df)
   width: 100%;
 }
 
-#ahhziqwbbw .gt_group_heading {
+#dtjxbakfqz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1493,7 +1538,7 @@ View(df)
   vertical-align: middle;
 }
 
-#ahhziqwbbw .gt_empty_group_heading {
+#dtjxbakfqz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1508,15 +1553,15 @@ View(df)
   vertical-align: middle;
 }
 
-#ahhziqwbbw .gt_from_md > :first-child {
+#dtjxbakfqz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ahhziqwbbw .gt_from_md > :last-child {
+#dtjxbakfqz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ahhziqwbbw .gt_row {
+#dtjxbakfqz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1535,7 +1580,7 @@ View(df)
   overflow-x: hidden;
 }
 
-#ahhziqwbbw .gt_stub {
+#dtjxbakfqz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1548,7 +1593,7 @@ View(df)
   padding-right: 5px;
 }
 
-#ahhziqwbbw .gt_stub_row_group {
+#dtjxbakfqz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1562,11 +1607,11 @@ View(df)
   vertical-align: top;
 }
 
-#ahhziqwbbw .gt_row_group_first td {
+#dtjxbakfqz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ahhziqwbbw .gt_summary_row {
+#dtjxbakfqz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1576,16 +1621,16 @@ View(df)
   padding-right: 5px;
 }
 
-#ahhziqwbbw .gt_first_summary_row {
+#dtjxbakfqz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_first_summary_row.thick {
+#dtjxbakfqz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ahhziqwbbw .gt_last_summary_row {
+#dtjxbakfqz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1595,7 +1640,7 @@ View(df)
   border-bottom-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_grand_summary_row {
+#dtjxbakfqz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1605,7 +1650,7 @@ View(df)
   padding-right: 5px;
 }
 
-#ahhziqwbbw .gt_first_grand_summary_row {
+#dtjxbakfqz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1615,11 +1660,11 @@ View(df)
   border-top-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_striped {
+#dtjxbakfqz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ahhziqwbbw .gt_table_body {
+#dtjxbakfqz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1628,7 +1673,7 @@ View(df)
   border-bottom-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_footnotes {
+#dtjxbakfqz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1642,7 +1687,7 @@ View(df)
   border-right-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_footnote {
+#dtjxbakfqz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1651,7 +1696,7 @@ View(df)
   padding-right: 5px;
 }
 
-#ahhziqwbbw .gt_sourcenotes {
+#dtjxbakfqz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1665,7 +1710,7 @@ View(df)
   border-right-color: #D3D3D3;
 }
 
-#ahhziqwbbw .gt_sourcenote {
+#dtjxbakfqz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1673,60 +1718,60 @@ View(df)
   padding-right: 5px;
 }
 
-#ahhziqwbbw .gt_left {
+#dtjxbakfqz .gt_left {
   text-align: left;
 }
 
-#ahhziqwbbw .gt_center {
+#dtjxbakfqz .gt_center {
   text-align: center;
 }
 
-#ahhziqwbbw .gt_right {
+#dtjxbakfqz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ahhziqwbbw .gt_font_normal {
+#dtjxbakfqz .gt_font_normal {
   font-weight: normal;
 }
 
-#ahhziqwbbw .gt_font_bold {
+#dtjxbakfqz .gt_font_bold {
   font-weight: bold;
 }
 
-#ahhziqwbbw .gt_font_italic {
+#dtjxbakfqz .gt_font_italic {
   font-style: italic;
 }
 
-#ahhziqwbbw .gt_super {
+#dtjxbakfqz .gt_super {
   font-size: 65%;
 }
 
-#ahhziqwbbw .gt_footnote_marks {
+#dtjxbakfqz .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ahhziqwbbw .gt_asterisk {
+#dtjxbakfqz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ahhziqwbbw .gt_slash_mark {
+#dtjxbakfqz .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ahhziqwbbw .gt_fraction_numerator {
+#dtjxbakfqz .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ahhziqwbbw .gt_fraction_denominator {
+#dtjxbakfqz .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1759,8 +1804,12 @@ View(df)
   
 </table>
 </div>
+
+Probably better to codify the last column as a boolean variable or use only "yes" or "no":
+
+Being consistent is fundamental when using table
 ---
-## Data frame
+## Data frames
 Also it can be done in a single command
 
 ```r
@@ -1783,18 +1832,18 @@ data.frame(hobbits &lt;- c("Frodo","Merry","Pippin","Sam"),
 ```
 ---
 class: middle
-## Data frame
-To access the columns of a data frame:
+## Data frames
+To access the __columns__ of a data frame:
 
 ```r
 dataframe_name$column_name
 ```
-To change the object type:
+To change the __object__ type:
 
 ```r
 dataframe_name$column_name &lt;- as.character(dataframe_name$column_name)
 ```
-You can add a column to a __data frame__ assigning a vector to it
+You can add a column to a __data frame__ assigning a __vector__ to it
 
 ```r
 dataframe_name$new_column &lt;- vector
@@ -1818,12 +1867,12 @@ Add it to the data frame and inspect it
 breakfast_taken &lt;- c(2,3,2,4)
 df$breakfasts &lt;- breakfast_taken
 ```
-<div id="ukmdnanzpq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="shgprvgnzc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ukmdnanzpq .gt_table {
+#shgprvgnzc .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1848,7 +1897,7 @@ df$breakfasts &lt;- breakfast_taken
   border-left-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_heading {
+#shgprvgnzc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1860,7 +1909,7 @@ df$breakfasts &lt;- breakfast_taken
   border-right-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_title {
+#shgprvgnzc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1872,7 +1921,7 @@ df$breakfasts &lt;- breakfast_taken
   border-bottom-width: 0;
 }
 
-#ukmdnanzpq .gt_subtitle {
+#shgprvgnzc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1884,13 +1933,13 @@ df$breakfasts &lt;- breakfast_taken
   border-top-width: 0;
 }
 
-#ukmdnanzpq .gt_bottom_border {
+#shgprvgnzc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_col_headings {
+#shgprvgnzc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1905,7 +1954,7 @@ df$breakfasts &lt;- breakfast_taken
   border-right-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_col_heading {
+#shgprvgnzc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1925,7 +1974,7 @@ df$breakfasts &lt;- breakfast_taken
   overflow-x: hidden;
 }
 
-#ukmdnanzpq .gt_column_spanner_outer {
+#shgprvgnzc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1937,15 +1986,15 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 4px;
 }
 
-#ukmdnanzpq .gt_column_spanner_outer:first-child {
+#shgprvgnzc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ukmdnanzpq .gt_column_spanner_outer:last-child {
+#shgprvgnzc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ukmdnanzpq .gt_column_spanner {
+#shgprvgnzc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1957,7 +2006,7 @@ df$breakfasts &lt;- breakfast_taken
   width: 100%;
 }
 
-#ukmdnanzpq .gt_group_heading {
+#shgprvgnzc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1982,7 +2031,7 @@ df$breakfasts &lt;- breakfast_taken
   vertical-align: middle;
 }
 
-#ukmdnanzpq .gt_empty_group_heading {
+#shgprvgnzc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1997,15 +2046,15 @@ df$breakfasts &lt;- breakfast_taken
   vertical-align: middle;
 }
 
-#ukmdnanzpq .gt_from_md > :first-child {
+#shgprvgnzc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ukmdnanzpq .gt_from_md > :last-child {
+#shgprvgnzc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ukmdnanzpq .gt_row {
+#shgprvgnzc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2024,7 +2073,7 @@ df$breakfasts &lt;- breakfast_taken
   overflow-x: hidden;
 }
 
-#ukmdnanzpq .gt_stub {
+#shgprvgnzc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2037,7 +2086,7 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 5px;
 }
 
-#ukmdnanzpq .gt_stub_row_group {
+#shgprvgnzc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2051,11 +2100,11 @@ df$breakfasts &lt;- breakfast_taken
   vertical-align: top;
 }
 
-#ukmdnanzpq .gt_row_group_first td {
+#shgprvgnzc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ukmdnanzpq .gt_summary_row {
+#shgprvgnzc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2065,16 +2114,16 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 5px;
 }
 
-#ukmdnanzpq .gt_first_summary_row {
+#shgprvgnzc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_first_summary_row.thick {
+#shgprvgnzc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ukmdnanzpq .gt_last_summary_row {
+#shgprvgnzc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2084,7 +2133,7 @@ df$breakfasts &lt;- breakfast_taken
   border-bottom-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_grand_summary_row {
+#shgprvgnzc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2094,7 +2143,7 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 5px;
 }
 
-#ukmdnanzpq .gt_first_grand_summary_row {
+#shgprvgnzc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2104,11 +2153,11 @@ df$breakfasts &lt;- breakfast_taken
   border-top-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_striped {
+#shgprvgnzc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ukmdnanzpq .gt_table_body {
+#shgprvgnzc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2117,7 +2166,7 @@ df$breakfasts &lt;- breakfast_taken
   border-bottom-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_footnotes {
+#shgprvgnzc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2131,7 +2180,7 @@ df$breakfasts &lt;- breakfast_taken
   border-right-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_footnote {
+#shgprvgnzc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2140,7 +2189,7 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 5px;
 }
 
-#ukmdnanzpq .gt_sourcenotes {
+#shgprvgnzc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2154,7 +2203,7 @@ df$breakfasts &lt;- breakfast_taken
   border-right-color: #D3D3D3;
 }
 
-#ukmdnanzpq .gt_sourcenote {
+#shgprvgnzc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2162,60 +2211,60 @@ df$breakfasts &lt;- breakfast_taken
   padding-right: 5px;
 }
 
-#ukmdnanzpq .gt_left {
+#shgprvgnzc .gt_left {
   text-align: left;
 }
 
-#ukmdnanzpq .gt_center {
+#shgprvgnzc .gt_center {
   text-align: center;
 }
 
-#ukmdnanzpq .gt_right {
+#shgprvgnzc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ukmdnanzpq .gt_font_normal {
+#shgprvgnzc .gt_font_normal {
   font-weight: normal;
 }
 
-#ukmdnanzpq .gt_font_bold {
+#shgprvgnzc .gt_font_bold {
   font-weight: bold;
 }
 
-#ukmdnanzpq .gt_font_italic {
+#shgprvgnzc .gt_font_italic {
   font-style: italic;
 }
 
-#ukmdnanzpq .gt_super {
+#shgprvgnzc .gt_super {
   font-size: 65%;
 }
 
-#ukmdnanzpq .gt_footnote_marks {
+#shgprvgnzc .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ukmdnanzpq .gt_asterisk {
+#shgprvgnzc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ukmdnanzpq .gt_slash_mark {
+#shgprvgnzc .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ukmdnanzpq .gt_fraction_numerator {
+#shgprvgnzc .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ukmdnanzpq .gt_fraction_denominator {
+#shgprvgnzc .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2257,6 +2306,7 @@ df$breakfasts &lt;- breakfast_taken
 class: inverse, middle, center
 # How to manage external files
 ---
+class: middle
 ## Set working directory
 Every time you start a R session it will start in a specific directory
 
@@ -2276,7 +2326,7 @@ Use *../* to go to the parent directory (the folder containing your current fold
 ## Set working directory
 You can also set up the directory through the graphical interface: 
 
-click on the three dots in the __files tab__ to select a directory
+Click on the three dots in the __files tab__ to select a directory
 ![](img/select_folder.png)
 
 And then click on "More" on the __files tab__ and select *Set As Working Directory*
@@ -2302,14 +2352,15 @@ Merry   37    no
 Pippin  29    no
 Sam   39    briefly
 ```
-Other separators are possible but most of the case will use comma, semicolons or tab
+Other separators are possible but most of the cases will use comma, semicolons or tab
 
 ---
+class: middle
 ## Tables
 
-Another aspect is the presence of a header
+Another aspect is the presence of a __header__
 
-A first row that contains the names of the columns
+The __header__ is a first row that contains the names of the columns
 
 ```
 Hobbit,age,ringbearer
@@ -2318,7 +2369,7 @@ Merry,37,no
 Pippin,29,no
 Sam,39,briefly
 ```
-When you load a file check if the table contains a header
+When you load a file check if the table contains a __header__
 Possible mistakes:
 - using the first row as column names
 - using the column names as values
@@ -2327,11 +2378,13 @@ Possible mistakes:
 ## Open an external table
 We will work with the table *patric_redux.csv*
 
-You can download the table at the link, and save it into a folder of your choice
+You can download the table from the course gdrive, and save it into a folder of your choice
 
 https://drive.google.com/file/d/1UMmE_KZial63WJVleg4xbX6GXCtCTd45/view?usp=sharing
 
-Otherwise you can download it from the gdrive folder of the course or from github
+Otherwise you can download it from github
+
+https://github.com/tiagonardi/R_intro_2022/blob/gh-pages/patric_redux.csv
 
 Change your R __working directory__ to the folder where you have saved the table
 
@@ -2366,12 +2419,12 @@ There are various commands that can be used to read a table in R
 They are all variation of the more general command *read.table*, with different defaults
 
 
-<div id="tsjzjmikdi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="mehgmwnwpr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tsjzjmikdi .gt_table {
+#mehgmwnwpr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2396,7 +2449,7 @@ They are all variation of the more general command *read.table*, with different 
   border-left-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_heading {
+#mehgmwnwpr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2408,7 +2461,7 @@ They are all variation of the more general command *read.table*, with different 
   border-right-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_title {
+#mehgmwnwpr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2420,7 +2473,7 @@ They are all variation of the more general command *read.table*, with different 
   border-bottom-width: 0;
 }
 
-#tsjzjmikdi .gt_subtitle {
+#mehgmwnwpr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2432,13 +2485,13 @@ They are all variation of the more general command *read.table*, with different 
   border-top-width: 0;
 }
 
-#tsjzjmikdi .gt_bottom_border {
+#mehgmwnwpr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_col_headings {
+#mehgmwnwpr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2453,7 +2506,7 @@ They are all variation of the more general command *read.table*, with different 
   border-right-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_col_heading {
+#mehgmwnwpr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2473,7 +2526,7 @@ They are all variation of the more general command *read.table*, with different 
   overflow-x: hidden;
 }
 
-#tsjzjmikdi .gt_column_spanner_outer {
+#mehgmwnwpr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2485,15 +2538,15 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 4px;
 }
 
-#tsjzjmikdi .gt_column_spanner_outer:first-child {
+#mehgmwnwpr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tsjzjmikdi .gt_column_spanner_outer:last-child {
+#mehgmwnwpr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tsjzjmikdi .gt_column_spanner {
+#mehgmwnwpr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2505,7 +2558,7 @@ They are all variation of the more general command *read.table*, with different 
   width: 100%;
 }
 
-#tsjzjmikdi .gt_group_heading {
+#mehgmwnwpr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2530,7 +2583,7 @@ They are all variation of the more general command *read.table*, with different 
   vertical-align: middle;
 }
 
-#tsjzjmikdi .gt_empty_group_heading {
+#mehgmwnwpr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2545,15 +2598,15 @@ They are all variation of the more general command *read.table*, with different 
   vertical-align: middle;
 }
 
-#tsjzjmikdi .gt_from_md > :first-child {
+#mehgmwnwpr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tsjzjmikdi .gt_from_md > :last-child {
+#mehgmwnwpr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tsjzjmikdi .gt_row {
+#mehgmwnwpr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2572,7 +2625,7 @@ They are all variation of the more general command *read.table*, with different 
   overflow-x: hidden;
 }
 
-#tsjzjmikdi .gt_stub {
+#mehgmwnwpr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2585,7 +2638,7 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 5px;
 }
 
-#tsjzjmikdi .gt_stub_row_group {
+#mehgmwnwpr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2599,11 +2652,11 @@ They are all variation of the more general command *read.table*, with different 
   vertical-align: top;
 }
 
-#tsjzjmikdi .gt_row_group_first td {
+#mehgmwnwpr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tsjzjmikdi .gt_summary_row {
+#mehgmwnwpr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2613,16 +2666,16 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 5px;
 }
 
-#tsjzjmikdi .gt_first_summary_row {
+#mehgmwnwpr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_first_summary_row.thick {
+#mehgmwnwpr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tsjzjmikdi .gt_last_summary_row {
+#mehgmwnwpr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2632,7 +2685,7 @@ They are all variation of the more general command *read.table*, with different 
   border-bottom-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_grand_summary_row {
+#mehgmwnwpr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2642,7 +2695,7 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 5px;
 }
 
-#tsjzjmikdi .gt_first_grand_summary_row {
+#mehgmwnwpr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2652,11 +2705,11 @@ They are all variation of the more general command *read.table*, with different 
   border-top-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_striped {
+#mehgmwnwpr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tsjzjmikdi .gt_table_body {
+#mehgmwnwpr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2665,7 +2718,7 @@ They are all variation of the more general command *read.table*, with different 
   border-bottom-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_footnotes {
+#mehgmwnwpr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2679,7 +2732,7 @@ They are all variation of the more general command *read.table*, with different 
   border-right-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_footnote {
+#mehgmwnwpr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2688,7 +2741,7 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 5px;
 }
 
-#tsjzjmikdi .gt_sourcenotes {
+#mehgmwnwpr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2702,7 +2755,7 @@ They are all variation of the more general command *read.table*, with different 
   border-right-color: #D3D3D3;
 }
 
-#tsjzjmikdi .gt_sourcenote {
+#mehgmwnwpr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2710,60 +2763,60 @@ They are all variation of the more general command *read.table*, with different 
   padding-right: 5px;
 }
 
-#tsjzjmikdi .gt_left {
+#mehgmwnwpr .gt_left {
   text-align: left;
 }
 
-#tsjzjmikdi .gt_center {
+#mehgmwnwpr .gt_center {
   text-align: center;
 }
 
-#tsjzjmikdi .gt_right {
+#mehgmwnwpr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tsjzjmikdi .gt_font_normal {
+#mehgmwnwpr .gt_font_normal {
   font-weight: normal;
 }
 
-#tsjzjmikdi .gt_font_bold {
+#mehgmwnwpr .gt_font_bold {
   font-weight: bold;
 }
 
-#tsjzjmikdi .gt_font_italic {
+#mehgmwnwpr .gt_font_italic {
   font-style: italic;
 }
 
-#tsjzjmikdi .gt_super {
+#mehgmwnwpr .gt_super {
   font-size: 65%;
 }
 
-#tsjzjmikdi .gt_footnote_marks {
+#mehgmwnwpr .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#tsjzjmikdi .gt_asterisk {
+#mehgmwnwpr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tsjzjmikdi .gt_slash_mark {
+#mehgmwnwpr .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#tsjzjmikdi .gt_fraction_numerator {
+#mehgmwnwpr .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#tsjzjmikdi .gt_fraction_denominator {
+#mehgmwnwpr .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
