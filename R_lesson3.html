@@ -26,9 +26,11 @@ class: inverse, middle, center
 ---
 class: middle
 # Histograms
-A histogram is a representation of the distribution of numerical data
+A histogram is a representation of the distribution of __numerical__ data
 
-The entire range of values is divided into intervals and then the function counts how many values fall into each interval
+The entire range of values is divided into __intervals__ (bins) and then the function counts how many values fall into each interval
+
+The wideness of the column is dependant of the choosen interval
 ---
 # Histograms
 .pull-left[
@@ -40,7 +42,7 @@ hist(db$GC.Content)
 ```
 ]
 .pull-right[
-![](R_lesson3_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
 ]
 ---
 # Histograms
@@ -54,13 +56,13 @@ hist(dataframe_name$column,
 ```
 breaks: a single number giving the number of cells for the histogram
 
-col: a colour to be used to fill the bars
+col: a colour to be used to fill the bars, you can use the name of ("lightblue", "red", see http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf ) the RGB or the hex format
 
 border: the color of the border around the bars. The default is to use the standard foreground color
 
 main, xlab, ylab: these arguments give labels to title and axis
 ---
-class: inverse
+class: inverse, middle
 # Exercise
 .pull-left[
 
@@ -87,6 +89,7 @@ hist(db$Genome.Length, breaks = 20,
      col = "#32577F",border="black",xlab="Length")
 ```
 ---
+class: middle
 ## Saving graphs
 To save a graph
 
@@ -100,6 +103,7 @@ This will save whatever you draw (*graph_command*) in your __present working dir
 
 You can also use the *export* function in the __Plot tab__
 ---
+class: middle
 ## Barplot
 A barplot shows the relationship between categorical variables. Each variable is
 represented as a bar, and the bar size represents its numeric value
@@ -133,8 +137,9 @@ barplot(
 ```
 ---
 ## Barplot
-![](R_lesson3_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](R_lesson3_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 ---
+class: middle
 ## Barplot
 
 ```r
@@ -149,12 +154,34 @@ You can edit labels, as you have done before with the histogram, changing bar co
 Remember that you can check the __help__ using *?barplot*
 
 ---
-![](R_lesson3_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+class: middle
+## A modified barplot
+.pull-left[
+![](R_lesson3_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+]
+
+.pull-right[
+
+```r
+barplot(height=db_sub$PATRIC.CDS,
+        names=db_sub$ID,
+        horiz=T,
+        width=c(0.1,0.2,0.3,
+                1.4,0.3),
+        col=c("#00A0B0",
+              "#6A4A3C",
+              "#CC333F",
+              "#EB6841",
+              "#EDC951"))
+```
+  
+]
 ---
 ## Scatter plot
-A scatter plot shows the relationship between two numerical variables
+A scatter plot shows the relationship between __two numerical__ variables
 
-The data are displayed as a collection of points, each having one variable determining the position on the horizontal axis and the other variable determining the position on the vertical axis
+Displayed as a collection of points, each having one variable determining x axis and the other variable determining the position on the y axis
 
 In R, we can use the generic function *plot()*
 
@@ -162,11 +189,9 @@ In R, we can use the generic function *plot()*
 plot(x,y, col = "colour_name",
 main = "Title", xlab = "x_name", ylab = "y_name")
 ```
-x,y: the two numerical variables
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
 
-col: a colour to be used to fill the bars
-
-main, xlab, ylab: these arguments give names to title and axis
+Draw a scatterplot with *Genome.Length* and *Contigs* number as the numerical variables
 ---
 
 ![](R_lesson3_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
@@ -175,12 +200,61 @@ main, xlab, ylab: these arguments give names to title and axis
 plot(db$Genome.Length,db$Contigs, col=c(red,blue),
      col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
 ```
+---
+class: middle
+## Exercises
+Make a histogram of the *PATRIC.CDS* 
+
+Make a barplot to draw the number of samples for each *Species*
+
+Draw a scatterplot using the *GC.Content* and *PATRIC.CDS*
 
 ---
+class: middle
+## Extra - Plotting
+.pull-left[
+You can chose how to draw points using different __pch__ values
+
+Combine shapes and colours to make the plot more readable
+
+]
+.pull-right[![](img/pch.png)]
+
+---
+class: middle
+## Extra - Plotting
+.pull-left[
+The same is valid for __lty__, used to specifcy the type of lines in a plot]
+.pull-right[![](img/lty.png)]
+---
+class: middle
 ## Extra - Data visualisation
-### 
+You can manipulate single elements in the plot
+
+You can add lines, curves, labels and other elements
+
+For example you can add a line at a specific value
+
+```r
+abline(h = 1, lty = 2)
+```
+
+---
+class: middle
+## Extra - resources
+You can control many settings and aspect in the graphical output using the library __ggplot2__
+
+This library is extremely useful for data visualisation
+
+https://r-graphics.org/ is a good reference for what you make with __ggplot2__
+---
+class: middle
+## Extra - Other resources
+
 https://socviz.co/  
-Introduction to Data visualisation, principle to use to make effective plot
+Introduction to Data visualisation, principles to use to make effective plots
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

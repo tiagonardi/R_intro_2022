@@ -23,14 +23,18 @@ class: center, middle, inverse, title-slide
 
 
 
+class: middle
 ## Vectors
-
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
 
 Let’s first create a __vector__, with 5 __elements__:
 
 ```r
 x &lt;- c(2, 5, 8, 1, 2)
 ```
+---
+class: middle
+## Vectors
 You can access elements inside a vector using their index position, using the square brackets *[ ]*
 
 
@@ -53,6 +57,8 @@ x[c(1,2)] # show the first and second element
 ---
 class: middle
 ## Indexing the vectors
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
+
 Try these operations on your vector
 
 ```r
@@ -73,7 +79,7 @@ x[3:5] # show all elements from a starting index (3) to an ending index (5) (sli
 ```
 ## [1] 8 1 2
 ```
-You can combine both methods
+You can combine     methods
 
 ```r
 x[c(1,3:5)]
@@ -82,7 +88,7 @@ x[c(1,3:5)]
 ```
 ## [1] 2 8 1 2
 ```
-You can get all the elements barring the elements with a minus before it *-*
+You can get exclude elements putting a minus before them *-*
 
 ```r
 x[-2]
@@ -93,17 +99,19 @@ x[-2]
 ```
 ---
 ## Indexing the vectors
-Chose a numerical value and try these commands with you vector
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
+
+Chose a numerical value and try these commands with you __vector__
 
 ```r
 vector[vector &gt; value]
 vector &gt; value
 ```
-Why these results are different?
+Why these results are different? Can you guess it?
 
-Can you guess it?
+--
 
-Write also a vector with only boolean values (TRUE/FALSE) with the same length of your first vector
+Write also a __vector__ with only __boolean__ values (TRUE/FALSE) with the same length of your first vector and use it to slice the first __vector__
 
 ```r
 vector2 &lt;- c(FALSE,TRUE,TRUE,FALSE,FALSE)
@@ -168,7 +176,7 @@ x[3]
 
 ---
 ## Rows and columns
-Let's load the usual table (remember the working directory)
+Let's load the usual table (remember to set up the __working directory__)
 
 ```r
 db &lt;- read.csv("patric_redux.csv", header = T)
@@ -193,11 +201,24 @@ head(db)
 ## 6             Erebor Dragon
 ```
 ---
-## Rows and columns
+## Rows and columns - Exercise
+To get a column use the column number like a vector index
 
+```r
+dataframe[n]
+```
 To change the name use the *colnames()* functions
 
-To get a column use the column number like a vector index
+```r
+colnames(dataframe[n]) &lt;- "new column name"
+```
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
+
+Change the name of one column and look at the differences
+
+---
+class: middle
+## Rows and columns - Exercise
 
 ```r
 colnames(db1) # It shows column names
@@ -221,7 +242,7 @@ colnames(db1)
 ```
 
 ```r
-colnames(db1)[4] # Get only the fourth column
+colnames(db1)[4] # Get only the name of the fourth column
 ```
 
 ```
@@ -230,7 +251,7 @@ colnames(db1)[4] # Get only the fourth column
 
 ---
 ## Rows and columns
-How to set row names:
+To set row names:
 
 ```r
 rownames(db1) # It shows row names
@@ -295,6 +316,7 @@ head(db1) # see the differences between this and the previous table
 ## 24H               Erebor Dragon
 ```
 ---
+class: middle
 ## Cleaning up
 To remove a column assign a __NULL__ value to it
 
@@ -482,12 +504,12 @@ db[,c(4,5)] #All rows and the 4th and 5th column
 ---
 class: inverse, middle
 .pull-left[
-## Remember the typeof() function?
+# Remember the typeof() function?
 ]
 .pull-right[![](img/ein2.gif)]
 ---
 ## Object type
-With the various form of extraction you get similar results but different data types
+With the various forms of extraction you get similar results but different data types
 
 ```r
 dataframe_name[column_index]
@@ -496,9 +518,9 @@ dataframe_name[, column_index] # Pay attention to the comma
 dataframe_name$column_index
 dataframe_name$column_index[row_index]
 ```
-Chose a column from the database and try the diffferent options
+Choose a __column__ and try the different options
 
-Assign these values to a new __objects__
+Assign these values to a new __object__
 
 Look at how they appear in the environment
 
@@ -596,8 +618,9 @@ db1[1]
 ## PY-77                Yersinia pestis
 ```
 ---
+class: middle
 ## Not Available
-In R, missing values are represented by the symbol NA (not available)
+In R, missing values are represented by the symbol __NA__ (not available)
 
 To test for missing values
 
@@ -641,22 +664,51 @@ class: middle
 *gsub* takes an input value and replace it with another one
 
 ```r
+vector &lt;- gsub("Old string to replace","New string", vector )
+```
+You can replace the original vector, or assign it to a new vector
+&lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" /&gt;
+
+Try to replace something from the column *Isolation_location* and use *table* to inspect the results
+---
+
+```r
 db1$Isolation_location&lt;-gsub("Barad-dur",
                              "Varallo Pombia",
                              db1$Isolation_location)
+table(db1$Isolation_location)
 ```
-the word “Barad-dur” is replaced with “Varallo Pombia” and save the replaced column in the dataframe
 
-Try to replace something from the column *Source*
+```
+## 
+##         Erebor         Gondor          Harad       Isengard     Lothlorien 
+##              4             11              4              2              6 
+##       Mirkwood         Mordor      Rivendell          Rohan      The Shire 
+##              1              3              3              8             13 
+## Varallo Pombia 
+##              3
+```
 ---
 class: middle
 ## Data frame functions
-*unique* identify and eliminate duplicated values in an object. The object can be a vector or
-a data frame. On data frames the function removes duplicated rows
+*unique* identify and eliminate duplicated values in an object. The object can be a vector or a data frame. On data frames the function removes duplicated rows
 
 ```r
 country &lt;- db1$Isolation_location
 unique_country &lt;- unique(country)
+length(country)
+```
+
+```
+## [1] 58
+```
+
+```r
+length(unique_country)
+```
+
+```
+## [1] 11
 ```
 ---
 class: middle
@@ -673,7 +725,7 @@ To extract the first location that has the value of interest:
 ```r
 match("value", dataframe_name$column_name)
 ```
-Use these functions to see if one value of you choice is present in the column *Isolation_location*, and see which row has the first occurrence 
+Use these functions to see if one value of your choice is present in the column *Isolation_location*, and see which row has the first occurrence 
 ---
 class: middle
 ## Functions on data frames
@@ -735,12 +787,12 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
 ---
 # Logical operators
 
-<div id="jxsxpzzzmk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ulasdvdtvs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jxsxpzzzmk .gt_table {
+#ulasdvdtvs .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -765,7 +817,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-left-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_heading {
+#ulasdvdtvs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -777,7 +829,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_title {
+#ulasdvdtvs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -789,7 +841,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-width: 0;
 }
 
-#jxsxpzzzmk .gt_subtitle {
+#ulasdvdtvs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -801,13 +853,13 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-top-width: 0;
 }
 
-#jxsxpzzzmk .gt_bottom_border {
+#ulasdvdtvs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_col_headings {
+#ulasdvdtvs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -822,7 +874,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_col_heading {
+#ulasdvdtvs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -842,7 +894,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   overflow-x: hidden;
 }
 
-#jxsxpzzzmk .gt_column_spanner_outer {
+#ulasdvdtvs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -854,15 +906,15 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 4px;
 }
 
-#jxsxpzzzmk .gt_column_spanner_outer:first-child {
+#ulasdvdtvs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jxsxpzzzmk .gt_column_spanner_outer:last-child {
+#ulasdvdtvs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jxsxpzzzmk .gt_column_spanner {
+#ulasdvdtvs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -874,7 +926,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   width: 100%;
 }
 
-#jxsxpzzzmk .gt_group_heading {
+#ulasdvdtvs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -899,7 +951,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: middle;
 }
 
-#jxsxpzzzmk .gt_empty_group_heading {
+#ulasdvdtvs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -914,15 +966,15 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: middle;
 }
 
-#jxsxpzzzmk .gt_from_md > :first-child {
+#ulasdvdtvs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jxsxpzzzmk .gt_from_md > :last-child {
+#ulasdvdtvs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jxsxpzzzmk .gt_row {
+#ulasdvdtvs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,7 +993,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   overflow-x: hidden;
 }
 
-#jxsxpzzzmk .gt_stub {
+#ulasdvdtvs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -954,7 +1006,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#jxsxpzzzmk .gt_stub_row_group {
+#ulasdvdtvs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -968,11 +1020,11 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: top;
 }
 
-#jxsxpzzzmk .gt_row_group_first td {
+#ulasdvdtvs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jxsxpzzzmk .gt_summary_row {
+#ulasdvdtvs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -982,16 +1034,16 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#jxsxpzzzmk .gt_first_summary_row {
+#ulasdvdtvs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_first_summary_row.thick {
+#ulasdvdtvs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jxsxpzzzmk .gt_last_summary_row {
+#ulasdvdtvs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1001,7 +1053,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_grand_summary_row {
+#ulasdvdtvs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1011,7 +1063,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#jxsxpzzzmk .gt_first_grand_summary_row {
+#ulasdvdtvs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1021,11 +1073,11 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-top-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_striped {
+#ulasdvdtvs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jxsxpzzzmk .gt_table_body {
+#ulasdvdtvs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1034,7 +1086,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_footnotes {
+#ulasdvdtvs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1048,7 +1100,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_footnote {
+#ulasdvdtvs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1057,7 +1109,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#jxsxpzzzmk .gt_sourcenotes {
+#ulasdvdtvs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1071,7 +1123,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#jxsxpzzzmk .gt_sourcenote {
+#ulasdvdtvs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1079,60 +1131,60 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#jxsxpzzzmk .gt_left {
+#ulasdvdtvs .gt_left {
   text-align: left;
 }
 
-#jxsxpzzzmk .gt_center {
+#ulasdvdtvs .gt_center {
   text-align: center;
 }
 
-#jxsxpzzzmk .gt_right {
+#ulasdvdtvs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jxsxpzzzmk .gt_font_normal {
+#ulasdvdtvs .gt_font_normal {
   font-weight: normal;
 }
 
-#jxsxpzzzmk .gt_font_bold {
+#ulasdvdtvs .gt_font_bold {
   font-weight: bold;
 }
 
-#jxsxpzzzmk .gt_font_italic {
+#ulasdvdtvs .gt_font_italic {
   font-style: italic;
 }
 
-#jxsxpzzzmk .gt_super {
+#ulasdvdtvs .gt_super {
   font-size: 65%;
 }
 
-#jxsxpzzzmk .gt_footnote_marks {
+#ulasdvdtvs .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jxsxpzzzmk .gt_asterisk {
+#ulasdvdtvs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jxsxpzzzmk .gt_slash_mark {
+#ulasdvdtvs .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#jxsxpzzzmk .gt_fraction_numerator {
+#ulasdvdtvs .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#jxsxpzzzmk .gt_fraction_denominator {
+#ulasdvdtvs .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1184,15 +1236,15 @@ subset(dataframe_name, dataframe_name$column_name logical_condition)
 ## Exercise
 
 ```r
-rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
+elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
                  db$Source=="Elf")
 ```
-<div id="bolzrqynss" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="btsfwmffdu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bolzrqynss .gt_table {
+#btsfwmffdu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1217,7 +1269,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-left-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_heading {
+#btsfwmffdu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1229,7 +1281,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_title {
+#btsfwmffdu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1241,7 +1293,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-width: 0;
 }
 
-#bolzrqynss .gt_subtitle {
+#btsfwmffdu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1253,13 +1305,13 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-top-width: 0;
 }
 
-#bolzrqynss .gt_bottom_border {
+#btsfwmffdu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_col_headings {
+#btsfwmffdu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1274,7 +1326,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_col_heading {
+#btsfwmffdu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1294,7 +1346,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   overflow-x: hidden;
 }
 
-#bolzrqynss .gt_column_spanner_outer {
+#btsfwmffdu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1306,15 +1358,15 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 4px;
 }
 
-#bolzrqynss .gt_column_spanner_outer:first-child {
+#btsfwmffdu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bolzrqynss .gt_column_spanner_outer:last-child {
+#btsfwmffdu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bolzrqynss .gt_column_spanner {
+#btsfwmffdu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1326,7 +1378,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   width: 100%;
 }
 
-#bolzrqynss .gt_group_heading {
+#btsfwmffdu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1351,7 +1403,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: middle;
 }
 
-#bolzrqynss .gt_empty_group_heading {
+#btsfwmffdu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1366,15 +1418,15 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: middle;
 }
 
-#bolzrqynss .gt_from_md > :first-child {
+#btsfwmffdu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bolzrqynss .gt_from_md > :last-child {
+#btsfwmffdu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bolzrqynss .gt_row {
+#btsfwmffdu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1393,7 +1445,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   overflow-x: hidden;
 }
 
-#bolzrqynss .gt_stub {
+#btsfwmffdu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1406,7 +1458,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#bolzrqynss .gt_stub_row_group {
+#btsfwmffdu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1420,11 +1472,11 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: top;
 }
 
-#bolzrqynss .gt_row_group_first td {
+#btsfwmffdu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bolzrqynss .gt_summary_row {
+#btsfwmffdu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1434,16 +1486,16 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#bolzrqynss .gt_first_summary_row {
+#btsfwmffdu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_first_summary_row.thick {
+#btsfwmffdu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bolzrqynss .gt_last_summary_row {
+#btsfwmffdu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,7 +1505,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_grand_summary_row {
+#btsfwmffdu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1463,7 +1515,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#bolzrqynss .gt_first_grand_summary_row {
+#btsfwmffdu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1473,11 +1525,11 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-top-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_striped {
+#btsfwmffdu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bolzrqynss .gt_table_body {
+#btsfwmffdu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1486,7 +1538,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_footnotes {
+#btsfwmffdu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1500,7 +1552,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_footnote {
+#btsfwmffdu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1509,7 +1561,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#bolzrqynss .gt_sourcenotes {
+#btsfwmffdu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1523,7 +1575,7 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#bolzrqynss .gt_sourcenote {
+#btsfwmffdu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1531,60 +1583,60 @@ rohan &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#bolzrqynss .gt_left {
+#btsfwmffdu .gt_left {
   text-align: left;
 }
 
-#bolzrqynss .gt_center {
+#btsfwmffdu .gt_center {
   text-align: center;
 }
 
-#bolzrqynss .gt_right {
+#btsfwmffdu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bolzrqynss .gt_font_normal {
+#btsfwmffdu .gt_font_normal {
   font-weight: normal;
 }
 
-#bolzrqynss .gt_font_bold {
+#btsfwmffdu .gt_font_bold {
   font-weight: bold;
 }
 
-#bolzrqynss .gt_font_italic {
+#btsfwmffdu .gt_font_italic {
   font-style: italic;
 }
 
-#bolzrqynss .gt_super {
+#btsfwmffdu .gt_super {
   font-size: 65%;
 }
 
-#bolzrqynss .gt_footnote_marks {
+#btsfwmffdu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#bolzrqynss .gt_asterisk {
+#btsfwmffdu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bolzrqynss .gt_slash_mark {
+#btsfwmffdu .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#bolzrqynss .gt_fraction_numerator {
+#btsfwmffdu .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#bolzrqynss .gt_fraction_denominator {
+#btsfwmffdu .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1732,6 +1784,496 @@ db2 &lt;- rbind(Erebor, Barad_dur)
 db2$newco &lt;- paste(db2$Isolation_location,db2$Source)
 ```
 ---
+class: hide-logo
+<div id="fngzqcidgh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fngzqcidgh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fngzqcidgh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fngzqcidgh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fngzqcidgh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fngzqcidgh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fngzqcidgh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fngzqcidgh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fngzqcidgh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fngzqcidgh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fngzqcidgh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fngzqcidgh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fngzqcidgh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fngzqcidgh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fngzqcidgh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fngzqcidgh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fngzqcidgh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fngzqcidgh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fngzqcidgh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fngzqcidgh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fngzqcidgh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fngzqcidgh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fngzqcidgh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fngzqcidgh .gt_left {
+  text-align: left;
+}
+
+#fngzqcidgh .gt_center {
+  text-align: center;
+}
+
+#fngzqcidgh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fngzqcidgh .gt_font_normal {
+  font-weight: normal;
+}
+
+#fngzqcidgh .gt_font_bold {
+  font-weight: bold;
+}
+
+#fngzqcidgh .gt_font_italic {
+  font-style: italic;
+}
+
+#fngzqcidgh .gt_super {
+  font-size: 65%;
+}
+
+#fngzqcidgh .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#fngzqcidgh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fngzqcidgh .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#fngzqcidgh .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#fngzqcidgh .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Species</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">ID</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Contigs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Genome.Length</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">GC.Content</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">PATRIC.CDS</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Isolation_location</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Source</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">newco</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">24H</td>
+<td class="gt_row gt_right">140</td>
+<td class="gt_row gt_right">4492822</td>
+<td class="gt_row gt_right">47.60000</td>
+<td class="gt_row gt_right">4620</td>
+<td class="gt_row gt_left">Erebor</td>
+<td class="gt_row gt_left">Dragon</td>
+<td class="gt_row gt_left">Erebor Dragon</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia kristensenii</td>
+<td class="gt_row gt_left">M53</td>
+<td class="gt_row gt_right">90</td>
+<td class="gt_row gt_right">4744530</td>
+<td class="gt_row gt_right">46.90000</td>
+<td class="gt_row gt_right">4797</td>
+<td class="gt_row gt_left">Erebor</td>
+<td class="gt_row gt_left">Dwarf</td>
+<td class="gt_row gt_left">Erebor Dwarf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia enterocolitica</td>
+<td class="gt_row gt_left">IP00178</td>
+<td class="gt_row gt_right">183</td>
+<td class="gt_row gt_right">4609560</td>
+<td class="gt_row gt_right">46.84000</td>
+<td class="gt_row gt_right">4807</td>
+<td class="gt_row gt_left">Erebor</td>
+<td class="gt_row gt_left">Dwarf</td>
+<td class="gt_row gt_left">Erebor Dwarf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">YP1906</td>
+<td class="gt_row gt_right">301</td>
+<td class="gt_row gt_right">4573713</td>
+<td class="gt_row gt_right">47.52974</td>
+<td class="gt_row gt_right">4772</td>
+<td class="gt_row gt_left">Erebor</td>
+<td class="gt_row gt_left">Dwarf</td>
+<td class="gt_row gt_left">Erebor Dwarf</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia pestis</td>
+<td class="gt_row gt_left">EBD10-058</td>
+<td class="gt_row gt_right">581</td>
+<td class="gt_row gt_right">4542680</td>
+<td class="gt_row gt_right">47.40000</td>
+<td class="gt_row gt_right">4364</td>
+<td class="gt_row gt_left">Barad-dur</td>
+<td class="gt_row gt_left">Hobbit</td>
+<td class="gt_row gt_left">Barad-dur Hobbit</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia enterocolitica</td>
+<td class="gt_row gt_left">PS23</td>
+<td class="gt_row gt_right">362</td>
+<td class="gt_row gt_right">4639377</td>
+<td class="gt_row gt_right">47.08801</td>
+<td class="gt_row gt_right">4479</td>
+<td class="gt_row gt_left">Barad-dur</td>
+<td class="gt_row gt_left">Orc</td>
+<td class="gt_row gt_left">Barad-dur Orc</td></tr>
+    <tr><td class="gt_row gt_left">Yersinia enterocolitica</td>
+<td class="gt_row gt_left">FORC_003</td>
+<td class="gt_row gt_right">202</td>
+<td class="gt_row gt_right">4837317</td>
+<td class="gt_row gt_right">47.04000</td>
+<td class="gt_row gt_right">4580</td>
+<td class="gt_row gt_left">Barad-dur</td>
+<td class="gt_row gt_left">Orc</td>
+<td class="gt_row gt_left">Barad-dur Orc</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+---
+class: middle
 # Sort
 Sort a data frame in R (by default, sorting is ASCENDING)
 
@@ -1739,10 +2281,12 @@ Sort a data frame in R (by default, sorting is ASCENDING)
 dataframe_name &lt;- dataframe_name[order(dataframe_name$column), ]
 ```
 
-```
+
+```r
 db2&lt;- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
 ```
 ---
+class: middle
 ## Vector functions
 These can be applied in the same way on vectors
 
@@ -1757,6 +2301,7 @@ function(vector)
 
 *range* it outputs the smallest and largest values of the numeric vector or column
 ---
+class: middle
 # Exercise
 &lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
 
@@ -1766,6 +2311,7 @@ function(vector)
 
 - Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
 ---
+class: middle
 ## Results
 
 ```r
@@ -1807,7 +2353,12 @@ To install a package in R:
 ```r
 install.packages("library_name")
 ```
-after you have installed you can load the package
+after you have installed the package you can load it every time you need
+
+```r
+library(library_name)
+```
+You have to load the packages every time your restart R
 
 ```r
 # There's a time and place for everything
@@ -1816,9 +2367,11 @@ install.packages(“ggplot2”)
 library(ggplot2)
 ```
 ---
+class: middle
 ![](img/ikea1.png)
 ## install.packages("package")
 ---
+class: middle
 ![](img/ikea2.png)
 
 ## library(package)

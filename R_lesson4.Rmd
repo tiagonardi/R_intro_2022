@@ -35,9 +35,7 @@ library(DiagrammeR)
 # style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
 
 ```
-class: inverse, middle, center
-# Plot design
----
+class: middle
 ## Statistical analysis - the basics
 Statistical analysis is the science of collecting, exploring and presenting large amounts of data to discover underlying patterns and trends
 
@@ -110,11 +108,11 @@ are real numbers
 ---
 ## Variables classification
 ### Qualitative variables
-- #### Nominal: are characterized by different modes that can not be ordered:
+- #### Nominal are characterized by different modes that can not be ordered:
   - Sex: male / female
   - Survival: alive / dead
   - Blood groups: A, B, AB, 0
-- #### Ordinal: are characterized by different modes that can be ordered:
+- #### Ordinal are characterized by different modes that can be ordered:
   - Obesity levels: overweight, obesity I, obesity II, obesity III
   - Intensity of reaction to an antigen: zero, medium, high
   - Educational qualification: compulsory school, bachelor, master, PhD
@@ -149,9 +147,7 @@ grViz(diagram = "digraph flowchart {
   ")
 ```
 ---
-## Statistical analysis - the basics
-
----
+class: middle
 ## Statistical analysis - the basics
 What is a normal distribution?
 
@@ -218,6 +214,7 @@ Ministry of Agriculture. 33, pp. 503-515]
 
 .pull-right[![](img/fisher.jpg)]
 ---
+class: middle
 ## Have a try
 Load the usual tableand see if the *Contigs* variable has a normal distribution 
 ```{r eval=FALSE}
@@ -290,6 +287,7 @@ shapiro.test(human$Contigs)
 
 ---
 ## Results
+As one of them is not normal we use the Wilcoxon
 ```{r}
 wilcox.test(hobbit$Contigs,human$Contigs)
 ```
@@ -365,4 +363,4 @@ cont_db <- table(db_red$Species, db_red$Source)
 cont_db
 chisq.test(cont_db)
 ```
-So there is a significative association between these two categories
+So there is a significant association between these two categories

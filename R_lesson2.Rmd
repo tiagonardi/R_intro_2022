@@ -30,17 +30,19 @@ library(xaringanthemer)
 
 )
 library(gt)
-
 # style_duo_accent(primary_color = "#002fa7", secondary_color = "#C5A900")
-
 ```
+class: middle
 ## Vectors
-
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
 
 Let’s first create a __vector__, with 5 __elements__:
 ```{r, include=TRUE}
 x <- c(2, 5, 8, 1, 2)
 ```
+---
+class: middle
+## Vectors
 You can access elements inside a vector using their index position, using the square brackets *[ ]*
 
 ```{r, include=TRUE}
@@ -53,6 +55,8 @@ x[c(1,2)] # show the first and second element
 ---
 class: middle
 ## Indexing the vectors
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
 Try these operations on your vector
 ```{r, eval=FALSE}
 vector[3:5]
@@ -67,26 +71,28 @@ You can select a slice of the vector using the colon *:*
 ```{r, include=TRUE}
 x[3:5] # show all elements from a starting index (3) to an ending index (5) (slicing)
 ```
-You can combine both methods
+You can combine     methods
 ```{r, include=TRUE}
 x[c(1,3:5)]
 ```
-You can get all the elements barring the elements with a minus before it *-*
+You can get exclude elements putting a minus before them *-*
 ```{r, include=TRUE}
 x[-2]
 ```
 ---
 ## Indexing the vectors
-Chose a numerical value and try these commands with you vector
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
+Chose a numerical value and try these commands with you __vector__
 ```{r, eval=FALSE}
 vector[vector > value]
 vector > value
 ```
-Why these results are different?
+Why these results are different? Can you guess it?
 
-Can you guess it?
+--
 
-Write also a vector with only boolean values (TRUE/FALSE) with the same length of your first vector
+Write also a __vector__ with only __boolean__ values (TRUE/FALSE) with the same length of your first vector and use it to slice the first __vector__
 ```{r, eval=FALSE}
 vector2 <- c(FALSE,TRUE,TRUE,FALSE,FALSE)
 vector[vector2]
@@ -123,28 +129,39 @@ x[3]
 
 ---
 ## Rows and columns
-Let's load the usual table (remember the working directory)
+Let's load the usual table (remember to set up the __working directory__)
 ```{r, include = TRUE}
 db <- read.csv("patric_redux.csv", header = T)
 db1 <- db # let's make a copy of the data frame
 head(db)
 ```
 ---
-## Rows and columns
-
-To change the name use the *colnames()* functions
-
+## Rows and columns - Exercise
 To get a column use the column number like a vector index
+```{r, eval=FALSE}
+dataframe[n]
+```
+To change the name use the *colnames()* functions
+```{r, eval=FALSE}
+colnames(dataframe[n]) <- "new column name"
+```
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
+Change the name of one column and look at the differences
+
+---
+class: middle
+## Rows and columns - Exercise
 ``` {r}
 colnames(db1) # It shows column names
 colnames(db1)[4] <- "bp" # change the fourth column name
 colnames(db1)
-colnames(db1)[4] # Get only the fourth column
+colnames(db1)[4] # Get only the name of the fourth column
 ```
 
 ---
 ## Rows and columns
-How to set row names:
+To set row names:
 ``` {r}
 rownames(db1) # It shows row names
 rownames(db1) <- db1$ID # We set as rownames all values from column
@@ -162,6 +179,7 @@ head(db) # read the first 6 rows
 head(db1) # see the differences between this and the previous table
 ```
 ---
+class: middle
 ## Cleaning up
 To remove a column assign a __NULL__ value to it
 ``` {r}
@@ -248,12 +266,12 @@ db[,c(4,5)] #All rows and the 4th and 5th column
 ---
 class: inverse, middle
 .pull-left[
-## Remember the typeof() function?
+# Remember the typeof() function?
 ]
 .pull-right[![](img/ein2.gif)]
 ---
 ## Object type
-With the various form of extraction you get similar results but different data types
+With the various forms of extraction you get similar results but different data types
 ``` {r, eval= FALSE}
 dataframe_name[column_index]
 dataframe_name[[column_index]] 
@@ -261,9 +279,9 @@ dataframe_name[, column_index] # Pay attention to the comma
 dataframe_name$column_index
 dataframe_name$column_index[row_index]
 ```
-Chose a column from the database and try the diffferent options
+Choose a __column__ and try the different options
 
-Assign these values to a new __objects__
+Assign these values to a new __object__
 
 Look at how they appear in the environment
 
@@ -278,8 +296,9 @@ db1[1]
 
 ```
 ---
+class: middle
 ## Not Available
-In R, missing values are represented by the symbol NA (not available)
+In R, missing values are represented by the symbol __NA__ (not available)
 
 To test for missing values
 ``` {r}
@@ -305,22 +324,29 @@ table(db1$Isolation_location)
 class: middle
 ## Data frame functions
 *gsub* takes an input value and replace it with another one
-``` {r, eval= TRUE}
+``` {r, eval= FALSE}
+vector <- gsub("Old string to replace","New string", vector )
+```
+You can replace the original vector, or assign it to a new vector
+<img src="img/cowboy-bebop-cowboy.gif" style="width: 30%" />
+
+Try to replace something from the column *Isolation_location* and use *table* to inspect the results
+---
+``` {r}
 db1$Isolation_location<-gsub("Barad-dur",
                              "Varallo Pombia",
                              db1$Isolation_location)
+table(db1$Isolation_location)
 ```
-the word “Barad-dur” is replaced with “Varallo Pombia” and save the replaced column in the dataframe
-
-Try to replace something from the column *Source*
 ---
 class: middle
 ## Data frame functions
-*unique* identify and eliminate duplicated values in an object. The object can be a vector or
-a data frame. On data frames the function removes duplicated rows
+*unique* identify and eliminate duplicated values in an object. The object can be a vector or a data frame. On data frames the function removes duplicated rows
 ``` {r, eval= TRUE}
 country <- db1$Isolation_location
 unique_country <- unique(country)
+length(country)
+length(unique_country)
 ```
 ---
 class: middle
@@ -335,7 +361,7 @@ To extract the first location that has the value of interest:
 ``` {r, eval= FALSE}
 match("value", dataframe_name$column_name)
 ```
-Use these functions to see if one value of you choice is present in the column *Isolation_location*, and see which row has the first occurrence 
+Use these functions to see if one value of your choice is present in the column *Isolation_location*, and see which row has the first occurrence 
 ---
 class: middle
 ## Functions on data frames
@@ -404,11 +430,11 @@ subset(dataframe_name, dataframe_name$column_name logical_condition)
 ---
 ## Exercise
 ``` {r eval=TRUE}
-rohan <- subset(db,db$Genome.Length > 4500000 &
+elfs <- subset(db,db$Genome.Length > 4500000 &
                  db$Source=="Elf")
 ```
 ```{r, echo=FALSE}
-g_r <- gt(rohan)
+g_r <- gt(elfs)
 g_r
 ```
 ---
@@ -479,16 +505,24 @@ db2 <- rbind(Erebor, Barad_dur)
 db2$newco <- paste(db2$Isolation_location,db2$Source)
 ```
 ---
+class: hide-logo
+```{r, echo=FALSE}
+pastato <- gt(db2)
+pastato
+```
+---
+class: middle
 # Sort
 Sort a data frame in R (by default, sorting is ASCENDING)
 ``` {r, eval= FALSE}
 dataframe_name <- dataframe_name[order(dataframe_name$column), ]
 ```
 
-```
+``` {r, eval= FALSE}
 db2<- db2[order(db2$Contigs),] # sort the whole data frame by column “Contigs”
 ```
 ---
+class: middle
 ## Vector functions
 These can be applied in the same way on vectors
 ```{r, eval=FALSE}
@@ -502,6 +536,7 @@ function(vector)
 
 *range* it outputs the smallest and largest values of the numeric vector or column
 ---
+class: middle
 # Exercise
 <img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
 
@@ -511,6 +546,7 @@ function(vector)
 
 - Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
 ---
+class: middle
 ## Results
 ``` {r, eval= TRUE}
 range(db$GC.Content)
@@ -532,7 +568,11 @@ To install a package in R:
 ```{r, eval=FALSE}
 install.packages("library_name")
 ```
-after you have installed you can load the package
+after you have installed the package you can load it every time you need
+```{r, eval=FALSE}
+library(library_name)
+```
+You have to load the packages every time your restart R
 ```{r eval=FALSE, tidy=FALSE,comment='#'}
 # There's a time and place for everything
 # but do not run this code now
@@ -540,9 +580,11 @@ install.packages(“ggplot2”)
 library(ggplot2)
 ```
 ---
+class: middle
 ![](img/ikea1.png)
 ## install.packages("package")
 ---
+class: middle
 ![](img/ikea2.png)
 
 ## library(package)
