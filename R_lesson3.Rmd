@@ -211,8 +211,97 @@ Draw a scatterplot with *Genome.Length* and *Contigs* number as the numerical va
 plot(db$Genome.Length,db$Contigs,col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
 ```
 ```{r, eval=FALSE}
-plot(db$Genome.Length,db$Contigs, col=c(red,blue),
+plot(db$Genome.Length,db$Contigs,
      col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
+```
+---
+## Colouring - not mandatory
+To assign a colour we need to use a __factor__ (qualitative variable)
+
+The variable can be already assigned (es. *Source*) or we can create one using the values in the table
+
+We need a __vector__ of colours of the same length of the list of factors
+```{r, eval=TRUE,echo=TRUE}
+levels(as.factor(db$Source))
+```
+__Factors__ are assigned in alphabetical order, so the colours should follow the same order
+```{r, eval=TRUE,echo=TRUE}
+s_colours <- c("firebrick","darkgoldenrod1","cornflowerblue",
+               "violetred","darkorange","chartreuse4")
+```
+---
+## Coloured by Source
+.pull-left[
+```{r, echo=FALSE}
+plot(db$Genome.Length,db$Contigs,col= s_colours[(as.factor(db$Source))],cex = 2,pch=17)
+```
+]
+.pull-right[
+```{r, echo=TRUE,eval=FALSE}
+plot(db$Genome.Length,db$Contigs,
+     col= s_colours[
+       (as.factor(db$Source))],
+     cex = 2,pch=17)
+```
+I use a __vector__ of colours, each value is assigned to a row of the data frame depending on the __level__ of *db$Source*
+]
+---
+## Using the df values 
+Instead of groups already present in the dataframe you can also create grouping basing on values
+```{r, eval=TRUE}
+db$group <- factor(ifelse(db$Genome.Length < 4400000,"low",
+                          ifelse(db$Genome.Length > 4800000 ,
+                                 "high","medium")))
+```
+We can divide the samples according to *Genome.Lenght*, creating a new column
+
+I used a logical function that assign different values on the logical condition
+```{r, eval=FALSE}
+ifelse(condition, if TRUE then, if FALSE then)
+```
+Then we assign to a __vector__ three colours already present in R
+``````{r, eval=TRUE}
+plot_colours <- c("firebrick","royalblue","mediumseagreen")
+```
+---
+class: hide-logo
+```{r, eval=TRUE,echo=FALSE}
+plot(db$Genome.Length,db$Contigs,col=plot_colours[db$group],pch=17)
+abline(v=4400000, col="royalblue", lwd=3, lty=2)
+abline(v=4800000, col="firebrick", lwd=3, lty=2)
+```
+
+```{r, eval=FALSE,echo=TRUE}
+plot(db$Genome.Length,db$Contigs,col=plot_colours[db$group],pch=17)
+abline(v=4400000, col="royalblue", lwd=3, lty=2)
+abline(v=4800000, col="firebrick", lwd=3, lty=2)
+```
+---
+class: middle
+## Legend
+We can add a legend to a plot
+
+First we draw the plot, then we use the function *legend* 
+```{r, eval=FALSE}
+legend(position,legend=vector_of_labels, col=vector_of_colours)
+```
+The position can be specified with any of these __strings__
+```
+"bottomright", "bottom", "bottomleft", "left", 
+"topleft", "top", "topright", "right" "center"
+```
+
+---
+```{r, echo=FALSE,eval=TRUE}
+plot(db$Genome.Length,db$Contigs,
+     col= s_colours[
+       (as.factor(db$Source))],
+     cex = 2,pch=17)
+legend("topright",legend=levels(as.factor(db$Source)),lwd = 3, col = s_colours)
+```
+```{r, eval=FALSE}
+legend("topright",legend=levels(as.factor(db$Source)),
+       lwd = 3, col = s_colours)
 ```
 ---
 class: middle

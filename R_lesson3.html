@@ -197,8 +197,98 @@ Draw a scatterplot with *Genome.Length* and *Contigs* number as the numerical va
 ![](R_lesson3_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ```r
-plot(db$Genome.Length,db$Contigs, col=c(red,blue),
+plot(db$Genome.Length,db$Contigs,
      col= as.numeric(as.factor(db$Source)),cex = 2,pch=16)
+```
+---
+## Colouring - not mandatory
+To assign a colour we need to use a __factor__ (qualitative variable)
+
+The variable can be already assigned (es. *Source*) or we can create one using the values in the table
+
+We need a __vector__ of colours of the same length of the list of factors
+
+```r
+levels(as.factor(db$Source))
+```
+
+```
+## [1] "Dragon" "Dwarf"  "Elf"    "Hobbit" "Human"  "Orc"
+```
+__Factors__ are assigned in alphabetical order, so the colours should follow the same order
+
+```r
+s_colours &lt;- c("firebrick","darkgoldenrod1","cornflowerblue",
+               "violetred","darkorange","chartreuse4")
+```
+---
+## Coloured by Source
+.pull-left[
+![](R_lesson3_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+
+```r
+plot(db$Genome.Length,db$Contigs,
+     col= s_colours[
+       (as.factor(db$Source))],
+     cex = 2,pch=17)
+```
+I use a __vector__ of colours, each value is assigned to a row of the data frame depending on the __level__ of *db$Source*
+]
+---
+## Using the df values 
+Instead of groups already present in the dataframe you can also create grouping basing on values
+
+```r
+db$group &lt;- factor(ifelse(db$Genome.Length &lt; 4400000,"low",
+                          ifelse(db$Genome.Length &gt; 4800000 ,
+                                 "high","medium")))
+```
+We can divide the samples according to *Genome.Lenght*, creating a new column
+
+I used a logical function that assign different values on the logical condition
+
+```r
+ifelse(condition, if TRUE then, if FALSE then)
+```
+Then we assign to a __vector__ three colours already present in R
+
+```r
+plot_colours &lt;- c("firebrick","royalblue","mediumseagreen")
+```
+---
+class: hide-logo
+![](R_lesson3_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+
+```r
+plot(db$Genome.Length,db$Contigs,col=plot_colours[db$group],pch=17)
+abline(v=4400000, col="royalblue", lwd=3, lty=2)
+abline(v=4800000, col="firebrick", lwd=3, lty=2)
+```
+---
+class: middle
+## Legend
+We can add a legend to a plot
+
+First we draw the plot, then we use the function *legend* 
+
+```r
+legend(position,legend=vector_of_labels, col=vector_of_colours)
+```
+The position can be specified with any of these __strings__
+```
+"bottomright", "bottom", "bottomleft", "left", 
+"topleft", "top", "topright", "right" "center"
+```
+
+---
+![](R_lesson3_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+
+```r
+legend("topright",legend=levels(as.factor(db$Source)),
+       lwd = 3, col = s_colours)
 ```
 ---
 class: middle
