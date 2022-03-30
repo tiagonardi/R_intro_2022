@@ -59,7 +59,7 @@ Code written in the __Source Pane__ will not be evaluated until you expressly ru
 Ctrl+Enter (or use the Run toolbar button) to execute the line of code where the cursor currently resides 
 
 - Executing Multiple Lines:
-Ctrl+Enter key (or use the Run toolbar button) after selecting the lines
+Ctrl+Enter (or use the Run toolbar button) after selecting the lines
 ![](img/editor_run.png)
 
 ---
@@ -177,7 +177,7 @@ The logical operators are:
 ```{r, include=FALSE}
 df_log <- data.frame(Operator=c(">",">=","<","<=","==","!=", "&","|","!"),
                 Description=c("Greater than",
-                              "Greater than or equal tp",
+                              "Greater than or equal to",
                               "Lesser than",
                               "Lesser than or equal to",
                               "Equal to",
@@ -432,9 +432,9 @@ gt_tbl <- gt(df)
 gt_tbl
 ```
 
-Probably better to codify the last column as a boolean variable or use only "yes" or "no":
+Probably better to codify the last column as a boolean variable or use only "yes"/"no"
 
-Being consistent is fundamental when using table
+Being consistent is fundamental when using tables
 ---
 ## Data frames
 Also it can be done in a single command
