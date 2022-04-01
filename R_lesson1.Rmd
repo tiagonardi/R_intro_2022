@@ -593,11 +593,11 @@ There are various commands that can be used to read a table in R
 They are all variation of the more general command *read.table*, with different defaults
 ```{r, include=FALSE}
 elenco_tab <- data.frame(Command=c("read.table","read.csv","read.csv2","read.delim","read.delim2"),
-                Defaults=c("sep='', header=FALSE, dec = '.'",
+                Defaults=c("sep=' ', header=FALSE, dec = '.'",
                               "sep=',', header=TRUE, dec = '.'",
                               "sep=';', header=TRUE, dec = ','",
-                              "sep='\t' ,header=TRUE, dec = '.'",
-                              "sep='\t', header=TRUE, dec = ','"
+                              "sep='\\t' ,header=TRUE, dec = '.'",
+                              "sep='\\t', header=TRUE, dec = ','"
                               )
 )
 gt_elenco_tab <- gt(elenco_tab)
