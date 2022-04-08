@@ -276,8 +276,8 @@ With the various forms of extraction you get similar results but different data 
 dataframe_name[column_index]
 dataframe_name[[column_index]] 
 dataframe_name[, column_index] # Pay attention to the comma
-dataframe_name$column_index
-dataframe_name$column_index[row_index]
+dataframe_name$column_name
+dataframe_name$column_name[row_index]
 ```
 Choose a __column__ and try the different options
 
@@ -404,7 +404,7 @@ red_table <- subset(db,select = c(1, 3, 4, 5))
 ```{r, include=FALSE}
 df_log <- data.frame(Operator=c(">",">=","<","<=","==","!=", "&","|","!"),
                 Description=c("Greater than",
-                              "Greater than or equal tp",
+                              "Greater than or equal to",
                               "Lesser than",
                               "Lesser than or equal to",
                               "Equal to",
@@ -423,7 +423,7 @@ class: middle
 ## Exercise
 <img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
 
-Get a table with only genomes from Elf and 4500000 as genome length
+Get a table with only genomes with "Elf" as *Source* and more than 4500000 as genome length
 ``` {r eval=FALSE}
 subset(dataframe_name, dataframe_name$column_name logical_condition)
 ```
@@ -452,6 +452,44 @@ dataframe_name <- droplevels (dataframe_name)
 ```
 ---
 class: middle
+# Binding - Pasting
+
+__Paste__ combine strings to a single string, or two vectors of strings
+```{r, eval= FALSE}
+new_vector<-paste(string_vector1,string_vector2,sep=" ")
+```
+In the new string/vector the original strings will be separated by the __sep__arator
+
+If you don't want any separation write *sep=""*
+
+```{r}
+oath1 <- c("Life","Strength","Journey")
+oath2 <- c("death","weakness", "destination")
+words <- paste(oath1,oath2,sep = " before ")
+words
+```
+---
+class: middle
+# Binding - Pasting
+You can mix a fixed __string__ with a __vector__
+```{r, eval= FALSE}
+new_vector<-paste("fixed_string",string_vector,sep="")
+```
+Remember: 
+- between quotations marks -> string
+- without quotation marks -> name of an object in your environment
+
+You can assign the new vector to a dataframe adding or replacing a column inside it
+
+You can use as a vector a column inside a dataframe
+```{r, eval= FALSE}
+data_frame$column3<-paste(
+  data_frame$column1,
+  data_frame$column2,sep=" ")
+```
+
+---
+class: middle
 ## Binding
 .pull-left[
 #### Combining vectors to a a dataframe:
@@ -464,36 +502,20 @@ class: middle
 .pull-right[![](img/binding.png)]
 ---
 class: middle
-# Binding - Pasting
-
-Paste combine strings to a single string, or two vectors of strings
-```{r, eval= FALSE}
-new_vector<-paste(string_vector1,string_vector2,sep=" ")
-```
-In the new string/vector the original strings will be separated by the separator (*sep=*)
-
-If you don't want any separation write *sep=""*
-
-You can assign the new vector to a dataframe or use it to replace a column
-
-You can use a fixed string
-```{r, eval= FALSE}
-new_vector<-paste("fixed_string",string_vector2,sep="")
-```
----
-class: middle
 ## Exercise
 <img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
 
 Create 2 subsets:
-- one with only samples from *Erebor* 
-- one with only samples from *Barad-dur*
+- one with only samples with *Isolation Location*: *Erebor* 
+- one with only samples with *Isolation Location*: *Barad-dur*
 
-Bind the two tables into a single dataframe, and add a column pasting *Isolation_location* and *Source* columns
+Bind the two tables into a single dataframe
+
+Add a column pasting *Isolation_location* and *Source* columns
 ``` {r, eval= FALSE}
 df1 <- subset(dataframe,logical_vector)
-new_df <- rbind(df1,df2) #new_r now is a new row of the data frame
-new_vector<-paste(string_vector1,string_vector2,sep=" ")
+new_df <- rbind(df1,df2) 
+new_vector <- paste(string_vector1,string_vector2,sep=" ")
 ```
 ---
 class: middle
@@ -506,7 +528,7 @@ db2 <- rbind(Erebor, Barad_dur)
 db2$newco <- paste(db2$Isolation_location,db2$Source)
 ```
 ---
-class: hide-logo
+class: hide-logo, middle
 ```{r, echo=FALSE}
 pastato <- gt(db2)
 pastato
@@ -541,11 +563,17 @@ class: middle
 # Exercise
 <img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/>
 
-- Get the range of the *GC.Content*
+- Get the __range__ of the *GC.Content*
 
-- Get the max value of contigs in only Hobbit samples
+- Get the __max__ value of contigs in only Hobbit samples
 
-- Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
+- Get the __min__imum value of *PATRIC.CDS* in samples with less than 100 contigs
+
+```{r, eval= FALSE}
+sub_dataframe <-subset(dataframe, dataframe$column 
+                       LOGIC CONDITION)
+function(vector)
+```
 ---
 class: middle
 ## Results
@@ -589,6 +617,23 @@ class: middle
 ![](img/ikea2.png)
 
 ## library(package)
+---
+class: middle
+## Example package: readXL
+You can use this package to read files from excel
+```{r, eval=FALSE}
+install.packages("readxl")
+library(readxl)
+read_excel("xlsx_file")
+```
+After you have installed and loaded the library you can use the new functions
+
+The command has options to load a specific sheet or only a range inside it
+```{r, eval=FALSE}
+read_excel("xlsx_file",sheet = 4) # specify the sheet
+read_excel("xlsx_file",range = "C1:E4")
+```
+
 ---
 class: inverse, middle, center
 # EXTRA

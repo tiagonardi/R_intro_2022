@@ -515,8 +515,8 @@ With the various forms of extraction you get similar results but different data 
 dataframe_name[column_index]
 dataframe_name[[column_index]] 
 dataframe_name[, column_index] # Pay attention to the comma
-dataframe_name$column_index
-dataframe_name$column_index[row_index]
+dataframe_name$column_name
+dataframe_name$column_name[row_index]
 ```
 Choose a __column__ and try the different options
 
@@ -787,12 +787,12 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
 ---
 # Logical operators
 
-<div id="seugfxnaxu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qtrlpiukqm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#seugfxnaxu .gt_table {
+#qtrlpiukqm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -817,7 +817,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-left-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_heading {
+#qtrlpiukqm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -829,7 +829,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_title {
+#qtrlpiukqm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -841,7 +841,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-width: 0;
 }
 
-#seugfxnaxu .gt_subtitle {
+#qtrlpiukqm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -853,13 +853,13 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-top-width: 0;
 }
 
-#seugfxnaxu .gt_bottom_border {
+#qtrlpiukqm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_col_headings {
+#qtrlpiukqm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -874,7 +874,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_col_heading {
+#qtrlpiukqm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -894,7 +894,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   overflow-x: hidden;
 }
 
-#seugfxnaxu .gt_column_spanner_outer {
+#qtrlpiukqm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -906,15 +906,15 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 4px;
 }
 
-#seugfxnaxu .gt_column_spanner_outer:first-child {
+#qtrlpiukqm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#seugfxnaxu .gt_column_spanner_outer:last-child {
+#qtrlpiukqm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#seugfxnaxu .gt_column_spanner {
+#qtrlpiukqm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -926,7 +926,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   width: 100%;
 }
 
-#seugfxnaxu .gt_group_heading {
+#qtrlpiukqm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -951,7 +951,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: middle;
 }
 
-#seugfxnaxu .gt_empty_group_heading {
+#qtrlpiukqm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -966,15 +966,15 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: middle;
 }
 
-#seugfxnaxu .gt_from_md > :first-child {
+#qtrlpiukqm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#seugfxnaxu .gt_from_md > :last-child {
+#qtrlpiukqm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#seugfxnaxu .gt_row {
+#qtrlpiukqm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -993,7 +993,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   overflow-x: hidden;
 }
 
-#seugfxnaxu .gt_stub {
+#qtrlpiukqm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1006,7 +1006,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#seugfxnaxu .gt_stub_row_group {
+#qtrlpiukqm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1020,11 +1020,11 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   vertical-align: top;
 }
 
-#seugfxnaxu .gt_row_group_first td {
+#qtrlpiukqm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#seugfxnaxu .gt_summary_row {
+#qtrlpiukqm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1034,16 +1034,16 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#seugfxnaxu .gt_first_summary_row {
+#qtrlpiukqm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_first_summary_row.thick {
+#qtrlpiukqm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#seugfxnaxu .gt_last_summary_row {
+#qtrlpiukqm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1053,7 +1053,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_grand_summary_row {
+#qtrlpiukqm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1063,7 +1063,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#seugfxnaxu .gt_first_grand_summary_row {
+#qtrlpiukqm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1073,11 +1073,11 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-top-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_striped {
+#qtrlpiukqm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#seugfxnaxu .gt_table_body {
+#qtrlpiukqm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1086,7 +1086,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-bottom-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_footnotes {
+#qtrlpiukqm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1100,7 +1100,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_footnote {
+#qtrlpiukqm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1109,7 +1109,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#seugfxnaxu .gt_sourcenotes {
+#qtrlpiukqm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1123,7 +1123,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   border-right-color: #D3D3D3;
 }
 
-#seugfxnaxu .gt_sourcenote {
+#qtrlpiukqm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1131,60 +1131,60 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
   padding-right: 5px;
 }
 
-#seugfxnaxu .gt_left {
+#qtrlpiukqm .gt_left {
   text-align: left;
 }
 
-#seugfxnaxu .gt_center {
+#qtrlpiukqm .gt_center {
   text-align: center;
 }
 
-#seugfxnaxu .gt_right {
+#qtrlpiukqm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#seugfxnaxu .gt_font_normal {
+#qtrlpiukqm .gt_font_normal {
   font-weight: normal;
 }
 
-#seugfxnaxu .gt_font_bold {
+#qtrlpiukqm .gt_font_bold {
   font-weight: bold;
 }
 
-#seugfxnaxu .gt_font_italic {
+#qtrlpiukqm .gt_font_italic {
   font-style: italic;
 }
 
-#seugfxnaxu .gt_super {
+#qtrlpiukqm .gt_super {
   font-size: 65%;
 }
 
-#seugfxnaxu .gt_footnote_marks {
+#qtrlpiukqm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#seugfxnaxu .gt_asterisk {
+#qtrlpiukqm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#seugfxnaxu .gt_slash_mark {
+#qtrlpiukqm .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#seugfxnaxu .gt_fraction_numerator {
+#qtrlpiukqm .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#seugfxnaxu .gt_fraction_denominator {
+#qtrlpiukqm .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1202,7 +1202,7 @@ red_table &lt;- subset(db,select = c(1, 3, 4, 5))
     <tr><td class="gt_row gt_left">&gt;</td>
 <td class="gt_row gt_left">Greater than</td></tr>
     <tr><td class="gt_row gt_left">&gt;=</td>
-<td class="gt_row gt_left">Greater than or equal tp</td></tr>
+<td class="gt_row gt_left">Greater than or equal to</td></tr>
     <tr><td class="gt_row gt_left">&lt;</td>
 <td class="gt_row gt_left">Lesser than</td></tr>
     <tr><td class="gt_row gt_left">&lt;=</td>
@@ -1227,7 +1227,7 @@ class: middle
 ## Exercise
 &lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
 
-Get a table with only genomes from Elf and 4500000 as genome length
+Get a table with only genomes with "Elf" as *Source* and more than 4500000 as genome length
 
 ```r
 subset(dataframe_name, dataframe_name$column_name logical_condition)
@@ -1239,12 +1239,12 @@ subset(dataframe_name, dataframe_name$column_name logical_condition)
 elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
                  db$Source=="Elf")
 ```
-<div id="hajjmogdnb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="anyfutwzbc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#hajjmogdnb .gt_table {
+#anyfutwzbc .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1269,7 +1269,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-left-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_heading {
+#anyfutwzbc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1281,7 +1281,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_title {
+#anyfutwzbc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1293,7 +1293,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-width: 0;
 }
 
-#hajjmogdnb .gt_subtitle {
+#anyfutwzbc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1305,13 +1305,13 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-top-width: 0;
 }
 
-#hajjmogdnb .gt_bottom_border {
+#anyfutwzbc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_col_headings {
+#anyfutwzbc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1326,7 +1326,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_col_heading {
+#anyfutwzbc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1346,7 +1346,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   overflow-x: hidden;
 }
 
-#hajjmogdnb .gt_column_spanner_outer {
+#anyfutwzbc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1358,15 +1358,15 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 4px;
 }
 
-#hajjmogdnb .gt_column_spanner_outer:first-child {
+#anyfutwzbc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hajjmogdnb .gt_column_spanner_outer:last-child {
+#anyfutwzbc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hajjmogdnb .gt_column_spanner {
+#anyfutwzbc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1378,7 +1378,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   width: 100%;
 }
 
-#hajjmogdnb .gt_group_heading {
+#anyfutwzbc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1403,7 +1403,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: middle;
 }
 
-#hajjmogdnb .gt_empty_group_heading {
+#anyfutwzbc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1418,15 +1418,15 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: middle;
 }
 
-#hajjmogdnb .gt_from_md > :first-child {
+#anyfutwzbc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hajjmogdnb .gt_from_md > :last-child {
+#anyfutwzbc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hajjmogdnb .gt_row {
+#anyfutwzbc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1445,7 +1445,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   overflow-x: hidden;
 }
 
-#hajjmogdnb .gt_stub {
+#anyfutwzbc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1458,7 +1458,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#hajjmogdnb .gt_stub_row_group {
+#anyfutwzbc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1472,11 +1472,11 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   vertical-align: top;
 }
 
-#hajjmogdnb .gt_row_group_first td {
+#anyfutwzbc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hajjmogdnb .gt_summary_row {
+#anyfutwzbc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1486,16 +1486,16 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#hajjmogdnb .gt_first_summary_row {
+#anyfutwzbc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_first_summary_row.thick {
+#anyfutwzbc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hajjmogdnb .gt_last_summary_row {
+#anyfutwzbc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1505,7 +1505,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_grand_summary_row {
+#anyfutwzbc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1515,7 +1515,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#hajjmogdnb .gt_first_grand_summary_row {
+#anyfutwzbc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1525,11 +1525,11 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-top-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_striped {
+#anyfutwzbc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hajjmogdnb .gt_table_body {
+#anyfutwzbc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1538,7 +1538,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-bottom-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_footnotes {
+#anyfutwzbc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1552,7 +1552,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_footnote {
+#anyfutwzbc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1561,7 +1561,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#hajjmogdnb .gt_sourcenotes {
+#anyfutwzbc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1575,7 +1575,7 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   border-right-color: #D3D3D3;
 }
 
-#hajjmogdnb .gt_sourcenote {
+#anyfutwzbc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1583,60 +1583,60 @@ elfs &lt;- subset(db,db$Genome.Length &gt; 4500000 &amp;
   padding-right: 5px;
 }
 
-#hajjmogdnb .gt_left {
+#anyfutwzbc .gt_left {
   text-align: left;
 }
 
-#hajjmogdnb .gt_center {
+#anyfutwzbc .gt_center {
   text-align: center;
 }
 
-#hajjmogdnb .gt_right {
+#anyfutwzbc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hajjmogdnb .gt_font_normal {
+#anyfutwzbc .gt_font_normal {
   font-weight: normal;
 }
 
-#hajjmogdnb .gt_font_bold {
+#anyfutwzbc .gt_font_bold {
   font-weight: bold;
 }
 
-#hajjmogdnb .gt_font_italic {
+#anyfutwzbc .gt_font_italic {
   font-style: italic;
 }
 
-#hajjmogdnb .gt_super {
+#anyfutwzbc .gt_super {
   font-size: 65%;
 }
 
-#hajjmogdnb .gt_footnote_marks {
+#anyfutwzbc .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#hajjmogdnb .gt_asterisk {
+#anyfutwzbc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hajjmogdnb .gt_slash_mark {
+#anyfutwzbc .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#hajjmogdnb .gt_fraction_numerator {
+#anyfutwzbc .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#hajjmogdnb .gt_fraction_denominator {
+#anyfutwzbc .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1727,6 +1727,53 @@ dataframe_name &lt;- droplevels (dataframe_name)
 ```
 ---
 class: middle
+# Binding - Pasting
+
+__Paste__ combine strings to a single string, or two vectors of strings
+
+```r
+new_vector&lt;-paste(string_vector1,string_vector2,sep=" ")
+```
+In the new string/vector the original strings will be separated by the __sep__arator
+
+If you don't want any separation write *sep=""*
+
+
+```r
+oath1 &lt;- c("Life","Strength","Journey")
+oath2 &lt;- c("death","weakness", "destination")
+words &lt;- paste(oath1,oath2,sep = " before ")
+words
+```
+
+```
+## [1] "Life before death"          "Strength before weakness"  
+## [3] "Journey before destination"
+```
+---
+class: middle
+# Binding - Pasting
+You can mix a fixed __string__ with a __vector__
+
+```r
+new_vector&lt;-paste("fixed_string",string_vector,sep="")
+```
+Remember: 
+- between quotations marks -&gt; string
+- without quotation marks -&gt; name of an object in your environment
+
+You can assign the new vector to a dataframe adding or replacing a column inside it
+
+You can use as a vector a column inside a dataframe
+
+```r
+data_frame$column3&lt;-paste(
+  data_frame$column1,
+  data_frame$column2,sep=" ")
+```
+
+---
+class: middle
 ## Binding
 .pull-left[
 #### Combining vectors to a a dataframe:
@@ -1739,39 +1786,21 @@ class: middle
 .pull-right[![](img/binding.png)]
 ---
 class: middle
-# Binding - Pasting
-
-Paste combine strings to a single string, or two vectors of strings
-
-```r
-new_vector&lt;-paste(string_vector1,string_vector2,sep=" ")
-```
-In the new string/vector the original strings will be separated by the separator (*sep=*)
-
-If you don't want any separation write *sep=""*
-
-You can assign the new vector to a dataframe or use it to replace a column
-
-You can use a fixed string
-
-```r
-new_vector&lt;-paste("fixed_string",string_vector2,sep="")
-```
----
-class: middle
 ## Exercise
 &lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
 
 Create 2 subsets:
-- one with only samples from *Erebor* 
-- one with only samples from *Barad-dur*
+- one with only samples with *Isolation Location*: *Erebor* 
+- one with only samples with *Isolation Location*: *Barad-dur*
 
-Bind the two tables into a single dataframe, and add a column pasting *Isolation_location* and *Source* columns
+Bind the two tables into a single dataframe
+
+Add a column pasting *Isolation_location* and *Source* columns
 
 ```r
 df1 &lt;- subset(dataframe,logical_vector)
-new_df &lt;- rbind(df1,df2) #new_r now is a new row of the data frame
-new_vector&lt;-paste(string_vector1,string_vector2,sep=" ")
+new_df &lt;- rbind(df1,df2) 
+new_vector &lt;- paste(string_vector1,string_vector2,sep=" ")
 ```
 ---
 class: middle
@@ -1785,13 +1814,13 @@ db2 &lt;- rbind(Erebor, Barad_dur)
 db2$newco &lt;- paste(db2$Isolation_location,db2$Source)
 ```
 ---
-class: hide-logo
-<div id="havtinsbbr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+class: hide-logo, middle
+<div id="dfetbeover" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#havtinsbbr .gt_table {
+#dfetbeover .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1816,7 +1845,7 @@ class: hide-logo
   border-left-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_heading {
+#dfetbeover .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1828,7 +1857,7 @@ class: hide-logo
   border-right-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_title {
+#dfetbeover .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1840,7 +1869,7 @@ class: hide-logo
   border-bottom-width: 0;
 }
 
-#havtinsbbr .gt_subtitle {
+#dfetbeover .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1852,13 +1881,13 @@ class: hide-logo
   border-top-width: 0;
 }
 
-#havtinsbbr .gt_bottom_border {
+#dfetbeover .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_col_headings {
+#dfetbeover .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1873,7 +1902,7 @@ class: hide-logo
   border-right-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_col_heading {
+#dfetbeover .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1893,7 +1922,7 @@ class: hide-logo
   overflow-x: hidden;
 }
 
-#havtinsbbr .gt_column_spanner_outer {
+#dfetbeover .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1905,15 +1934,15 @@ class: hide-logo
   padding-right: 4px;
 }
 
-#havtinsbbr .gt_column_spanner_outer:first-child {
+#dfetbeover .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#havtinsbbr .gt_column_spanner_outer:last-child {
+#dfetbeover .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#havtinsbbr .gt_column_spanner {
+#dfetbeover .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1925,7 +1954,7 @@ class: hide-logo
   width: 100%;
 }
 
-#havtinsbbr .gt_group_heading {
+#dfetbeover .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1950,7 +1979,7 @@ class: hide-logo
   vertical-align: middle;
 }
 
-#havtinsbbr .gt_empty_group_heading {
+#dfetbeover .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1965,15 +1994,15 @@ class: hide-logo
   vertical-align: middle;
 }
 
-#havtinsbbr .gt_from_md > :first-child {
+#dfetbeover .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#havtinsbbr .gt_from_md > :last-child {
+#dfetbeover .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#havtinsbbr .gt_row {
+#dfetbeover .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1992,7 +2021,7 @@ class: hide-logo
   overflow-x: hidden;
 }
 
-#havtinsbbr .gt_stub {
+#dfetbeover .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2005,7 +2034,7 @@ class: hide-logo
   padding-right: 5px;
 }
 
-#havtinsbbr .gt_stub_row_group {
+#dfetbeover .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2019,11 +2048,11 @@ class: hide-logo
   vertical-align: top;
 }
 
-#havtinsbbr .gt_row_group_first td {
+#dfetbeover .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#havtinsbbr .gt_summary_row {
+#dfetbeover .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2033,16 +2062,16 @@ class: hide-logo
   padding-right: 5px;
 }
 
-#havtinsbbr .gt_first_summary_row {
+#dfetbeover .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_first_summary_row.thick {
+#dfetbeover .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#havtinsbbr .gt_last_summary_row {
+#dfetbeover .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2052,7 +2081,7 @@ class: hide-logo
   border-bottom-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_grand_summary_row {
+#dfetbeover .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2062,7 +2091,7 @@ class: hide-logo
   padding-right: 5px;
 }
 
-#havtinsbbr .gt_first_grand_summary_row {
+#dfetbeover .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2072,11 +2101,11 @@ class: hide-logo
   border-top-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_striped {
+#dfetbeover .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#havtinsbbr .gt_table_body {
+#dfetbeover .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2085,7 +2114,7 @@ class: hide-logo
   border-bottom-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_footnotes {
+#dfetbeover .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2099,7 +2128,7 @@ class: hide-logo
   border-right-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_footnote {
+#dfetbeover .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2108,7 +2137,7 @@ class: hide-logo
   padding-right: 5px;
 }
 
-#havtinsbbr .gt_sourcenotes {
+#dfetbeover .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2122,7 +2151,7 @@ class: hide-logo
   border-right-color: #D3D3D3;
 }
 
-#havtinsbbr .gt_sourcenote {
+#dfetbeover .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2130,60 +2159,60 @@ class: hide-logo
   padding-right: 5px;
 }
 
-#havtinsbbr .gt_left {
+#dfetbeover .gt_left {
   text-align: left;
 }
 
-#havtinsbbr .gt_center {
+#dfetbeover .gt_center {
   text-align: center;
 }
 
-#havtinsbbr .gt_right {
+#dfetbeover .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#havtinsbbr .gt_font_normal {
+#dfetbeover .gt_font_normal {
   font-weight: normal;
 }
 
-#havtinsbbr .gt_font_bold {
+#dfetbeover .gt_font_bold {
   font-weight: bold;
 }
 
-#havtinsbbr .gt_font_italic {
+#dfetbeover .gt_font_italic {
   font-style: italic;
 }
 
-#havtinsbbr .gt_super {
+#dfetbeover .gt_super {
   font-size: 65%;
 }
 
-#havtinsbbr .gt_footnote_marks {
+#dfetbeover .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#havtinsbbr .gt_asterisk {
+#dfetbeover .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#havtinsbbr .gt_slash_mark {
+#dfetbeover .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#havtinsbbr .gt_fraction_numerator {
+#dfetbeover .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#havtinsbbr .gt_fraction_denominator {
+#dfetbeover .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2306,11 +2335,18 @@ class: middle
 # Exercise
 &lt;img src="img/cowboy-bebop-cowboy.gif" style="width: 30%"/&gt;
 
-- Get the range of the *GC.Content*
+- Get the __range__ of the *GC.Content*
 
-- Get the max value of contigs in only Hobbit samples
+- Get the __max__ value of contigs in only Hobbit samples
 
-- Get the minimum value of *PATRIC.CDS* in samples with less than 100 contigs
+- Get the __min__imum value of *PATRIC.CDS* in samples with less than 100 contigs
+
+
+```r
+sub_dataframe &lt;-subset(dataframe, dataframe$column 
+                       LOGIC CONDITION)
+function(vector)
+```
 ---
 class: middle
 ## Results
@@ -2376,6 +2412,25 @@ class: middle
 ![](img/ikea2.png)
 
 ## library(package)
+---
+class: middle
+## Example package: readXL
+You can use this package to read files from excel
+
+```r
+install.packages("readxl")
+library(readxl)
+read_excel("xlsx_file")
+```
+After you have installed and loaded the library you can use the new functions
+
+The command has options to load a specific sheet or only a range inside it
+
+```r
+read_excel("xlsx_file",sheet = 4) # specify the sheet
+read_excel("xlsx_file",range = "C1:E4")
+```
+
 ---
 class: inverse, middle, center
 # EXTRA
